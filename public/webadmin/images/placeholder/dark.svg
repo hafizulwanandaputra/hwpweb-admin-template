@@ -1,0 +1,18 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" preserveAspectRatio="none">
+      <defs>
+        <style type="text/css">
+          #holder text {
+            fill: #212529;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 64px;
+            font-weight: 500;
+          }
+        </style>
+      </defs>
+      <g id="holder">
+        <rect width="100%" height="100%" fill="#343a40"></rect>
+        <g>
+          <text text-anchor="middle" x="50%" y="50%" dy=".3em">HWPweb ADMIN</text>
+        </g>
+      </g>
+    </svg>

@@ -1,0 +1,22 @@
+:root {
+  --bs-font-sans-serif: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", sans-serif;
+
+  --bs-font-monospace: "JetBrains Mono", "Noto Sans Mono", "Courier New",
+    "Noto Color Emoji", monospace;
+}
+
+.font-monospace {
+  font-feature-settings: "ss01", "cv14", "cv16", "cv18", "zero";
+}
+
+pre,
+code,
+kbd,
+samp {
+  font-feature-settings: "ss01", "cv14", "cv16", "cv18", "zero";
+}
+
+.date {
+  font-variant-numeric: normal;
+}

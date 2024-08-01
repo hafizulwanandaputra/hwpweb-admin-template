@@ -1,0 +1,97 @@
+[25-Jan-2024 14:45:32 Asia/Jakarta] PHP Warning:  require_once(/home/akuhafiz/system/vendor/codeigniter4/framework/system/Config/AutoloadConfig.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php on line 93
+[25-Jan-2024 14:45:32 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/codeigniter4/framework/system/Config/AutoloadConfig.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php:93
+Stack trace:
+#0 /home/akuhafiz/public_html/index.php(40): require()
+#1 {main}
+  thrown in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php on line 93
+[25-Jan-2024 14:45:34 Asia/Jakarta] PHP Warning:  require_once(/home/akuhafiz/system/vendor/codeigniter4/framework/system/Config/AutoloadConfig.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php on line 93
+[25-Jan-2024 14:45:34 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/codeigniter4/framework/system/Config/AutoloadConfig.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php:93
+Stack trace:
+#0 /home/akuhafiz/public_html/index.php(40): require()
+#1 {main}
+  thrown in /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php on line 93
+[25-Jan-2024 14:45:53 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:45:53 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:45:53 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:01 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:01 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:01 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:03 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:03 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:03 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../myclabs/deep-copy/src/DeepCopy/deep_copy.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:09 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:09 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:46:09 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:05 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:05 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:05 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:38 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:38 Asia/Jakarta] PHP Warning:  require(/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php): Failed to open stream: No such file or directory in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:47:38 Asia/Jakarta] PHP Fatal error:  Uncaught Error: Failed opening required '/home/akuhafiz/system/vendor/composer/../phpunit/phpunit/src/Framework/Assert/Functions.php' (include_path='.:/opt/alt/php81/usr/share/pear:/opt/alt/php81/usr/share/php:/usr/share/pear:/usr/share/php') in /home/akuhafiz/system/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/akuhafiz/system/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/akuhafiz/system/vendor/autoload.php(25): ComposerAutoloaderInitd648ee3b65e8d352e12e15817702e7cd::getLoader()
+#2 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(142): include('/home/akuhafiz/...')
+#3 /home/akuhafiz/system/vendor/codeigniter4/framework/system/Autoloader/Autoloader.php(127): CodeIgniter\Autoloader\Autoloader->loadComposerAutoloader()
+#4 /home/akuhafiz/system/vendor/codeigniter4/framework/system/bootstrap.php(105): CodeIgniter\Autoloader\Autoloader->initialize()
+#5 /home/akuhafiz/public_html/index.php(40): require('/home/akuhafiz/...')
+#6 {main}
+  thrown in /home/akuhafiz/system/vendor/composer/autoload_real.php on line 41
+[25-Jan-2024 14:59:32 Asia/Jakarta] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 7.4.33. in /home/akuhafiz/system/vendor/composer/platform_check.php on line 24
+[25-Jan-2024 14:59:34 Asia/Jakarta] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 7.4.33. in /home/akuhafiz/system/vendor/composer/platform_check.php on line 24
+[29-Feb-2024 09:29:44 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371708 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:30:02 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371708 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:31:20 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371704 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:32:39 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371708 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:35:46 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371708 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:39:20 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371704 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[29-Feb-2024 09:40:39 Asia/Jakarta] PHP Warning:  POST Content-Length of 9371704 bytes exceeds the limit of 8388608 bytes in Unknown on line 0
+[03-Mar-2024 23:15:19 Asia/Jakarta] PHP Fatal error:  PHP Request Shutdown: Cannot use output buffering in output buffering display handlers in Unknown on line 0
+[03-Mar-2024 23:15:27 Asia/Jakarta] PHP Fatal error:  PHP Request Shutdown: Cannot use output buffering in output buffering display handlers in Unknown on line 0
+[03-Mar-2024 23:17:38 Asia/Jakarta] PHP Fatal error:  PHP Request Shutdown: Cannot use output buffering in output buffering display handlers in Unknown on line 0
+[03-Mar-2024 23:19:01 Asia/Jakarta] PHP Fatal error:  PHP Request Shutdown: Cannot use output buffering in output buffering display handlers in Unknown on line 0

@@ -1,0 +1,11 @@
+:root {
+  --bs-font-sans-serif: Geist, system-ui, -apple-system, BlinkMacSystemFont,
+    "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", sans-serif;
+
+  --bs-font-monospace: "Geist Mono", "Noto Sans Mono", "Courier New",
+    "Noto Color Emoji", monospace;
+}
+
+.date {
+  font-variant-numeric: tabular-nums;
+}
