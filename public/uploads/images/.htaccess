@@ -1,13 +1,11 @@
-<FilesMatch "\.(?i:doc|odf|pdf|rtf|txt|aif|cda|mid|midi|mp3|mpa|ogg|wav|wma|bmp|gif|jpeg|jpg|png|svg|tif|tiff|3g2|3gp|avi|h264|m4v|mkv|mov|mp4|mpg|mpeg|rm|swf|wmv|webp)$">
-Header set Content-Disposition attachment
-</FilesMatch>
-
 RewriteEngine on
 RewriteOptions inherit
 Options -Indexes
 
 # php -- BEGIN cPanel-generated handler, do not edit
+
 # Set the “alt-php83” package as the default “PHP” programming language.
+
 <IfModule mime_module>
   AddHandler application/x-httpd-alt-php83 .php .php8 .phtml
 </IfModule>

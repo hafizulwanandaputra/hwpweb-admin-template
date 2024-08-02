@@ -60,7 +60,7 @@ class Users extends BaseController
             // Set base validation rules
             $validation->setRules([
                 'fullname' => 'required|min_length[3]',
-                'username' => 'required|is_unique[user.username]|min_length[3]|alpha_numeric_punct',
+                'username' => 'required|is_unique[user.username]|min_length[3]|alpha_dash',
                 'role' => 'required'
             ]);
             if ($this->request->getMethod() == 'post' && $validation->withRequest($this->request)->run()) {
@@ -91,12 +91,12 @@ class Users extends BaseController
             // Set base validation rules
             $validation->setRules([
                 'fullname' => 'required|min_length[3]',
-                'username' => 'required|min_length[3]|alpha_numeric_punct',
+                'username' => 'required|min_length[3]|alpha_dash',
                 'role' => 'required'
             ]);
             // Validate only if username has changed
             if ($this->request->getPost('username') != $this->request->getPost('original_username')) {
-                $validation->setRule('username', 'username', 'required|is_unique[user.username]|min_length[3]|alpha_numeric_punct');
+                $validation->setRule('username', 'username', 'required|is_unique[user.username]|min_length[3]|alpha_dash');
             }
             if ($this->request->getMethod() == 'post' && $validation->withRequest($this->request)->run()) {
                 // Save Data

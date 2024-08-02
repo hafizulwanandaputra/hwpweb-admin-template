@@ -28,6 +28,7 @@ The user guide corresponding to the latest version of the framework can be found
 3. Run `php spark migrate` to migrate database.
 4. Run `php spark db:seed UsersSeeder` to seed the database items.
 5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080).
+6. Sign in using username `administrator` and password `administrator`.
 
 ## Important Change with index.php
 
@@ -60,8 +61,8 @@ PHP version 7.4 or higher is required, with the following extensions installed:
 > The end of life date for PHP 7.4 was November 28, 2022. If you are
 > still using PHP 7.4, you should upgrade immediately. The end of life date
 > for PHP 8.0 will be November 26, 2023.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
+> gi
+> Additionally, make sure that the following extensions are enabled in your PHP:
 
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL

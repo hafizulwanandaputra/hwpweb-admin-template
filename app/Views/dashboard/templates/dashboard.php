@@ -166,6 +166,18 @@
                                 </div>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2" href="<?= base_url('/examples'); ?>">
+                                <div class="d-flex align-items-start">
+                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
+                                        <i class="fa-solid fa-database"></i>
+                                    </div>
+                                    <div class="flex-fill ms-2 link-body-emphasis">
+                                        Example CRUD
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
                         <?php if (session()->get('role') == 'Administrator') : ?>
                             <li class="nav-item">
                                 <a class="nav-link p-2" href="<?= base_url('/users'); ?>">

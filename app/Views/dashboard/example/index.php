@@ -13,9 +13,11 @@
                 <tr class="align-middle">
                     <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">#</th>
                     <th scope="col" class="bg-body-secondary border-secondary text-nowrap" style="border-bottom-width: 2px;">Actions</th>
-                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Full Name</th>
-                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">User Name</th>
-                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Role</th>
+                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Image</th>
+                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Name</th>
+                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Email</th>
+                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Phone Number</th>
+                    <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Address</th>
                 </tr>
             </thead>
             <tbody class="align-top">
@@ -26,7 +28,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Are you sure want to delete this user?</h5>
+                    <h5 class="mb-0">Are you sure want to delete this data?</h5>
                 </div>
                 <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
@@ -35,34 +37,45 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable rounded-3">
-            <form id="userForm" class="modal-content bg-body shadow-lg transparent-blur">
+            <form id="exampleForm" enctype="multipart/form-data" class="modal-content bg-body shadow-lg transparent-blur">
                 <div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
-                    <h6 class="pe-2 modal-title fs-6 text-truncate" id="userModalLabel" style="font-weight: bold;">Add User</h6>
+                    <h6 class="pe-2 modal-title fs-6 text-truncate" id="exampleModalLabel" style="font-weight: bold;">Add Example Data</h6>
                     <button type="button" class="btn btn-danger btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="modal" aria-label="Close"><span data-feather="x" class="mb-0" style="width: 30px; height: 30px;"></span></button>
                 </div>
                 <div class="modal-body py-2">
-                    <input type="hidden" id="userId" name="id_user">
-                    <input type="hidden" id="original_username" name="original_username">
+                    <input type="hidden" id="exampleId" name="id">
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="fullname" id="fullname" name="fullname">
-                        <label for="fullname">Full Name*</label>
+                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="name" id="name" name="name">
+                        <label for="name">Name*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="username" id="username" name="username">
-                        <label for="username">Full Name*</label>
+                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="email" id="email" name="email">
+                        <label for="email">Email*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-1 mt-1">
-                        <select class="form-select" id="role" name="role" aria-label="role">
-                            <option value="">-- Select Role --</option>
-                            <option value="Administrator">Administrator</option>
-                            <option value="User">User</option>
-                        </select>
-                        <label for="role">Role</label>
+                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="phonenumber" id="phonenumber" name="phonenumber">
+                        <label for="phonenumber">Phone Number*</label>
                         <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="form-floating mb-1 mt-1">
+                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="address" id="address" name="address">
+                        <label for="address">Address*</label>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-1 mt-1">
+                        <label for="image" class="form-label mb-0">Image</label>
+                        <input class="form-control" type="file" id="image" name="image">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <!-- Image preview -->
+                    <div id="image_preview_div" style="display: none;" class="mb-1 mt-1">
+                        <div class="d-flex justify-content-center">
+                            <img id="image_preview" src="#" alt="Image Preview" class="img-thumbnail" style="max-width: 100%">
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-end pt-2 pb-2" style="border-top: 1px solid var(--bs-border-color-translucent);">
@@ -105,7 +118,7 @@
     // DataTables Functions
     $(document).ready(function() {
         $.ajax({
-            url: '<?= base_url('/users/getusers') ?>',
+            url: '<?= base_url('/examples/getexamples') ?>',
             success: function(response) {
                 console.log(response); // Log the response to see if data is present
             }
@@ -162,10 +175,10 @@
                     $(node).removeClass('btn-secondary')
                 },
             }, {
-                text: '<i class="fa-solid fa-plus"></i> Add User',
+                text: '<i class="fa-solid fa-plus"></i> Add',
                 className: 'btn-primary btn-sm bg-gradient rounded-end-3',
                 attr: {
-                    id: 'addUserBtn'
+                    id: 'addExampleBtn'
                 },
                 init: function(api, node, config) {
                     $(node).removeClass('btn-secondary')
@@ -174,10 +187,10 @@
             "search": {
                 "caseInsensitive": true
             },
-            'pageLength': 25,
+            'pageLength': 10,
             'lengthMenu': [
-                [25, 50, 100, 250, 500],
-                [25, 50, 100, 250, 500]
+                [10, 25, 50, 100, 250, 500],
+                [10, 25, 50, 100, 250, 500]
             ],
             "autoWidth": true,
             "processing": true,
@@ -185,7 +198,7 @@
                 "processing": '<div class="m-4"><div class="spinner-border mt-1" style="width: 5rem; height: 5rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>',
             },
             "ajax": {
-                url: "<?= base_url('/users/getusers') ?>",
+                url: "<?= base_url('/examples/getexamples') ?>",
                 dataSrc: function(json) {
                     // Check if json is an object (not an array), if so convert it to an array
                     if (!Array.isArray(json)) {
@@ -206,72 +219,103 @@
                     data: null,
                     render: function(data, type, row) {
                         return `<div class="btn-group" role="group">
-                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}"><i class="fa-solid fa-pen-to-square"></i><span class="fw-bold"> Edit</span></button>
-                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}"><i class="fa-solid fa-trash"></i><span class="fw-bold"> Delete</span></button>
+                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}"><i class="fa-solid fa-pen-to-square"></i><span class="fw-bold"> Edit</span></button>
+                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}"><i class="fa-solid fa-trash"></i><span class="fw-bold"> Delete</span></button>
                                 </div>`;
                     }
                 },
                 {
-                    data: 'fullname'
+                    data: 'image_url',
+                    render: function(data, type, row) {
+                        return `<img src="${data}" alt="${data}" style="width: 128px;">`;
+                    }
                 },
                 {
-                    data: 'username'
+                    data: 'name'
                 },
                 {
-                    data: 'role'
+                    data: 'email'
+                },
+                {
+                    data: 'phonenumber'
+                },
+                {
+                    data: 'address'
                 },
             ],
             "columnDefs": [{
-                "target": [0, 1],
+                "target": [0, 1, 2],
                 "orderable": false
             }, {
                 "target": [0, 1],
                 "width": "0%"
             }, {
-                "target": [2, 3],
+                "target": [3, 4],
                 "width": "50%"
             }],
         });
-        // Show add user modal
-        $('#addUserBtn').click(function() {
-            $('#userModalLabel').text('Add User');
-            $('#userForm')[0].reset();
-            $('#userId').val('');
-            $('#userModal').modal('show');
+        // Show add example modal
+        $('#addExampleBtn').click(function() {
+            $('#exampleModalLabel').text('Add Example Data');
+            $('#exampleForm')[0].reset();
+            $('#exampleId').val('');
+            $('#image_preview_div').hide();
+            $('#exampleModal').modal('show');
         });
-        // Show edit user modal
+        // Show edit example modal
         $(document).on('click', '.edit-btn', function() {
             var id = $(this).data('id');
             $.ajax({
-                url: '<?= base_url('/users/getuser') ?>/' + id,
+                url: '<?= base_url('/examples/getexample') ?>/' + id,
                 success: function(response) {
-                    $('#userModalLabel').text('Edit User');
-                    $('#userId').val(response.id_user);
-                    $('#fullname').val(response.fullname);
-                    $('#username').val(response.username);
-                    $('#role').val(response.role);
-                    // Set the original_username hidden field
-                    $('#original_username').val(response.username);
-                    $('#userModal').modal('show');
+                    // Set the modal title and form fields with the retrieved data
+                    $('#exampleModalLabel').text('Edit Example Data');
+                    $('#exampleId').val(response.id);
+                    $('#name').val(response.name);
+                    $('#email').val(response.email);
+                    $('#phonenumber').val(response.phonenumber);
+                    $('#address').val(response.address);
+
+                    // Set the image preview, or hide the preview if no image is available
+                    if (response.image) {
+                        $('#image_preview').attr('src', '<?= base_url('uploads/images') ?>/' + response.image);
+                        $('#image_preview_div').show();
+                    } else {
+                        $('#image_preview_div').hide();
+                    }
+
+                    // Show the modal
+                    $('#exampleModal').modal('show');
                 },
                 error: function(xhr, status, error) {
                     showToast('An error occurred. Please try again.');
                 }
             });
         });
-        // Store the ID of the user to be deleted
-        var userIdToDelete;
+
+        // Show image preview when a file is selected
+        $('#image').change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#image_preview').attr('src', e.target.result);
+                $('#image_preview_div').show();
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        // Store the ID of the example to be deleted
+        var exampleIdToDelete;
 
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
-            userIdToDelete = $(this).data('id');
+            exampleIdToDelete = $(this).data('id');
             $('#deleteModal').modal('show');
         });
 
         // Confirm deletion
         $('#confirmDeleteBtn').click(function() {
             $.ajax({
-                url: '<?= base_url('/users/deleteuser') ?>/' + userIdToDelete,
+                url: '<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete,
                 type: 'DELETE',
                 success: function(response) {
                     showSuccessToast(response.message);
@@ -283,12 +327,13 @@
                 }
             });
         });
-        // Submit user form (Add/Edit)
-        $('#userForm').submit(function(e) {
+        // Submit example form (Add/Edit)
+        $('#exampleForm').submit(function(e) {
             e.preventDefault();
-            var url = $('#userId').val() ? '<?= base_url('/users/updateuser') ?>' : '<?= base_url('/users/adduser') ?>';
+            var url = $('#exampleId').val() ? '<?= base_url('/examples/updateexample') ?>' : '<?= base_url('/examples/addexample') ?>';
+            var formData = new FormData(this);
             console.log("Form URL:", url);
-            console.log("Form Data:", $(this).serialize());
+            console.log("Form Data:", formData);
             // Show processing button and progress bar
             $('#uploadSpinner').removeClass('d-none');
             $('#submitButton').addClass('d-none');
@@ -296,7 +341,9 @@
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $(this).serialize(),
+                data: formData,
+                contentType: false, // Required for FormData
+                processData: false, // Required for FormData
                 xhr: function() {
                     var xhr = new XMLHttpRequest();
                     xhr.upload.addEventListener('progress', function(e) {
@@ -311,14 +358,14 @@
                 success: function(response) {
                     if (response.success) {
                         showSuccessToast(response.message, 'success');
-                        $('#userModal').modal('hide');
+                        $('#exampleModal').modal('hide');
                         table.ajax.reload();
                     } else {
                         console.log("Validation Errors:", response.errors);
 
                         // Clear previous validation states
-                        $('#userForm .is-invalid').removeClass('is-invalid');
-                        $('#userForm .invalid-feedback').text('').hide();
+                        $('#exampleForm .is-invalid').removeClass('is-invalid');
+                        $('#exampleForm .invalid-feedback').text('').hide();
 
                         // Display new validation errors
                         for (var field in response.errors) {
@@ -333,7 +380,7 @@
                                     fieldElement.addClass('is-invalid');
                                     feedbackElement.text(response.errors[field]).show();
 
-                                    // Remove error message when the user corrects the input
+                                    // Remove error message when the example corrects the input
                                     fieldElement.on('input change', function() {
                                         $(this).removeClass('is-invalid');
                                         $(this).siblings('.invalid-feedback').text('').hide();
@@ -358,10 +405,11 @@
                 }
             });
         });
-        $('#userModal').on('hidden.bs.modal', function() {
-            $('#userForm')[0].reset();
+        $('#exampleModal').on('hidden.bs.modal', function() {
+            $('#exampleForm')[0].reset();
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').text('').hide();
+            $('#image_preview_div').hide(); // Hide preview when modal is closed
         });
         // Show toast notification
         function showSuccessToast(message) {

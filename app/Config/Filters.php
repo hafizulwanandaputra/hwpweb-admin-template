@@ -52,6 +52,7 @@ class Filters extends BaseConfig
                 '/check-login-2',
                 '/logout',
                 '/home', '/home/*',
+                '/examples', '/examples/*',
                 '/users', '/users/*',
                 '/settings', '/settings/*',
                 '/delete/*'
