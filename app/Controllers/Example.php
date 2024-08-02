@@ -24,13 +24,44 @@ class Example extends BaseController
 
     public function getExamples()
     {
-        $examples = $this->ExampleModel->orderBy('id', 'DESC')->findAll();
+        $request = $this->request->getPost();
+        $search = $request['search']['value']; // Search value
+        $start = $request['start']; // Start index for pagination
+        $length = $request['length']; // Length of the page
+        $draw = $request['draw']; // Draw counter for DataTables
+
+        // Get total records count
+        $totalRecords = $this->ExampleModel->countAll();
+
+        // Apply search query
+        if ($search) {
+            $this->ExampleModel->like('name', $search)
+                ->orLike('email', $search)
+                ->orLike('phonenumber', $search)
+                ->orLike('address', $search);
+        }
+
+        // Get filtered records count
+        $filteredRecords = $this->ExampleModel->countAllResults(false);
+
+        // Fetch the data
+        $examples = $this->ExampleModel->orderBy('id', 'DESC')
+            ->findAll($length, $start);
+
+        // Format the data
         $data = [];
         foreach ($examples as $example) {
             $example['image_url'] = base_url('uploads/images/' . $example['image']);
             $data[] = $example;
         }
-        return $this->response->setJSON($data);
+
+        // Return the JSON response
+        return $this->response->setJSON([
+            'draw' => $draw,
+            'recordsTotal' => $totalRecords,
+            'recordsFiltered' => $filteredRecords,
+            'data' => $data
+        ]);
     }
 
     public function getExample($id)

@@ -37,7 +37,7 @@
     </div>
     <div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable rounded-3">
-            <form id="userForm" class="modal-content bg-body shadow-lg transparent-blur">
+            <form id="userForm" enctype="multipart/form-data" class="modal-content bg-body shadow-lg transparent-blur">
                 <div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
                     <h6 class="pe-2 modal-title fs-6 text-truncate" id="userModalLabel" style="font-weight: bold;">Add User</h6>
                     <button type="button" class="btn btn-danger btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="modal" aria-label="Close"><span data-feather="x" class="mb-0" style="width: 30px; height: 30px;"></span></button>
@@ -104,12 +104,6 @@
 <script>
     // DataTables Functions
     $(document).ready(function() {
-        $.ajax({
-            url: '<?= base_url('/users/getusers') ?>',
-            success: function(response) {
-                console.log(response); // Log the response to see if data is present
-            }
-        });
         var table = $('#tabel').DataTable({
             "oLanguage": {
                 "oPaginate": {
@@ -184,19 +178,15 @@
             "language": {
                 "processing": '<div class="m-4"><div class="spinner-border mt-1" style="width: 5rem; height: 5rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>',
             },
+            "serverSide": true,
             "ajax": {
-                url: "<?= base_url('/users/getusers') ?>",
-                dataSrc: function(json) {
-                    // Check if json is an object (not an array), if so convert it to an array
-                    if (!Array.isArray(json)) {
-                        return [json]; // Wrap the single object in an array
-                    }
-                    return json; // If it's already an array, return it as is
-                },
-                error: function(xhr, error, code) {
-                    console.log(xhr);
-                    console.log(code);
-                    console.log(error);
+                "url": "<?= base_url('/users/getusers') ?>",
+                "type": "POST",
+                "data": function(d) {
+                    // Additional parameters
+                    d.search = {
+                        "value": $('.dataTables_filter input[type="search"]').val()
+                    };
                 }
             },
             columns: [{
@@ -287,16 +277,24 @@
         $('#userForm').submit(function(e) {
             e.preventDefault();
             var url = $('#userId').val() ? '<?= base_url('/users/updateuser') ?>' : '<?= base_url('/users/adduser') ?>';
+            var formData = new FormData(this);
             console.log("Form URL:", url);
             console.log("Form Data:", $(this).serialize());
+            // Clear previous validation states
+            $('#userForm .is-invalid').removeClass('is-invalid');
+            $('#userForm .invalid-feedback').text('').hide();
             // Show processing button and progress bar
             $('#uploadSpinner').removeClass('d-none');
             $('#submitButton').addClass('d-none');
             $('#uploadProgressBar').css('width', '0%');
+            // Disable form inputs
+            $('#userForm input, #userForm select, #closeBtn').prop('disabled', true);
             $.ajax({
                 url: url,
                 type: 'POST',
-                data: $(this).serialize(),
+                data: formData,
+                contentType: false, // Required for FormData
+                processData: false, // Required for FormData
                 xhr: function() {
                     var xhr = new XMLHttpRequest();
                     xhr.upload.addEventListener('progress', function(e) {
@@ -355,6 +353,7 @@
                     $('#submitButton').removeClass('d-none');
                     $('#uploadProgressBar').css('width', '0%');
                     $('#uploadPercentage').html('0%');
+                    $('#userForm input, #userForm select, #closeBtn').prop('disabled', false)
                 }
             });
         });

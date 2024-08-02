@@ -33,8 +33,43 @@ class Users extends BaseController
     {
         // Administrator Only
         if (session()->get('role') == 'Administrator') {
-            $data = $this->AuthModel->where('id_user !=', session()->get('id_user'))->orderBy('id_user', 'DESC')->get()->getResult();
-            return $this->response->setJSON($data);
+            $request = $this->request->getPost();
+            $search = $request['search']['value']; // Search value
+            $start = $request['start']; // Start index for pagination
+            $length = $request['length']; // Length of the page
+            $draw = $request['draw']; // Draw counter for DataTables
+
+            // Get total records count
+            $totalRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAll();
+
+            // Apply search query
+            if ($search) {
+                $this->AuthModel->where('id_user !=', session()->get('id_user'))
+                    ->like('fullname', $search)
+                    ->orLike('username', $search)
+                    ->orLike('role', $search);
+            }
+
+            // Get filtered records count
+            $filteredRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(false);
+
+            // Fetch the data
+            $users = $this->AuthModel->where('id_user !=', session()->get('id_user'))->orderBy('id_user', 'DESC')
+                ->findAll($length, $start);
+
+            // Format the data
+            $data = [];
+            foreach ($users as $user) {
+                $data[] = $user;
+            }
+
+            // Return the JSON response
+            return $this->response->setJSON([
+                'draw' => $draw,
+                'recordsTotal' => $totalRecords,
+                'recordsFiltered' => $filteredRecords,
+                'data' => $data
+            ]);
         } else {
             throw PageNotFoundException::forPageNotFound();
         }

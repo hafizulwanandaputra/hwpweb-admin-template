@@ -24,7 +24,7 @@ $routes->get('(?i)examples/(?i)getexample/(:num)', 'Example::getExample/$1');
 $routes->post('/(?i)examples/(?i)addexample', 'Example::addExample');
 $routes->post('/(?i)examples/(?i)updateexample', 'Example::updateExample');
 $routes->delete('/(?i)examples/(?i)deleteexample/(:num)', 'Example::deleteExample/$1');
-$routes->get('/(?i)examples/(?i)getexamples', 'Example::getExamples');
+$routes->post('/(?i)examples/(?i)getexamples', 'Example::getExamples');
 
 // USERS
 $routes->get('/(?i)users', 'Users::index');
@@ -32,7 +32,7 @@ $routes->get('(?i)users/(?i)getuser/(:num)', 'Users::getUser/$1');
 $routes->post('/(?i)users/(?i)adduser', 'Users::addUser');
 $routes->post('/(?i)users/(?i)updateuser', 'Users::updateUser');
 $routes->delete('/(?i)users/(?i)deleteuser/(:num)', 'Users::deleteUser/$1');
-$routes->get('/(?i)users/(?i)getusers', 'Users::getUsers');
+$routes->post('/(?i)users/(?i)getusers', 'Users::getUsers');
 
 // SETTINGS
 $routes->get('/(?i)settings', 'Settings::index');

@@ -42,7 +42,7 @@
             <form id="exampleForm" enctype="multipart/form-data" class="modal-content bg-body shadow-lg transparent-blur">
                 <div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
                     <h6 class="pe-2 modal-title fs-6 text-truncate" id="exampleModalLabel" style="font-weight: bold;">Add Example Data</h6>
-                    <button type="button" class="btn btn-danger btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="modal" aria-label="Close"><span data-feather="x" class="mb-0" style="width: 30px; height: 30px;"></span></button>
+                    <button id="closeBtn" type="button" class="btn btn-danger btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="modal" aria-label="Close"><span data-feather="x" class="mb-0" style="width: 30px; height: 30px;"></span></button>
                 </div>
                 <div class="modal-body py-2">
                     <input type="hidden" id="exampleId" name="id">
@@ -117,12 +117,6 @@
 <script>
     // DataTables Functions
     $(document).ready(function() {
-        $.ajax({
-            url: '<?= base_url('/examples/getexamples') ?>',
-            success: function(response) {
-                console.log(response); // Log the response to see if data is present
-            }
-        });
         var table = $('#tabel').DataTable({
             "oLanguage": {
                 "oPaginate": {
@@ -197,19 +191,15 @@
             "language": {
                 "processing": '<div class="m-4"><div class="spinner-border mt-1" style="width: 5rem; height: 5rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>',
             },
+            "serverSide": true,
             "ajax": {
-                url: "<?= base_url('/examples/getexamples') ?>",
-                dataSrc: function(json) {
-                    // Check if json is an object (not an array), if so convert it to an array
-                    if (!Array.isArray(json)) {
-                        return [json]; // Wrap the single object in an array
-                    }
-                    return json; // If it's already an array, return it as is
-                },
-                error: function(xhr, error, code) {
-                    console.log(xhr);
-                    console.log(code);
-                    console.log(error);
+                "url": "<?= base_url('/examples/getexamples') ?>",
+                "type": "POST",
+                "data": function(d) {
+                    // Additional parameters
+                    d.search = {
+                        "value": $('.dataTables_filter input[type="search"]').val()
+                    };
                 }
             },
             columns: [{
@@ -334,10 +324,15 @@
             var formData = new FormData(this);
             console.log("Form URL:", url);
             console.log("Form Data:", formData);
+            // Clear previous validation states
+            $('#exampleForm .is-invalid').removeClass('is-invalid');
+            $('#exampleForm .invalid-feedback').text('').hide();
             // Show processing button and progress bar
             $('#uploadSpinner').removeClass('d-none');
             $('#submitButton').addClass('d-none');
             $('#uploadProgressBar').css('width', '0%');
+            // Disable form inputs
+            $('#exampleForm input, #closeBtn').prop('disabled', true);
             $.ajax({
                 url: url,
                 type: 'POST',
@@ -402,6 +397,7 @@
                     $('#submitButton').removeClass('d-none');
                     $('#uploadProgressBar').css('width', '0%');
                     $('#uploadPercentage').html('0%');
+                    $('#exampleForm input, #closeBtn').prop('disabled', false);
                 }
             });
         });
