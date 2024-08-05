@@ -28,7 +28,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Are you sure want to delete this data?</h5>
+                    <h5 class="mb-0" id="deleteMessage"></h5>
                 </div>
                 <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
@@ -67,7 +67,7 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="mb-1 mt-1">
-                        <label for="image" class="form-label mb-0">Image</label>
+                        <label for="image" class="form-label mb-0">Image (max 8 MB)</label>
                         <input class="form-control" type="file" id="image" name="image">
                         <div class="invalid-feedback"></div>
                     </div>
@@ -82,15 +82,11 @@
                     <!-- Progress bar -->
                     <div class="mb-1 mt-1 w-100" id="uploadProgressDiv">
                         <div class="progress" style="border-top: 1px solid var(--bs-border-color-translucent); border-bottom: 1px solid var(--bs-border-color-translucent); border-left: 1px solid var(--bs-border-color-translucent); border-right: 1px solid var(--bs-border-color-translucent);">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-gradient" role="progressbar" style="width: 0%;" id="uploadProgressBar"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-gradient" role="progressbar" style="width: 0%; transition: none;" id="uploadProgressBar"></div>
                         </div>
                     </div>
                     <button type="submit" id="submitButton" class="btn btn-primary bg-gradient rounded-3">
                         <i class="fa-solid fa-floppy-disk"></i> Save
-                    </button>
-                    <button id="uploadSpinner" class="btn btn-primary bg-gradient rounded-3 d-none" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                        <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
                     </button>
                 </div>
             </form>
@@ -142,10 +138,12 @@
             },
             "drawCallback": function() {
                 var api = this.api();
+                var pageInfo = api.page.info();
                 api.column(0, {
                     order: 'applied'
                 }).nodes().each(function(cell, i) {
-                    cell.innerHTML = i + 1;
+                    var rowIndex = i + 1 + pageInfo.start;
+                    cell.innerHTML = rowIndex;
                     $(cell).css({
                         'font-variant-numeric': 'tabular-nums'
                     });
@@ -227,11 +225,17 @@
                     data: 'email'
                 },
                 {
-                    data: 'phonenumber'
+                    data: 'phonenumber',
+                    render: function(data, type, row) {
+                        return `<span class='date'>+${data}</span>`;
+                    }
                 },
                 {
                     data: 'address'
                 },
+            ],
+            "order": [
+                [3, 'desc']
             ],
             "columnDefs": [{
                 "target": [0, 1, 2],
@@ -250,6 +254,7 @@
             $('#exampleForm')[0].reset();
             $('#exampleId').val('');
             $('#image_preview_div').hide();
+            $('#image_preview').attr('src', '#');
             $('#exampleModal').modal('show');
         });
         // Show edit example modal
@@ -299,17 +304,21 @@
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
             exampleIdToDelete = $(this).data('id');
+            $('#deleteMessage').html(`Are you sure want to delete this data?`);
             $('#deleteModal').modal('show');
         });
 
         // Confirm deletion
         $('#confirmDeleteBtn').click(function() {
+            $('#deleteModal button').prop('disabled', true);
+            $('#deleteMessage').html(`Deleting, please wait...`);
             $.ajax({
                 url: '<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete,
                 type: 'DELETE',
                 success: function(response) {
                     showSuccessToast(response.message);
                     $('#deleteModal').modal('hide');
+                    $('#deleteModal button').prop('disabled', false);
                     table.ajax.reload();
                 },
                 error: function(xhr, status, error) {
@@ -328,9 +337,12 @@
             $('#exampleForm .is-invalid').removeClass('is-invalid');
             $('#exampleForm .invalid-feedback').text('').hide();
             // Show processing button and progress bar
-            $('#uploadSpinner').removeClass('d-none');
-            $('#submitButton').addClass('d-none');
-            $('#uploadProgressBar').css('width', '0%');
+            $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
+            // Show processing button and progress bar
+            $('#submitButton').prop('disabled', true).html(`
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
+            `);
             // Disable form inputs
             $('#exampleForm input, #closeBtn').prop('disabled', true);
             $.ajax({
@@ -386,17 +398,19 @@
                             }
                         }
                         showFailedToast('Please correct the errors in the form.');
+                        $('#uploadProgressBar').addClass('bg-danger');
                     }
                 },
                 error: function(xhr, status, error) {
                     showFailedToast('An error occurred. Please try again.');
+                    $('#uploadProgressBar').addClass('bg-danger');
                 },
                 complete: function() {
                     // Hide processing button and progress bar
-                    $('#uploadSpinner').addClass('d-none');
-                    $('#submitButton').removeClass('d-none');
-                    $('#uploadProgressBar').css('width', '0%');
                     $('#uploadPercentage').html('0%');
+                    $('#submitButton').prop('disabled', false).html(`
+                        <i class="fa-solid fa-floppy-disk"></i> Save
+                    `);
                     $('#exampleForm input, #closeBtn').prop('disabled', false);
                 }
             });
@@ -406,6 +420,7 @@
             $('.is-invalid').removeClass('is-invalid');
             $('.invalid-feedback').text('').hide();
             $('#image_preview_div').hide(); // Hide preview when modal is closed
+            $('#image_preview').attr('src', '#');
         });
         // Show toast notification
         function showSuccessToast(message) {

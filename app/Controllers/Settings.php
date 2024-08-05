@@ -21,7 +21,7 @@ class Settings extends BaseController
     {
         // User Table Count
         $db = db_connect();
-        $countadmin = $db->table('user')->countAllResults();
+        $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         $data = [
             'countadmin' => $countadmin,
             'title' => 'Settings',
@@ -89,7 +89,7 @@ class Settings extends BaseController
     public function deleteaccount()
     {
         $db = db_connect();
-        $countadmin = $db->table('user')->countAllResults();
+        $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         if ($countadmin > 1) {
             $data = [
                 'title' => 'Delete Account',

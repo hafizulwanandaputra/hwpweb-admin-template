@@ -8,7 +8,7 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 pt-3">
-    <?= form_open_multipart('/settings/update'); ?>
+    <?= form_open_multipart('/settings/update', 'id="userInfoForm"'); ?>
     <?= csrf_field(); ?>
     <fieldset class="border rounded-3 px-2 py-0">
         <legend class="float-none w-auto mb-0 px-1 fs-6 fw-bold">User Information</legend>
@@ -29,7 +29,7 @@
     </fieldset>
     <hr>
     <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-        <button class="btn btn-primary rounded-3 bg-gradient" type="submit"><i class="fa-solid fa-user-pen"></i> Change</button>
+        <button class="btn btn-primary rounded-3 bg-gradient" type="submit" id="submitBtn"><i class="fa-solid fa-user-pen"></i> Change</button>
     </div>
     <?= form_close(); ?>
 </main>
@@ -38,20 +38,21 @@
 <?= $this->endSection(); ?>
 <?= $this->section('javascript'); ?>
 <script>
-    var warnMessage = "Save your unsaved changes before leaving this page!";
-    $("input").change(function() {
-        window.onbeforeunload = function() {
-            return 'You have unsaved changes on this page!';
-        }
-    });
-    $("select").change(function() {
-        window.onbeforeunload = function() {
-            return 'You have unsaved changes on this page!';
-        }
-    });
-    $(function() {
-        $('button[type=submit]').click(function(e) {
-            window.onbeforeunload = null;
+    $(document).ready(function() {
+        $('input.form-control').on('input', function() {
+            // Remove the is-invalid class for the current input field
+            $(this).removeClass('is-invalid');
+            // Hide the invalid-feedback message for the current input field
+            $(this).siblings('.invalid-feedback').hide();
+        });
+        $(document).on('click', '#submitBtn', function(e) {
+            e.preventDefault();
+            $('#userInfoForm').submit();
+            $('input').prop('disabled', true);
+            $('#submitBtn').prop('disabled', true).html(`
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Processing, please wait...</span>
+            `);
         });
     });
 </script>

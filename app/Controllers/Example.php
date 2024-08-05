@@ -30,6 +30,25 @@ class Example extends BaseController
         $length = $request['length']; // Length of the page
         $draw = $request['draw']; // Draw counter for DataTables
 
+        // Get sorting parameters
+        $order = $request['order'];
+        $sortColumnIndex = $order[0]['column']; // Column index
+        $sortDirection = $order[0]['dir']; // asc or desc
+
+        // Map column index to the database column name
+        $columnMapping = [
+            0 => 'id',
+            1 => 'id',
+            2 => 'id',
+            3 => 'name',
+            4 => 'email',
+            5 => 'phonenumber',
+            6 => 'address',
+        ];
+
+        // Get the column to sort by
+        $sortColumn = $columnMapping[$sortColumnIndex] ?? 'id';
+
         // Get total records count
         $totalRecords = $this->ExampleModel->countAll();
 
@@ -38,14 +57,15 @@ class Example extends BaseController
             $this->ExampleModel->like('name', $search)
                 ->orLike('email', $search)
                 ->orLike('phonenumber', $search)
-                ->orLike('address', $search);
+                ->orLike('address', $search)
+                ->orderBy($sortColumn, $sortDirection);
         }
 
         // Get filtered records count
         $filteredRecords = $this->ExampleModel->countAllResults(false);
 
         // Fetch the data
-        $examples = $this->ExampleModel->orderBy('id', 'DESC')
+        $examples = $this->ExampleModel->orderBy($sortColumn, $sortDirection)
             ->findAll($length, $start);
 
         // Format the data
@@ -80,7 +100,7 @@ class Example extends BaseController
             'email' => 'required|valid_email',
             'phonenumber' => 'required|integer',
             'address' => 'required',
-            'image' => 'uploaded[image]|max_size[image,2048]|is_image[image]',
+            'image' => 'uploaded[image]|max_size[image,8192]|is_image[image]',
         ]);
 
         if (!$this->validate($validation->getRules())) {
@@ -120,7 +140,7 @@ class Example extends BaseController
             'email' => 'required|valid_email',
             'phonenumber' => 'required|integer',
             'address' => 'required',
-            'image' => 'if_exist|max_size[image,2048]|is_image[image]',
+            'image' => 'if_exist|max_size[image,8192]|is_image[image]',
         ]);
 
         if (!$this->validate($validation->getRules())) {

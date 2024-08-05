@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body">
-                    <?= form_open('check-login'); ?>
+                    <?= form_open('check-login', 'id="loginForm"'); ?>
                     <h1 class="h3 mb-2 fw-normal">
                         Login to Your Account
                     </h1>
@@ -34,12 +34,9 @@
                                 </div>
                             </div>
                         </label>
-                        <div class="invalid-feedback mb-2">
-                            <?= validation_show_error('username'); ?><br><?= validation_show_error('password'); ?>
-                        </div>
                     </div>
                     <input type="hidden" name="url" value="<?= (isset($_GET['redirect'])) ? base_url('/' . urldecode($_GET['redirect'])) : base_url('/home'); ?>">
-                    <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit">
+                    <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit" id="loginBtn">
                         <i class="fa-solid fa-right-to-bracket"></i> LOGIN
                     </button>
                     <?= form_close(); ?>
@@ -90,6 +87,19 @@
                 </div>
                 <div class="w-100 mx-2 text-start">
                     <?= session()->getFlashdata('error'); ?>
+                </div>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    <?php endif; ?>
+    <?php if (validation_show_error('username') || validation_show_error('password')) : ?>
+        <div class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body d-flex align-items-start">
+                <div style="width: 24px; text-align: center;">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="w-100 mx-2 text-start">
+                    Login error:<br><?= validation_show_error('username') ?><br><?= validation_show_error('password') ?>
                 </div>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>

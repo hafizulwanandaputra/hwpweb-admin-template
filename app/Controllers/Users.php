@@ -39,22 +39,43 @@ class Users extends BaseController
             $length = $request['length']; // Length of the page
             $draw = $request['draw']; // Draw counter for DataTables
 
+            // Get sorting parameters
+            $order = $request['order'];
+            $sortColumnIndex = $order[0]['column']; // Column index
+            $sortDirection = $order[0]['dir']; // asc or desc
+
+            // Map column index to the database column name
+            $columnMapping = [
+                0 => 'id_user',
+                1 => 'id_user',
+                2 => 'fullname',
+                3 => 'username',
+                4 => 'role',
+            ];
+
+            // Get the column to sort by
+            $sortColumn = $columnMapping[$sortColumnIndex] ?? 'id_user';
+
             // Get total records count
-            $totalRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAll();
+            $totalRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(true);
 
             // Apply search query
             if ($search) {
-                $this->AuthModel->where('id_user !=', session()->get('id_user'))
+                $this->AuthModel
+                    ->groupStart()
                     ->like('fullname', $search)
                     ->orLike('username', $search)
-                    ->orLike('role', $search);
+                    ->groupEnd()
+                    ->where('id_user !=', session()->get('id_user'))
+                    ->orderBy($sortColumn, $sortDirection);
             }
 
             // Get filtered records count
             $filteredRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(false);
 
             // Fetch the data
-            $users = $this->AuthModel->where('id_user !=', session()->get('id_user'))->orderBy('id_user', 'DESC')
+            $users = $this->AuthModel->where('id_user !=', session()->get('id_user'))
+                ->orderBy($sortColumn, $sortDirection)
                 ->findAll($length, $start);
 
             // Format the data

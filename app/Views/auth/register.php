@@ -5,7 +5,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body">
-                    <?= form_open('register/create'); ?>
+                    <?= form_open('register/create', 'id="registerForm"'); ?>
                     <h1 class="h3 mb-2 fw-normal">
                         Register your Account
                     </h1>
@@ -37,7 +37,7 @@
                             <?= validation_show_error('new_password2'); ?>
                         </div>
                     </div>
-                    <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit">
+                    <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit" id="registerBtn">
                         <i class="fa-solid fa-user-plus"></i> REGISTER
                     </button>
                     <?= form_close(); ?>

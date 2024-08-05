@@ -31,6 +31,7 @@
       border-bottom-left-radius: 0;
     }
   </style>
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 </head>
 
 <body class="d-flex align-items-center py-4 text-center" id="background">
@@ -40,6 +41,34 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="<?= base_url() ?>assets/fontawesome/js/all.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('input.form-control').on('input', function() {
+        // Remove the is-invalid class for the current input field
+        $(this).removeClass('is-invalid');
+        // Hide the invalid-feedback message for the current input field
+        $(this).siblings('.invalid-feedback').hide();
+      });
+      $(document).on('click', '#loginBtn', function(e) {
+        e.preventDefault();
+        $('#loginForm').submit();
+        $('input').prop('disabled', true).removeClass('is-invalid');
+        $('#loginBtn').prop('disabled', true).html(`
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span role="status">PLEASE WAIT...</span>
+        `);
+      });
+      $(document).on('click', '#registerBtn', function(e) {
+        e.preventDefault();
+        $('#registerForm').submit();
+        $('input').prop('disabled', true).removeClass('is-invalid');
+        $('#registerBtn').prop('disabled', true).html(`
+          <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+          <span role="status">PLEASE WAIT...</span>
+        `);
+      });
+    });
+  </script>
   <script>
     /*!
      * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)

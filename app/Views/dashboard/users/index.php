@@ -26,7 +26,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Are you sure want to delete this user?</h5>
+                    <h5 class="mb-0" id="deleteMessage">Are you sure want to delete this user?</h5>
                 </div>
                 <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
@@ -66,18 +66,8 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-end pt-2 pb-2" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                    <!-- Progress bar -->
-                    <div class="mb-1 mt-1 w-100" id="uploadProgressDiv">
-                        <div class="progress" style="border-top: 1px solid var(--bs-border-color-translucent); border-bottom: 1px solid var(--bs-border-color-translucent); border-left: 1px solid var(--bs-border-color-translucent); border-right: 1px solid var(--bs-border-color-translucent);">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-gradient" role="progressbar" style="width: 0%;" id="uploadProgressBar"></div>
-                        </div>
-                    </div>
                     <button type="submit" id="submitButton" class="btn btn-primary bg-gradient rounded-3">
                         <i class="fa-solid fa-floppy-disk"></i> Save
-                    </button>
-                    <button id="uploadSpinner" class="btn btn-primary bg-gradient rounded-3 d-none" type="button" disabled>
-                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                        <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
                     </button>
                 </div>
             </form>
@@ -211,6 +201,9 @@
                     data: 'role'
                 },
             ],
+            "order": [
+                [2, 'desc']
+            ],
             "columnDefs": [{
                 "target": [0, 1],
                 "orderable": false
@@ -255,17 +248,21 @@
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
             userIdToDelete = $(this).data('id');
+            $('#deleteMessage').html(`Are you sure want to delete this data?`);
             $('#deleteModal').modal('show');
         });
 
         // Confirm deletion
         $('#confirmDeleteBtn').click(function() {
+            $('#deleteModal button').prop('disabled', true);
+            $('#deleteMessage').html(`Deleting, please wait...`);
             $.ajax({
                 url: '<?= base_url('/users/deleteuser') ?>/' + userIdToDelete,
                 type: 'DELETE',
                 success: function(response) {
                     showSuccessToast(response.message);
                     $('#deleteModal').modal('hide');
+                    $('#deleteModal button').prop('disabled', false);
                     table.ajax.reload();
                 },
                 error: function(xhr, status, error) {
@@ -283,10 +280,10 @@
             // Clear previous validation states
             $('#userForm .is-invalid').removeClass('is-invalid');
             $('#userForm .invalid-feedback').text('').hide();
-            // Show processing button and progress bar
-            $('#uploadSpinner').removeClass('d-none');
-            $('#submitButton').addClass('d-none');
-            $('#uploadProgressBar').css('width', '0%');
+            $('#submitButton').prop('disabled', true).html(`
+                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <span role="status">Processing, please wait...</span>
+            `);
             // Disable form inputs
             $('#userForm input, #userForm select, #closeBtn').prop('disabled', true);
             $.ajax({
@@ -295,17 +292,6 @@
                 data: formData,
                 contentType: false, // Required for FormData
                 processData: false, // Required for FormData
-                xhr: function() {
-                    var xhr = new XMLHttpRequest();
-                    xhr.upload.addEventListener('progress', function(e) {
-                        if (e.lengthComputable) {
-                            var percent = Math.round((e.loaded / e.total) * 100);
-                            $('#uploadProgressBar').css('width', percent + '%');
-                            $('#uploadPercentage').html(percent + '%');
-                        }
-                    });
-                    return xhr;
-                },
                 success: function(response) {
                     if (response.success) {
                         showSuccessToast(response.message, 'success');
@@ -348,11 +334,9 @@
                     showFailedToast('An error occurred. Please try again.');
                 },
                 complete: function() {
-                    // Hide processing button and progress bar
-                    $('#uploadSpinner').addClass('d-none');
-                    $('#submitButton').removeClass('d-none');
-                    $('#uploadProgressBar').css('width', '0%');
-                    $('#uploadPercentage').html('0%');
+                    $('#submitButton').prop('disabled', false).html(`
+                        <i class="fa-solid fa-floppy-disk"></i> Save
+                    `);
                     $('#userForm input, #userForm select, #closeBtn').prop('disabled', false)
                 }
             });

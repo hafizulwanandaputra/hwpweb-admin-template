@@ -116,7 +116,7 @@
             </div>
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap">
-                    <button type="button" class="btn btn-danger btn-sm mx-3 my-2 rounded-3 bg-gradient d-inline-block" data-bs-toggle="modal" data-bs-target="#logoff1">
+                    <button type="button" class="btn btn-danger btn-sm mx-3 my-2 rounded-3 bg-gradient d-inline-block" data-bs-toggle="modal" data-bs-target="#logoutModal">
                         <i class="fa-solid fa-right-from-bracket"></i> Logout
                     </button>
                 </div>
@@ -124,15 +124,15 @@
         </div>
     </header>
 
-    <div class="modal modal-sheet p-4 py-md-5 fade" id="logoff1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="logoff1" aria-hidden="true" role="dialog">
+    <div class="modal modal-sheet p-4 py-md-5 fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="logoutModal" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
-                    <h5 class="mb-0">Do you want to logout?</h5>
+                    <h5 class="mb-0" id="logoutMessage">Do you want to logout?</h5>
                 </div>
                 <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal" style="border-right: 1px solid var(--bs-border-color-translucent);">No</button>
-                    <a class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" href="<?= base_url('/logout'); ?>">Yes</a>
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmLogout" onclick="window.location.href='<?= base_url('/logout'); ?>';">Yes</a>
                 </div>
             </div>
         </div>
@@ -267,6 +267,12 @@
             <?= $this->renderSection('tinymce'); ?>
             <?= $this->renderSection('chartjs'); ?>
             <?= $this->renderSection('imgupload'); ?>
+            <script>
+                $(document).on('click', '#confirmLogout', function() {
+                    $('#logoutModal button').prop('disabled', true);
+                    $('#logoutMessage').html(`Please wait...`);
+                });
+            </script>
             <script>
                 /*!
                  * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
