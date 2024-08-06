@@ -1,3 +1,39 @@
+<?php
+$platform = $agent->getPlatform();
+$iconClass = '';
+$browser = $agent->getBrowser();
+$browserIcon = '';
+
+if (stripos($platform, 'Windows') !== false) {
+    $iconClass = '<i class="fa-brands fa-windows"></i>';
+} elseif (stripos($platform, 'Mac') !== false) {
+    $iconClass = '<i class="fa-brands fa-apple"></i>';
+} elseif (stripos($platform, 'Linux') !== false) {
+    $iconClass = '<i class="fa-brands fa-linux"></i>';
+} elseif (stripos($platform, 'Android') !== false) {
+    $iconClass = '<i class="fa-brands fa-android"></i>';
+} elseif (stripos($platform, 'iOS') !== false || stripos($platform, 'iPhone') !== false || stripos($platform, 'iPad') !== false) {
+    $iconClass = '<i class="fa-brands fa-apple"></i>';
+} else {
+    $iconClass = '<i class="fa-solid fa-computer"></i>';
+}
+
+if (stripos($browser, 'Chrome') !== false) {
+    $browserIcon = '<i class="fa-brands fa-chrome"></i>';
+} elseif (stripos($browser, 'Firefox') !== false) {
+    $browserIcon = '<i class="fa-brands fa-firefox-browser"></i>';
+} elseif (stripos($browser, 'Safari') !== false) {
+    $browserIcon = '<i class="fa-brands fa-safari"></i>';
+} elseif (stripos($browser, 'Edge') !== false) {
+    $browserIcon = '<i class="fa-brands fa-edge"></i>';
+} elseif (stripos($browser, 'Opera') !== false || stripos($browser, 'OPR') !== false) {
+    $browserIcon = '<i class="fa-brands fa-opera"></i>';
+} elseif (stripos($browser, 'Internet Explorer') !== false || stripos($browser, 'IE') !== false) {
+    $browserIcon = '<i class="fa-brands fa-internet-explorer"></i>';
+} else {
+    $browserIcon = '<i class="fa-solid fa-globe"></i>';
+}
+?>
 <?= $this->extend('dashboard/templates/dashboard'); ?>
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
@@ -13,7 +49,7 @@
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
                 <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-computer"></i></p>
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><?= $iconClass; ?></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                     <h5 class="card-title">Operating System</h5>
@@ -24,7 +60,7 @@
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
                 <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><?= $browserIcon; ?></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                     <h5 class="card-title">Web Browser</h5>
