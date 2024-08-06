@@ -26,7 +26,7 @@ The user guide corresponding to the latest version of the framework can be found
    and any database settings.
 2. Create MySQL database match with database name specified in `.env` file.
 3. Run `php spark migrate` to migrate database.
-4. Run `php spark db:seed UsersSeeder` to seed the database items.
+4. Run `php spark db:seed UserSeeder` to seed the database items.
 5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080).
 6. Sign in using username `administrator` and password `administrator`.
 
