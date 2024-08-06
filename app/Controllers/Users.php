@@ -115,24 +115,24 @@ class Users extends BaseController
             $validation = \Config\Services::validation();
             // Set base validation rules
             $validation->setRules([
-                'fullname' => 'required|min_length[3]',
-                'username' => 'required|is_unique[user.username]|min_length[3]|alpha_dash',
+                'fullname' => 'min_length[3]',
+                'username' => 'is_unique[user.username]|min_length[3]|alpha_dash',
                 'role' => 'required'
             ]);
-            if ($this->request->getMethod() == 'post' && $validation->withRequest($this->request)->run()) {
-                // Save Data
-                $data = [
-                    'fullname' => $this->request->getPost('fullname'),
-                    'username' => $this->request->getPost('username'),
-                    'password' => password_hash($this->request->getPost('username'), PASSWORD_DEFAULT),
-                    'role' => $this->request->getPost('role')
-                ];
-                $this->AuthModel->save($data);
-                return $this->response->setJSON(['success' => true, 'message' => 'User added successfully']);
-            } else {
-                // If validation fails
+
+            if (!$this->validate($validation->getRules())) {
                 return $this->response->setJSON(['success' => false, 'errors' => $validation->getErrors()]);
             }
+
+            // Save Data
+            $data = [
+                'fullname' => $this->request->getPost('fullname'),
+                'username' => $this->request->getPost('username'),
+                'password' => password_hash($this->request->getPost('username'), PASSWORD_DEFAULT),
+                'role' => $this->request->getPost('role')
+            ];
+            $this->AuthModel->save($data);
+            return $this->response->setJSON(['success' => true, 'message' => 'User added successfully']);
         } else {
             throw PageNotFoundException::forPageNotFound();
         }
@@ -154,21 +154,20 @@ class Users extends BaseController
             if ($this->request->getPost('username') != $this->request->getPost('original_username')) {
                 $validation->setRule('username', 'username', 'required|is_unique[user.username]|min_length[3]|alpha_dash');
             }
-            if ($this->request->getMethod() == 'post' && $validation->withRequest($this->request)->run()) {
-                // Save Data
-                $data = [
-                    'id_user' => $this->request->getPost('id_user'),
-                    'fullname' => $this->request->getPost('fullname'),
-                    'username' => $this->request->getPost('username'),
-                    'role' => $this->request->getPost('role')
-                ];
-                $AuthModelEdit = new AuthModelEdit();
-                $AuthModelEdit->save($data);
-                return $this->response->setJSON(['success' => true, 'message' => 'User updated successfully']);
-            } else {
-                // If validation fails
+            if (!$this->validate($validation->getRules())) {
                 return $this->response->setJSON(['success' => false, 'errors' => $validation->getErrors()]);
             }
+
+            // Save Data
+            $data = [
+                'id_user' => $this->request->getPost('id_user'),
+                'fullname' => $this->request->getPost('fullname'),
+                'username' => $this->request->getPost('username'),
+                'role' => $this->request->getPost('role')
+            ];
+            $AuthModelEdit = new AuthModelEdit();
+            $AuthModelEdit->save($data);
+            return $this->response->setJSON(['success' => true, 'message' => 'User updated successfully']);
         } else {
             throw PageNotFoundException::forPageNotFound();
         }
