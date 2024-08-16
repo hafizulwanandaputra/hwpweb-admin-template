@@ -2,6 +2,9 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
@@ -31,6 +34,19 @@
                 <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
                     <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmDeleteBtn">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal-sheet p-4 py-md-5 fade" id="resetPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
+                <div class="modal-body p-4 text-center">
+                    <h5 class="mb-0" id="resetPasswordMessage"></h5>
+                </div>
+                <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmResetPasswordBtn">Yes</button>
                 </div>
             </div>
         </div>
@@ -164,10 +180,7 @@
                 [25, 50, 100, 250, 500]
             ],
             "autoWidth": true,
-            "processing": true,
-            "language": {
-                "processing": '<div class="m-4"><div class="spinner-border mt-1" style="width: 5rem; height: 5rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>',
-            },
+            "processing": false,
             "serverSide": true,
             "ajax": {
                 "url": "<?= base_url('/users/getusers') ?>",
@@ -177,6 +190,20 @@
                     d.search = {
                         "value": $('.dataTables_filter input[type="search"]').val()
                     };
+                },
+                beforeSend: function() {
+                    // Show the custom processing spinner
+                    $('#loadingSpinner').show();
+                },
+                complete: function() {
+                    // Hide the custom processing spinner after the request is complete
+                    $('#loadingSpinner').hide();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Hide the custom processing spinner on error
+                    $('#loadingSpinner').hide();
+                    // Show the Bootstrap error toast when the AJAX request fails
+                    showFailedToast('Failed to load data. Please try again.');
                 }
             },
             columns: [{
@@ -186,8 +213,9 @@
                     data: null,
                     render: function(data, type, row) {
                         return `<div class="btn-group" role="group">
-                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}"><i class="fa-solid fa-pen-to-square"></i><span class="fw-bold"> Edit</span></button>
-                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}"><i class="fa-solid fa-trash"></i><span class="fw-bold"> Delete</span></button>
+                                    <button class="btn btn-warning text-nowrap bg-gradient rounded-start-3 resetpwd-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Reset Password"><i class="fa-solid fa-key"></i></button>
+                                    <button class="btn btn-secondary text-nowrap bg-gradient edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>`;
                     }
                 },
@@ -215,6 +243,12 @@
                 "width": "50%"
             }],
         });
+        // Initialize Bootstrap tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip();
+        // Re-initialize tooltips on table redraw (server-side events like pagination, etc.)
+        table.on('draw', function() {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
         // Show add user modal
         $('#addUserBtn').click(function() {
             $('#userModalLabel').text('Add User');
@@ -224,7 +258,9 @@
         });
         // Show edit user modal
         $(document).on('click', '.edit-btn', function() {
+            var $this = $(this);
             var id = $(this).data('id');
+            $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
             $.ajax({
                 url: '<?= base_url('/users/getuser') ?>/' + id,
                 success: function(response) {
@@ -238,7 +274,10 @@
                     $('#userModal').modal('show');
                 },
                 error: function(xhr, status, error) {
-                    showToast('An error occurred. Please try again.');
+                    showFailedToast('An error occurred. Please try again.');
+                },
+                complete: function() {
+                    $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
                 }
             });
         });
@@ -248,8 +287,14 @@
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
             userIdToDelete = $(this).data('id');
-            $('#deleteMessage').html(`Are you sure want to delete this data?`);
+            $('#deleteMessage').html(`Are you sure want to delete this user?`);
             $('#deleteModal').modal('show');
+        });
+
+        $(document).on('click', '.resetpwd-btn', function() {
+            userIdToDelete = $(this).data('id');
+            $('#resetPasswordMessage').html(`Are you sure want to reset this user's password?`);
+            $('#resetPasswordModal').modal('show');
         });
 
         // Confirm deletion
@@ -261,12 +306,33 @@
                 type: 'DELETE',
                 success: function(response) {
                     showSuccessToast(response.message);
-                    $('#deleteModal').modal('hide');
-                    $('#deleteModal button').prop('disabled', false);
                     table.ajax.reload();
                 },
                 error: function(xhr, status, error) {
                     showFailedToast('An error occurred. Please try again.');
+                },
+                complete: function() {
+                    $('#deleteModal').modal('hide');
+                    $('#deleteModal button').prop('disabled', false);
+                }
+            });
+        });
+        $('#confirmResetPasswordBtn').click(function() {
+            $('#resetPasswordModal button').prop('disabled', true);
+            $('#resetPasswordMessage').html(`Deleting, please wait...`);
+            $.ajax({
+                url: '<?= base_url('/users/resetpassword') ?>/' + userIdToDelete,
+                type: 'POST',
+                success: function(response) {
+                    showSuccessToast(response.message);
+                    table.ajax.reload();
+                },
+                error: function(xhr, status, error) {
+                    showFailedToast('An error occurred. Please try again.');
+                },
+                complete: function() {
+                    $('#resetPasswordModal').modal('hide');
+                    $('#resetPasswordModal button').prop('disabled', false);
                 }
             });
         });

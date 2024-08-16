@@ -111,7 +111,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="d-flex flex-nowrap w-100 align-items-center">
-            <div class="w-100 px-3 text-truncate">
+            <div class="w-100 ps-3 pe-1 text-truncate">
                 <?= $this->renderSection('title'); ?>
             </div>
             <div class="navbar-nav">

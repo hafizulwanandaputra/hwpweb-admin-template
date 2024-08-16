@@ -2,6 +2,9 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
@@ -185,10 +188,7 @@
                 [10, 25, 50, 100, 250, 500]
             ],
             "autoWidth": true,
-            "processing": true,
-            "language": {
-                "processing": '<div class="m-4"><div class="spinner-border mt-1" style="width: 5rem; height: 5rem;" role="status"><span class="visually-hidden">Loading...</span></div></div>',
-            },
+            "processing": false,
             "serverSide": true,
             "ajax": {
                 "url": "<?= base_url('/examples/getexamples') ?>",
@@ -198,6 +198,20 @@
                     d.search = {
                         "value": $('.dataTables_filter input[type="search"]').val()
                     };
+                },
+                beforeSend: function() {
+                    // Show the custom processing spinner
+                    $('#loadingSpinner').show();
+                },
+                complete: function() {
+                    // Hide the custom processing spinner after the request is complete
+                    $('#loadingSpinner').hide();
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Hide the custom processing spinner on error
+                    $('#loadingSpinner').hide();
+                    // Show the Bootstrap error toast when the AJAX request fails
+                    showFailedToast('Failed to load data. Please try again.');
                 }
             },
             columns: [{
@@ -207,8 +221,8 @@
                     data: null,
                     render: function(data, type, row) {
                         return `<div class="btn-group" role="group">
-                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}"><i class="fa-solid fa-pen-to-square"></i><span class="fw-bold"> Edit</span></button>
-                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}"><i class="fa-solid fa-trash"></i><span class="fw-bold"> Delete</span></button>
+                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>`;
                     }
                 },
@@ -248,6 +262,12 @@
                 "width": "50%"
             }],
         });
+        // Initialize Bootstrap tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip();
+        // Re-initialize tooltips on table redraw (server-side events like pagination, etc.)
+        table.on('draw', function() {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
         // Show add example modal
         $('#addExampleBtn').click(function() {
             $('#exampleModalLabel').text('Add Example Data');
@@ -259,7 +279,9 @@
         });
         // Show edit example modal
         $(document).on('click', '.edit-btn', function() {
+            var $this = $(this);
             var id = $(this).data('id');
+            $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
             $.ajax({
                 url: '<?= base_url('/examples/getexample') ?>/' + id,
                 success: function(response) {
@@ -284,6 +306,9 @@
                 },
                 error: function(xhr, status, error) {
                     showToast('An error occurred. Please try again.');
+                },
+                complete: function() {
+                    $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
                 }
             });
         });
@@ -317,12 +342,14 @@
                 type: 'DELETE',
                 success: function(response) {
                     showSuccessToast(response.message);
-                    $('#deleteModal').modal('hide');
-                    $('#deleteModal button').prop('disabled', false);
                     table.ajax.reload();
                 },
                 error: function(xhr, status, error) {
                     showFailedToast('An error occurred. Please try again.');
+                },
+                complete: function() {
+                    $('#deleteModal').modal('hide');
+                    $('#deleteModal button').prop('disabled', false);
                 }
             });
         });
@@ -366,6 +393,7 @@
                     if (response.success) {
                         showSuccessToast(response.message, 'success');
                         $('#exampleModal').modal('hide');
+                        $('#uploadProgressBar').css('width', '0%');
                         table.ajax.reload();
                     } else {
                         console.log("Validation Errors:", response.errors);
@@ -421,6 +449,7 @@
             $('.invalid-feedback').text('').hide();
             $('#image_preview_div').hide(); // Hide preview when modal is closed
             $('#image_preview').attr('src', '#');
+            $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
         });
         // Show toast notification
         function showSuccessToast(message) {

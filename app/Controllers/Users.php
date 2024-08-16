@@ -173,6 +173,18 @@ class Users extends BaseController
         }
     }
 
+    public function resetPassword($id)
+    {
+        if (session()->get('role') == 'Administrator') {
+            $db = db_connect();
+            $user = $this->AuthModel->find($id);
+            $db->table('user')->set('password', password_hash($user['username'], PASSWORD_DEFAULT))->where('id_user', $id)->update();
+            return $this->response->setJSON(['success' => true, 'message' => 'User password successfully reset']);
+        } else {
+            throw PageNotFoundException::forPageNotFound();
+        }
+    }
+
     public function deleteUser($id)
     {
         // Administrator Only

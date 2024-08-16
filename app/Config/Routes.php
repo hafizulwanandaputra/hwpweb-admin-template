@@ -31,6 +31,7 @@ $routes->get('/(?i)users', 'Users::index');
 $routes->get('(?i)users/(?i)getuser/(:num)', 'Users::getUser/$1');
 $routes->post('/(?i)users/(?i)adduser', 'Users::addUser');
 $routes->post('/(?i)users/(?i)updateuser', 'Users::updateUser');
+$routes->post('/(?i)users/(?i)resetpassword/(:num)', 'Users::resetPassword/$1');
 $routes->delete('/(?i)users/(?i)deleteuser/(:num)', 'Users::deleteUser/$1');
 $routes->post('/(?i)users/(?i)getusers', 'Users::getUsers');
 
