@@ -121,25 +121,28 @@
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <div class="rounded-pill bg-body profilephotosidebar me-2"></div>
                 </a>
-                <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body transparent-blur">
-                    <li class="lh-1" style="padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);">
-                        <span><?= session()->get('fullname'); ?></small><br><span class="fw-medium" style="font-size: 8pt;"><?= session()->get('role'); ?></span><br><span class="fw-medium" style="font-size: 8pt;">@<?= session()->get('username'); ?></span></span>
+                <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body transparent-blur" style="width: 240px;">
+                    <li class="lh-1 p-1">
+                        <div class="d-flex align-items-start">
+                            <span style="width: 32px; text-align: center;"><i class="fa-solid fa-user"></i></span>
+                            <span><?= session()->get('fullname'); ?></small><br><span class="fw-medium" style="font-size: 8pt;"><?= session()->get('role'); ?></span><br><span class="fw-medium" style="font-size: 8pt;">@<?= session()->get('username'); ?></span></span>
+                        </div>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item" href="<?= base_url('/settings'); ?>">
+                        <a class="dropdown-item p-1" href="<?= base_url('/settings'); ?>">
                             <div class="d-flex align-items-start">
-                                <span style="width: 32px; text-align: left;"><i class="fa-solid fa-gear"></i></span>
+                                <span style="width: 32px; text-align: center;"><i class="fa-solid fa-gear"></i></span>
                                 <span>Settings</span>
                             </div>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                        <a class="dropdown-item p-1" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                             <div class="d-flex align-items-start">
-                                <span style="width: 32px; text-align: left;"><i class="fa-solid fa-right-from-bracket"></i></span>
+                                <span style="width: 32px; text-align: center;"><i class="fa-solid fa-right-from-bracket"></i></span>
                                 <span>Logout</span>
                             </div>
                         </a>
