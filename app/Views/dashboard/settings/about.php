@@ -93,7 +93,32 @@ if (stripos($browser, 'Chrome') !== false) {
             </div>
         </li>
     </ul>
-    <h5>System Information</h5>
+    <h5>Backend Information</h5>
+    <ul class="list-group shadow-sm rounded-3 mb-3">
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-server"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">Web Server</h5>
+                    <span><?= $_SERVER['SERVER_SOFTWARE']; ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">PHP and CodeIgniter Version</h5>
+                    <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <h5>Frontend Information</h5>
     <ul class="list-group shadow-sm rounded-3 mb-3">
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
@@ -114,17 +139,6 @@ if (stripos($browser, 'Chrome') !== false) {
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                     <h5 class="card-title">jQuery Version</h5>
                     <span>3.7.1</span>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">PHP and CodeIgniter Version</h5>
-                    <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
                 </div>
             </div>
         </li>
