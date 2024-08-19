@@ -31,7 +31,7 @@
       border-bottom-left-radius: 0;
     }
   </style>
-  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 
 <body class="d-flex align-items-center py-4 text-center" id="background">

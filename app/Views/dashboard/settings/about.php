@@ -93,20 +93,45 @@ if (stripos($browser, 'Chrome') !== false) {
             </div>
         </li>
     </ul>
-    <h5>Server Information</h5>
+    <h5>System Information</h5>
     <ul class="list-group shadow-sm rounded-3 mb-3">
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">Bootstrap</h5>
+                    <span>5.3.3</span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-js"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">jQuery Version</h5>
+                    <span>3.7.1</span>
+                </div>
+            </div>
+        </li>
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
                 <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">PHP Version</h5>
-                    <span><?= phpversion(); ?></span>
+                    <h5 class="card-title">PHP and CodeIgniter Version</h5>
+                    <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
                 </div>
             </div>
         </li>
     </ul>
+    <hr>
+    <!-- Place Copyright Here -->
+    <p>&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>The application's template is based from this <a class="text-decoration-none" href="https://github.com/hafizulwanandaputra/hwpweb-admin-template" target="_blank">GitHub Repository</a></p>
 </main>
 </div>
 </div>

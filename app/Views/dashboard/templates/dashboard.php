@@ -19,7 +19,7 @@
     <link href="<?= base_url() ?>assets/fonts/base-font/geist.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <script src="<?= base_url(); ?>webadmin/assets/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <style>
         .toast-container {
             padding-top: 4rem !important;
@@ -30,12 +30,13 @@
             top: 0;
             box-shadow: inset 0px 0 0 rgba(0, 0, 0, 0);
             border-right: 1px solid var(--bs-border-color-translucent);
+            padding-top: 40px;
         }
 
         .profilephotosidebar {
             background-image: url('<?= base_url() . 'webadmin/images/profile/blank.jpg' ?>');
             background-color: var(--bs-body-bg);
-            width: 64px;
+            width: 32px;
             aspect-ratio: 1/1;
             background-position: center;
             background-repeat: no-repeat;
@@ -103,23 +104,47 @@
 
 <body>
     <!-- HEADER -->
-    <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 rounded-bottom-3 shadow-sm transparent-blur" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
-        <span class="navbar-brand col-md-3 col-lg-2 me-0 px-3 py-md-1 fs-6 text-start text-md-center lh-1">
-            My Admin Panel
-        </span>
+    <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
+        <div class="d-flex justify-content-center align-items-center col-md-3 col-lg-2 me-0 px-3 py-md-1" style="min-height: 48px;">
+            <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
+                My Admin Panel
+            </span>
+        </div>
         <button class="navbar-toggler position-absolute d-md-none bg-gradient rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="d-flex flex-nowrap w-100 align-items-center">
+        <div class="d-flex flex-nowrap w-100 align-items-center" style="min-height: 48px;">
             <div class="w-100 ps-3 pe-1 text-truncate">
                 <?= $this->renderSection('title'); ?>
             </div>
-            <div class="navbar-nav">
-                <div class="nav-item text-nowrap">
-                    <button type="button" class="btn btn-danger btn-sm mx-3 my-2 rounded-3 bg-gradient d-inline-block" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                        <i class="fa-solid fa-right-from-bracket"></i> Logout
-                    </button>
-                </div>
+            <div class="dropdown mx-3">
+                <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="rounded-pill bg-body profilephotosidebar me-2"></div>
+                </a>
+                <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body transparent-blur">
+                    <li class="lh-1" style="padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);">
+                        <span><?= session()->get('fullname'); ?></small><br><span class="fw-medium" style="font-size: 8pt;"><?= session()->get('role'); ?></span><br><span class="fw-medium" style="font-size: 8pt;">@<?= session()->get('username'); ?></span></span>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="<?= base_url('/settings'); ?>">
+                            <div class="d-flex align-items-start">
+                                <span style="width: 32px; text-align: left;"><i class="fa-solid fa-gear"></i></span>
+                                <span>Settings</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <div class="d-flex align-items-start">
+                                <span style="width: 32px; text-align: left;"><i class="fa-solid fa-right-from-bracket"></i></span>
+                                <span>Logout</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>
@@ -141,18 +166,9 @@
     <!-- CONTENTS -->
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-secondary sidebar shadow-sm collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar shadow-sm collapse">
                 <div class="position-sticky pt-3 sidebar-sticky">
-                    <div class="mx-2">
-                        <div class="d-flex justify-content-center mb-2">
-                            <div class="rounded-pill bg-body profilephotosidebar"></div>
-                        </div>
-                        <div class="text-center lh-1">
-                            <span><?= session()->get('fullname'); ?></small><br><span class="fw-medium" style="font-size: 8pt;"><?= session()->get('role'); ?></span><br><span class="fw-medium" style="font-size: 8pt;">@<?= session()->get('username'); ?></span></span>
-                        </div>
-                    </div>
-                    <hr class="my-1 mt-3">
-                    <ul class="nav flex-column">
+                    <ul class="nav flex-column mb-auto">
                         <!-- Place Menu Here -->
                         <li class="nav-item">
                             <a class="nav-link p-2" href="<?= base_url('/home'); ?>">
@@ -192,25 +208,7 @@
                                 </a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item">
-                            <a class="nav-link p-2" href="<?= base_url('/settings'); ?>">
-                                <div class="d-flex align-items-start">
-                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
-                                        <i class="fa-solid fa-gear"></i>
-                                    </div>
-                                    <div class="flex-fill ms-2 link-body-emphasis">
-                                        Settings
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
                     </ul>
-                    <hr class="my-1 mb-2">
-                    <!-- FOOTER -->
-                    <div class="mx-2" style="font-size: 9pt;">
-                        <!-- Place Copyright Here -->
-                        <p class="text-center">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a></p>
-                    </div>
                 </div>
             </nav>
 
