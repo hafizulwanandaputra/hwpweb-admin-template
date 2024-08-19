@@ -45,10 +45,6 @@
                         <span>Already have an account, <a href="<?= base_url() ?>" class="text-decoration-none">click here!</a></span>
                     </div>
                 </div>
-                <!-- FOOTER -->
-                <div class="modal-footer d-block" style="font-size: 9pt; border-top: 1px solid var(--bs-border-color-translucent);">
-                    <span class="text-center">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a><br>Pattern: <a class="text-decoration-none" href="https://codepen.io/bap13/pen/oBMYPV" target="_blank">CSS Heart Polka-dot Background Pattern by Brett Peters via CodePen</a></span>
-                </div>
             </div>
         </div>
     </div>
