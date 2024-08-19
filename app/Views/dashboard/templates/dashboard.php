@@ -34,7 +34,6 @@
         }
 
         .profilephotosidebar {
-            background-image: url('<?= base_url() . 'webadmin/images/profile/blank.jpg' ?>');
             background-color: var(--bs-body-bg);
             width: 32px;
             aspect-ratio: 1/1;
@@ -44,6 +43,11 @@
             position: relative;
             outline: 3px solid var(--bs-body-bg);
             box-shadow: 0 0 0 4px var(--bs-border-color);
+        }
+
+        .profilephotosidebar svg {
+            fill: var(--bs-body-color);
+            /* Bootstrap white color */
         }
 
         div.dataTables_processing>div:last-child {
@@ -119,7 +123,11 @@
             </div>
             <div class="dropdown mx-3">
                 <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="rounded-pill bg-body profilephotosidebar me-2"></div>
+                    <div class="rounded-pill bg-body profilephotosidebar me-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-4-6-4-6 4-6 4 1 0 6 0 6 0 6 0z" />
+                        </svg>
+                    </div>
                 </a>
                 <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body transparent-blur" style="width: 240px;">
                     <li class="lh-1 p-1">
