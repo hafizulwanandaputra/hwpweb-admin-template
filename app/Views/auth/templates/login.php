@@ -10,7 +10,7 @@
     - Set up your PWA application in public/manifest.json
     - Set up your PWA service worker in public/service-worker.js
     -->
-  <!-- <link rel="manifest" href="<?= base_url(); ?>/manifest.json"> -->
+  <link rel="manifest" href="<?= base_url(); ?>/manifest.json">
   <meta name="theme-color" content="#e9ecef" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#343a40" media="(prefers-color-scheme: dark)">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -98,18 +98,17 @@
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
   <script>
-    // Uncomment to run service worker
-    // if ('serviceWorker' in navigator) {
-    //     window.addEventListener('load', () => {
-    //         navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js')
-    //             .then((registration) => {
-    //                 console.log('Service Worker registered with scope:', registration.scope);
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Service Worker registration failed:', error);
-    //             });
-    //     });
-    // }
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js')
+          .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+          })
+          .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+          });
+      });
+    }
   </script>
 </head>
 
