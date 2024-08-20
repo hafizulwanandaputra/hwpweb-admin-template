@@ -11,8 +11,8 @@
     - Set up your PWA service worker in public/service-worker.js
     -->
   <!-- <link rel="manifest" href="<?= base_url(); ?>/manifest.json"> -->
-  <meta name="theme-color" content="#e2e3e5" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#161719" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#e9ecef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#343a40" media="(prefers-color-scheme: dark)">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
@@ -83,11 +83,11 @@
     }
 
     body {
-      /* You can customize background for auth page */
-      background: var(--bs-secondary-bg-subtle);
-      background-image: radial-gradient(var(--bs-secondary-border-subtle) 8.1333333333px, transparent 9.1333333333px), radial-gradient(var(--bs-secondary-border-subtle) 8.1333333333px, transparent 9.1333333333px), radial-gradient(var(--bs-secondary) 16.2666666667px, transparent 17.2666666667px), radial-gradient(var(--bs-secondary) 16.2666666667px, transparent 17.2666666667px), linear-gradient(135deg, var(--bs-secondary-border-subtle) 6%, var(--bs-secondary-bg-subtle) 6.45%, var(--bs-secondary-bg-subtle) 44%, transparent 46%, transparent 63%, var(--bs-secondary-bg-subtle) 63.25%), linear-gradient(45deg, transparent 39.75%, var(--bs-secondary) 40.5%, var(--bs-secondary) 60%, transparent 0, transparent 93.25%, var(--bs-secondary-border-subtle) 94%);
-      background-size: 122px 122px;
-      background-position: 54.4933333333px 56.9333333333px, 68.32px 56.9333333333px, -8.1333333333px -8.1333333333px, 16.2666666667px -8.1333333333px, 0 0, 0 0;
+      background-color: var(--bs-secondary-bg);
+    }
+
+    .form-control {
+      border-color: var(--bs-secondary);
     }
 
     .form-signin .username {
