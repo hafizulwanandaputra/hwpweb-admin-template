@@ -30,6 +30,51 @@ The user guide corresponding to the latest version of the framework can be found
 5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080).
 6. Sign in using username `administrator` and password `administrator`.
 
+## Progressive Web App (PWA) Setup
+
+Files required for PWA setup inside public folder are:
+
+1. `manifest.json`: contains application configuration for PWA.
+2. `service-worker.json`: contains JavaScript code to run events and save cahces for offline use.
+3. `favicon-1.png`, `favicon-2.png`, `favicon-3.png`: contains icon images required for PWA.
+4. `normal-screenshot.jpeg`, `wide-screenshot.png`: contains screenshots required for PWA.
+
+To set up the application for PWA:
+
+1. In `app/Views/auth/templates/login.php` and `app/Views/dashboard/templates/dashboard.php`:
+   - Uncomment `<link rel="manifest" href="<?= base_url(); ?>/manifest.json">` to initiate `manifest.json`.
+   - Uncomment JavaScript code below:
+     ```
+     if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+           navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js').then((registration) => {
+              console.log('Service Worker registered with scope:', registration.scope);
+           })
+           .catch((error) => {
+              console.error('Service Worker registration failed:', error);
+           });
+        });
+     }
+     ```
+2. Uncomment JavaScript code in `service-worker.js`.
+3. Set cache file you want to save:
+   ```
+   const CACHE_URLS = [
+      '/',
+      '/index.php',
+      '/favicon-1.png', // 16x16 icons
+      '/favicon-2.png', // 32x32 icons
+      '/favicon-3.png', // 144x144 icons
+      '/wide-screenshot.png', // Wide Screenshot
+      '/normal-screenshot.jpeg' // Normal Screenshot
+   ];
+   ```
+4. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080).
+5. Open DevTools, select "Application":
+   - Open "Manifest" to check manifest information.
+   - Open "Service workers" to check service worker status.
+6. If the configuration meets the PWA requirement, you can install the PWA.
+
 ## Important Change with index.php
 
 `index.php` is no longer in the root of the project! It has been moved inside the _public_ folder,
