@@ -71,10 +71,8 @@ To set up PWA application:
 
 1. Check or modify PWA configuration above based on your needs.
 2. Run `php spark serve` or `php spark serve --port 8081`. Replace `8081` with the desired port number.
-3. Open DevTools, select "Application":
-   - Open "Manifest" to check manifest information.
-   - Open "Service workers" to check service worker status.
-4. If the configuration meets the PWA requirement, you can install the PWA. You can launch it from applications menu or list. Don't forget to run `php spark serve` or `php spark serve --port 8081` if you use different port before launching an application.
+3. Open the browser's development tools to check manifest information and service worker status.
+4. If the configuration meets the PWA requirement, you can install the PWA. You can launch it from applications menu or list. Don't forget to run `php spark serve` (or `php spark serve --port 8081` if you use different port) before launching an application.
 
 > [!WARNING]
 >

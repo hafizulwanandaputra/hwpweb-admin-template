@@ -9,7 +9,7 @@
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4">
     <div class="d-flex justify-content-start align-items-start pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2 me-3"><i class="fa-regular fa-face-smile-beam"></i></h1>
         <h1 class="h2"><?= $txtgreeting . ', ' . session()->get('fullname') . '!'; ?></h1>
