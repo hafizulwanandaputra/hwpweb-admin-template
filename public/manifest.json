@@ -5,7 +5,6 @@
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
-    "display_override": ["window-controls-overlay"],
     "icons": [
         {
             "src": "/favicon-1.png",
