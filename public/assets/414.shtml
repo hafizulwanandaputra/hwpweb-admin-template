@@ -10,11 +10,8 @@
       content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
     />
     <meta name="generator" content="Hugo 0.78.1" />
-    <title>
-      Error <!--#echo var="REDIRECT_STATUS" --> - HWPweb - Hafizul Wananda Putra
-      Web
-    </title>
-
+    <title>Error <!--#echo var="REDIRECT_STATUS" --></title>
+    <meta name="theme-color" content="#dc3545" />
     <link
       rel="canonical"
       href="https://v5.getbootstrap.com/docs/5.0/examples/sign-in/"

@@ -37,8 +37,11 @@ if (stripos($browser, 'Chrome') !== false) {
 <?= $this->extend('dashboard/templates/dashboard'); ?>
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
-    <a class="fs-5 me-3" href="<?= base_url('/settings'); ?>"><i class="fa-solid fa-arrow-left"></i></a>
+    <a class="fs-5 me-3" href="<?= base_url('/settings'); ?>" onclick="showSpinner()"><i class="fa-solid fa-arrow-left"></i></a>
     <span class="fw-medium fs-5 flex-fill text-truncate">About This System</span>
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" style="display: none;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
@@ -147,6 +150,5 @@ if (stripos($browser, 'Chrome') !== false) {
     <!-- Place Copyright Here -->
     <p>&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>The application's template is based from this <a class="text-decoration-none" href="https://github.com/hafizulwanandaputra/hwpweb-admin-template" target="_blank">GitHub Repository</a></p>
 </main>
-</div>
 </div>
 <?= $this->endSection(); ?>

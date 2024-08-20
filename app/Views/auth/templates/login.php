@@ -4,7 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HWPWeb Admin</title>
+  <title>HWPWeb Admin Panel</title>
+  <!-- 
+    UNCOMMENT IF YOU WANT TO USE AS PWA 
+    - Set up your PWA application in public/manifest.json
+    - Set up your PWA service worker in public/service-worker.js
+    -->
+  <!-- <link rel="manifest" href="<?= base_url(); ?>/manifest.json"> -->
+  <meta name="theme-color" content="#e2e3e5" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161719" media="(prefers-color-scheme: dark)">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
@@ -17,6 +25,63 @@
   <link href="<?= base_url() ?>assets/fonts/GeistMono-1.3.0/font-face.css" rel="stylesheet">
   <link href="<?= base_url() ?>assets/fonts/base-font/geist.css" rel="stylesheet">
   <style>
+    /* Custom Scrollbar Styles */
+    html {
+      scrollbar-width: thin;
+      /* For Firefox */
+      scrollbar-color: var(--bs-secondary-color) var(--bs-border-color-translucent);
+    }
+
+    ::-webkit-scrollbar {
+      width: 16px;
+      height: 16px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: var(--bs-border-color-translucent);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--bs-secondary-color);
+      border-radius: 10px;
+      border: 4px solid var(--bs-border-color-translucent);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: var(--bs-secondary-color);
+    }
+
+    ::-webkit-scrollbar-button:single-button {
+      background-color: var(--bs-secondary-color);
+      border: 1px solid var(--bs-border-color-translucent);
+      width: 16px;
+      height: 16px;
+    }
+
+    ::-webkit-scrollbar-button:single-button:vertical:decrement {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M4 10l4-4 4 4H4z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    ::-webkit-scrollbar-button:single-button:vertical:increment {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M12 6L8 10 4 6h8z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    ::-webkit-scrollbar-button:single-button:horizontal:decrement {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M10 12l-4-4 4-4v8z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    ::-webkit-scrollbar-button:single-button:horizontal:increment {
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23ffffff" viewBox="0 0 16 16"><path d="M6 4l4 4-4 4V4z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
     body {
       /* You can customize background for auth page */
       background: var(--bs-secondary-bg-subtle);
@@ -32,6 +97,20 @@
     }
   </style>
   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script>
+    // Uncomment to run service worker
+    // if ('serviceWorker' in navigator) {
+    //     window.addEventListener('load', () => {
+    //         navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js')
+    //             .then((registration) => {
+    //                 console.log('Service Worker registered with scope:', registration.scope);
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Service Worker registration failed:', error);
+    //             });
+    //     });
+    // }
+  </script>
 </head>
 
 <body class="d-flex align-items-center py-4 text-center" id="background">

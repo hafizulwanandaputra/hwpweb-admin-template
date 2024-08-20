@@ -2,6 +2,9 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" style="display: none;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
@@ -69,6 +72,5 @@
         </li>
     </ul>
 </main>
-</div>
 </div>
 <?= $this->endSection(); ?>

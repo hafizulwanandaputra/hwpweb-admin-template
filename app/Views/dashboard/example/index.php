@@ -97,7 +97,6 @@
     </div>
 </main>
 </div>
-</div>
 <?= $this->endSection(); ?>
 <?= $this->section('toast'); ?>
 
