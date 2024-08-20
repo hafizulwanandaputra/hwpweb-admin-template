@@ -5,9 +5,6 @@
     <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" style="display: none;">
-        <span class="visually-hidden">Loading...</span>
-    </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>

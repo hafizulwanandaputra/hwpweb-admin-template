@@ -3,7 +3,7 @@
 <div class="d-flex justify-content-start align-items-center">
     <a class="fs-5 me-3" href="<?= base_url('/settings'); ?>" onclick="showSpinner()"><i class="fa-solid fa-arrow-left"></i></a>
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" style="display: none;">
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
@@ -45,6 +45,7 @@
 <?= $this->section('javascript'); ?>
 <script>
     $(document).ready(function() {
+        $('#loadingSpinner').hide();
         $('input.form-control').on('input', function() {
             // Remove the is-invalid class for the current input field
             $(this).removeClass('is-invalid');

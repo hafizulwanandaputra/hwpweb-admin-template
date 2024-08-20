@@ -2,7 +2,7 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status" style="display: none;">
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
@@ -73,4 +73,11 @@
     </ul>
 </main>
 </div>
+<?= $this->endSection(); ?>
+<?= $this->section('javascript'); ?>
+<script>
+    $(document).ready(function() {
+        $('#loadingSpinner').hide();
+    });
+</script>
 <?= $this->endSection(); ?>
