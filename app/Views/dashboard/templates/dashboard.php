@@ -134,10 +134,8 @@
         }
 
         .sidebar {
-            top: 0;
             box-shadow: inset 0px 0 0 rgba(0, 0, 0, 0);
             border-right: 1px solid var(--bs-border-color-translucent);
-            padding-top: 40px;
             height: 100%;
             overflow: auto;
         }
@@ -221,6 +219,7 @@
             }
 
             .sidebar {
+                top: 48px;
                 backdrop-filter: blur(20px);
                 --bs-bg-opacity: 0.6667;
                 border-right: 0px solid var(--bs-border-color-translucent);
@@ -228,7 +227,8 @@
             }
 
             #sidebarMenu2 {
-                padding-top: 4rem !important;
+                height: calc(100vh - 96px);
+                padding-top: 0;
             }
 
             #sidebarMenu {
@@ -330,7 +330,7 @@
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar shadow-sm collapse">
-                <div class="position-sticky pt-3 sidebar-sticky">
+                <div id="sidebarMenu2" class="position-sticky sidebar-sticky py-1">
                     <ul class="nav flex-column mb-auto">
                         <!-- Place Menu Here -->
                         <li class="nav-item">
