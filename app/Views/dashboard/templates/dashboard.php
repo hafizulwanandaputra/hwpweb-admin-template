@@ -330,28 +330,28 @@
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar shadow-sm collapse">
-                <div id="sidebarMenu2" class="position-sticky sidebar-sticky py-1">
-                    <ul class="nav flex-column mb-auto">
+                <div id="sidebarMenu2" class="position-sticky sidebar-sticky p-1">
+                    <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="<?= base_url('/home'); ?>" onclick="showSpinner()">
+                            <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'home') === 0) ? 'active' : '' ?>" href="<?= base_url('/home'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
-                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
+                                    <div <?= (strpos(uri_string(), 'home') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-house"></i>
                                     </div>
-                                    <div class="flex-fill ms-2 link-body-emphasis">
+                                    <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'home') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
                                         Home
                                     </div>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link p-2" href="<?= base_url('/examples'); ?>" onclick="showSpinner()">
+                            <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'examples') === 0) ? 'active' : '' ?>" href="<?= base_url('/examples'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
-                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
+                                    <div <?= (strpos(uri_string(), 'examples') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-database"></i>
                                     </div>
-                                    <div class="flex-fill ms-2 link-body-emphasis">
+                                    <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'examples') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
                                         Example CRUD
                                     </div>
                                 </div>
@@ -359,12 +359,12 @@
                         </li>
                         <?php if (session()->get('role') == 'Administrator') : ?>
                             <li class="nav-item">
-                                <a class="nav-link p-2" href="<?= base_url('/users'); ?>" onclick="showSpinner()">
+                                <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'users') === 0) ? 'active' : '' ?>" href="<?= base_url('/users'); ?>" onclick="showSpinner()">
                                     <div class="d-flex align-items-start">
-                                        <div style="min-width: 24px; max-width: 24px; text-align: center;">
+                                        <div <?= (strpos(uri_string(), 'users') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                             <i class="fa-solid fa-users"></i>
                                         </div>
-                                        <div class="flex-fill ms-2 link-body-emphasis">
+                                        <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'users') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
                                             Users
                                         </div>
                                     </div>
