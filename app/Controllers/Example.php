@@ -49,24 +49,26 @@ class Example extends BaseController
         // Get the column to sort by
         $sortColumn = $columnMapping[$sortColumnIndex] ?? 'id';
 
-        // Get total records count
-        $totalRecords = $this->ExampleModel->countAll();
-
         // Apply search query
+        $this->ExampleModel->select('*');
         if ($search) {
-            $this->ExampleModel->like('name', $search)
+            $this->ExampleModel->groupStart()
+                ->like('name', $search)
                 ->orLike('email', $search)
                 ->orLike('phonenumber', $search)
                 ->orLike('address', $search)
-                ->orderBy($sortColumn, $sortDirection);
+                ->groupEnd();
         }
 
         // Get filtered records count
         $filteredRecords = $this->ExampleModel->countAllResults(false);
 
-        // Fetch the data
-        $examples = $this->ExampleModel->orderBy($sortColumn, $sortDirection)
-            ->findAll($length, $start);
+        // Apply sorting and pagination
+        $this->ExampleModel->orderBy($sortColumn, $sortDirection);
+        $examples = $this->ExampleModel->findAll($length, $start);
+
+        // Get total records count
+        $totalRecords = $this->ExampleModel->countAll();
 
         // Format the data
         $data = [];
@@ -79,10 +81,11 @@ class Example extends BaseController
         return $this->response->setJSON([
             'draw' => $draw,
             'recordsTotal' => $totalRecords,
-            'recordsFiltered' => $filteredRecords,
+            'recordsFiltered' => $filteredRecords, // Set filtered count correctly
             'data' => $data
         ]);
     }
+
 
     public function getExample($id)
     {

@@ -122,158 +122,165 @@
 <script>
     // DataTables Functions
     $(document).ready(function() {
-        var table = $('#tabel').DataTable({
-            "oLanguage": {
-                "oPaginate": {
-                    "sFirst": '<i class="fa-solid fa-angles-left"></i>',
-                    "sLast": '<i class="fa-solid fa-angles-right"></i>',
-                    "sPrevious": '<i class="fa-solid fa-angle-left"></i>',
-                    "sNext": '<i class="fa-solid fa-angle-right"></i>'
-                }
-            },
-            'dom': "<'d-lg-flex justify-content-lg-between align-items-lg-center mb-0'<'text-md-center text-lg-start'i><'d-md-flex justify-content-md-center d-lg-block'f>>" +
-                "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start mt-2'l><'mt-2 mb-2 mb-lg-0'B>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
-            'initComplete': function(settings, json) {
-                $("#tabel").wrap("<div class='overflow-auto position-relative'></div>");
-                $('.dataTables_filter input[type="search"]').css({
-                    'width': '220px'
-                });
-                $('.dataTables_info').css({
-                    'padding-top': '0',
-                    'font-variant-numeric': 'tabular-nums'
-                });
-            },
-            "drawCallback": function() {
-                var api = this.api();
-                var pageInfo = api.page.info();
-                api.column(0, {
-                    order: 'applied'
-                }).nodes().each(function(cell, i) {
-                    var rowIndex = i + 1 + pageInfo.start;
-                    cell.innerHTML = rowIndex;
-                    $(cell).css({
+        let table;
+
+        async function initializeDataTable() {
+            table = $('#tabel').DataTable({
+                "oLanguage": {
+                    "oPaginate": {
+                        "sFirst": '<i class="fa-solid fa-angles-left"></i>',
+                        "sLast": '<i class="fa-solid fa-angles-right"></i>',
+                        "sPrevious": '<i class="fa-solid fa-angle-left"></i>',
+                        "sNext": '<i class="fa-solid fa-angle-right"></i>'
+                    }
+                },
+                'dom': "<'d-lg-flex justify-content-lg-between align-items-lg-center mb-0'<'text-md-center text-lg-start'i><'d-md-flex justify-content-md-center d-lg-block'f>>" +
+                    "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start mt-2'l><'mt-2 mb-2 mb-lg-0'B>>" +
+                    "<'row'<'col-md-12'tr>>" +
+                    "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
+                'initComplete': function(settings, json) {
+                    $("#tabel").wrap("<div class='overflow-auto position-relative'></div>");
+                    $('.dataTables_filter input[type="search"]').css({
+                        'width': '220px'
+                    });
+                    $('.dataTables_info').css({
+                        'padding-top': '0',
                         'font-variant-numeric': 'tabular-nums'
                     });
-                });
-                $(".pagination").wrap("<div class='overflow-auto'></div>");
-                $(".pagination").addClass("pagination-sm");
-                $('.pagination-sm').css({
-                    '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
-                });
-                $(".page-item .page-link").addClass("bg-gradient");
-                $(".form-control").addClass("rounded-3");
-                $(".form-select").addClass("rounded-3");
-            },
-            'buttons': [{
-                action: function(e, dt, node, config) {
-                    dt.ajax.reload(null, false);
                 },
-                text: '<i class="fa-solid fa-arrows-rotate"></i> Refresh',
-                className: 'btn-primary btn-sm bg-gradient rounded-start-3',
-                init: function(api, node, config) {
-                    $(node).removeClass('btn-secondary')
+                "drawCallback": function() {
+                    const api = this.api();
+                    const pageInfo = api.page.info();
+                    api.column(0, {
+                        order: 'applied'
+                    }).nodes().each(function(cell, i) {
+                        const rowIndex = i + 1 + pageInfo.start;
+                        cell.innerHTML = rowIndex;
+                        $(cell).css({
+                            'font-variant-numeric': 'tabular-nums'
+                        });
+                    });
+                    $(".pagination").wrap("<div class='overflow-auto'></div>");
+                    $(".pagination").addClass("pagination-sm");
+                    $('.pagination-sm').css({
+                        '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
+                    });
+                    $(".page-item .page-link").addClass("bg-gradient");
+                    $(".form-control").addClass("rounded-3");
+                    $(".form-select").addClass("rounded-3");
+
+                    // Re-initialize tooltips after redraw
+                    $('[data-bs-toggle="tooltip"]').tooltip();
                 },
-            }, {
-                text: '<i class="fa-solid fa-plus"></i> Add',
-                className: 'btn-primary btn-sm bg-gradient rounded-end-3',
-                attr: {
-                    id: 'addExampleBtn'
+                'buttons': [{
+                    action: function(e, dt, node, config) {
+                        dt.ajax.reload(null, false);
+                    },
+                    text: '<i class="fa-solid fa-arrows-rotate"></i> Refresh',
+                    className: 'btn-primary btn-sm bg-gradient rounded-start-3',
+                    init: function(api, node, config) {
+                        $(node).removeClass('btn-secondary')
+                    },
+                }, {
+                    text: '<i class="fa-solid fa-plus"></i> Add',
+                    className: 'btn-primary btn-sm bg-gradient rounded-end-3',
+                    attr: {
+                        id: 'addExampleBtn'
+                    },
+                    init: function(api, node, config) {
+                        $(node).removeClass('btn-secondary')
+                    },
+                }],
+                "search": {
+                    "caseInsensitive": true
                 },
-                init: function(api, node, config) {
-                    $(node).removeClass('btn-secondary')
-                },
-            }],
-            "search": {
-                "caseInsensitive": true
-            },
-            'pageLength': 10,
-            'lengthMenu': [
-                [10, 25, 50, 100, 250, 500],
-                [10, 25, 50, 100, 250, 500]
-            ],
-            "autoWidth": true,
-            "processing": false,
-            "serverSide": true,
-            "ajax": {
-                "url": "<?= base_url('/examples/getexamples') ?>",
-                "type": "POST",
-                "data": function(d) {
-                    // Additional parameters
-                    d.search = {
-                        "value": $('.dataTables_filter input[type="search"]').val()
-                    };
-                },
-                beforeSend: function() {
-                    // Show the custom processing spinner
-                    $('#loadingSpinner').show();
-                },
-                complete: function() {
-                    // Hide the custom processing spinner after the request is complete
-                    $('#loadingSpinner').hide();
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    // Hide the custom processing spinner on error
-                    $('#loadingSpinner').hide();
-                    // Show the Bootstrap error toast when the AJAX request fails
-                    showFailedToast('Failed to load data. Please try again.');
-                }
-            },
-            columns: [{
-                    data: null
-                },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        return `<div class="btn-group" role="group">
-                                    <button class="btn btn-secondary text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
-                                </div>`;
+                'pageLength': 10,
+                'lengthMenu': [
+                    [10, 25, 50, 100, 250, 500],
+                    [10, 25, 50, 100, 250, 500]
+                ],
+                "autoWidth": true,
+                "processing": false,
+                "serverSide": true,
+                "ajax": {
+                    "url": "<?= base_url('/examples/getexamples') ?>",
+                    "type": "POST",
+                    "data": function(d) {
+                        // Add the search parameter to the request
+                        d.search = {
+                            "value": $('.dataTables_filter input[type="search"]').val()
+                        };
+                    },
+                    beforeSend: function() {
+                        // Show the custom processing spinner
+                        $('#loadingSpinner').show();
+                    },
+                    complete: function() {
+                        // Hide the custom processing spinner after the request is complete
+                        $('#loadingSpinner').hide();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Hide the custom processing spinner on error
+                        $('#loadingSpinner').hide();
+                        // Show the Bootstrap error toast when the AJAX request fails
+                        showFailedToast('Failed to load data. Please try again.');
                     }
                 },
-                {
-                    data: 'image_url',
-                    render: function(data, type, row) {
-                        return `<img src="${data}" alt="${data}" style="width: 128px;">`;
-                    }
-                },
-                {
-                    data: 'name'
-                },
-                {
-                    data: 'email'
-                },
-                {
-                    data: 'phonenumber',
-                    render: function(data, type, row) {
-                        return `<span class='date'>+${data}</span>`;
-                    }
-                },
-                {
-                    data: 'address'
-                },
-            ],
-            "order": [
-                [3, 'desc']
-            ],
-            "columnDefs": [{
-                "target": [0, 1, 2],
-                "orderable": false
-            }, {
-                "target": [0, 1],
-                "width": "0%"
-            }, {
-                "target": [3, 4],
-                "width": "50%"
-            }],
-        });
-        // Initialize Bootstrap tooltips
-        $('[data-bs-toggle="tooltip"]').tooltip();
-        // Re-initialize tooltips on table redraw (server-side events like pagination, etc.)
-        table.on('draw', function() {
+                columns: [{
+                        data: null
+                    },
+                    {
+                        data: null,
+                        render: function(data, type, row) {
+                            return `<div class="btn-group" role="group">
+                                <button class="btn btn-secondary text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                            </div>`;
+                        }
+                    },
+                    {
+                        data: 'image_url',
+                        render: function(data, type, row) {
+                            return `<img src="${data}" alt="${data}" style="width: 128px;">`;
+                        }
+                    },
+                    {
+                        data: 'name'
+                    },
+                    {
+                        data: 'email'
+                    },
+                    {
+                        data: 'phonenumber',
+                        render: function(data, type, row) {
+                            return `<span class='date'>+${data}</span>`;
+                        }
+                    },
+                    {
+                        data: 'address'
+                    },
+                ],
+                "order": [
+                    [3, 'desc']
+                ],
+                "columnDefs": [{
+                    "targets": [0, 1, 2],
+                    "orderable": false
+                }, {
+                    "targets": [0, 1],
+                    "width": "0%"
+                }, {
+                    "targets": [3, 4],
+                    "width": "50%"
+                }],
+            });
+
+            // Initialize tooltips initially
             $('[data-bs-toggle="tooltip"]').tooltip();
-        });
+        }
+
+        // Initialize the DataTable
+        initializeDataTable();
         // Show add example modal
         $('#addExampleBtn').click(function() {
             $('#exampleModalLabel').text('Add Example Data');
@@ -287,7 +294,7 @@
         $(document).on('click', '.edit-btn', async function() {
             var $this = $(this);
             var id = $this.data('id');
-
+            $('[data-bs-toggle="tooltip"]').tooltip('hide');
             // Disable the button and show a spinner
             $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
 
@@ -339,6 +346,7 @@
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
             exampleIdToDelete = $(this).data('id');
+            $('[data-bs-toggle="tooltip"]').tooltip('hide');
             $('#deleteMessage').html(`Are you sure want to delete this data?`);
             $('#deleteModal').modal('show');
         });

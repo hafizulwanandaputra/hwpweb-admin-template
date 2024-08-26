@@ -109,145 +109,151 @@
 <script>
     // DataTables Functions
     $(document).ready(function() {
-        var table = $('#tabel').DataTable({
-            "oLanguage": {
-                "oPaginate": {
-                    "sFirst": '<i class="fa-solid fa-angles-left"></i>',
-                    "sLast": '<i class="fa-solid fa-angles-right"></i>',
-                    "sPrevious": '<i class="fa-solid fa-angle-left"></i>',
-                    "sNext": '<i class="fa-solid fa-angle-right"></i>'
-                }
-            },
-            'dom': "<'d-lg-flex justify-content-lg-between align-items-lg-center mb-0'<'text-md-center text-lg-start'i><'d-md-flex justify-content-md-center d-lg-block'f>>" +
-                "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start mt-2'l><'mt-2 mb-2 mb-lg-0'B>>" +
-                "<'row'<'col-md-12'tr>>" +
-                "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
-            'initComplete': function(settings, json) {
-                $("#tabel").wrap("<div class='overflow-auto position-relative'></div>");
-                $('.dataTables_filter input[type="search"]').css({
-                    'width': '220px'
-                });
-                $('.dataTables_info').css({
-                    'padding-top': '0',
-                    'font-variant-numeric': 'tabular-nums'
-                });
-            },
-            "drawCallback": function() {
-                var api = this.api();
-                api.column(0, {
-                    order: 'applied'
-                }).nodes().each(function(cell, i) {
-                    cell.innerHTML = i + 1;
-                    $(cell).css({
-                        'font-variant-numeric': 'tabular-nums'
-                    });
-                });
-                $(".pagination").wrap("<div class='overflow-auto'></div>");
-                $(".pagination").addClass("pagination-sm");
-                $('.pagination-sm').css({
-                    '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
-                });
-                $(".page-item .page-link").addClass("bg-gradient");
-                $(".form-control").addClass("rounded-3");
-                $(".form-select").addClass("rounded-3");
-            },
-            'buttons': [{
-                action: function(e, dt, node, config) {
-                    dt.ajax.reload(null, false);
-                },
-                text: '<i class="fa-solid fa-arrows-rotate"></i> Refresh',
-                className: 'btn-primary btn-sm bg-gradient rounded-start-3',
-                init: function(api, node, config) {
-                    $(node).removeClass('btn-secondary')
-                },
-            }, {
-                text: '<i class="fa-solid fa-plus"></i> Add User',
-                className: 'btn-primary btn-sm bg-gradient rounded-end-3',
-                attr: {
-                    id: 'addUserBtn'
-                },
-                init: function(api, node, config) {
-                    $(node).removeClass('btn-secondary')
-                },
-            }],
-            "search": {
-                "caseInsensitive": true
-            },
-            'pageLength': 25,
-            'lengthMenu': [
-                [25, 50, 100, 250, 500],
-                [25, 50, 100, 250, 500]
-            ],
-            "autoWidth": true,
-            "processing": false,
-            "serverSide": true,
-            "ajax": {
-                "url": "<?= base_url('/users/getusers') ?>",
-                "type": "POST",
-                "data": function(d) {
-                    // Additional parameters
-                    d.search = {
-                        "value": $('.dataTables_filter input[type="search"]').val()
-                    };
-                },
-                beforeSend: function() {
-                    // Show the custom processing spinner
-                    $('#loadingSpinner').show();
-                },
-                complete: function() {
-                    // Hide the custom processing spinner after the request is complete
-                    $('#loadingSpinner').hide();
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    // Hide the custom processing spinner on error
-                    $('#loadingSpinner').hide();
-                    // Show the Bootstrap error toast when the AJAX request fails
-                    showFailedToast('Failed to load data. Please try again.');
-                }
-            },
-            columns: [{
-                    data: null
-                },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        return `<div class="btn-group" role="group">
-                                    <button class="btn btn-warning text-nowrap bg-gradient rounded-start-3 resetpwd-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Reset Password"><i class="fa-solid fa-key"></i></button>
-                                    <button class="btn btn-secondary text-nowrap bg-gradient edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
-                                </div>`;
+        let table;
+
+        async function initializeDataTable() {
+            table = $('#tabel').DataTable({
+                "oLanguage": {
+                    "oPaginate": {
+                        "sFirst": '<i class="fa-solid fa-angles-left"></i>',
+                        "sLast": '<i class="fa-solid fa-angles-right"></i>',
+                        "sPrevious": '<i class="fa-solid fa-angle-left"></i>',
+                        "sNext": '<i class="fa-solid fa-angle-right"></i>'
                     }
                 },
-                {
-                    data: 'fullname'
+                'dom': "<'d-lg-flex justify-content-lg-between align-items-lg-center mb-0'<'text-md-center text-lg-start'i><'d-md-flex justify-content-md-center d-lg-block'f>>" +
+                    "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start mt-2'l><'mt-2 mb-2 mb-lg-0'B>>" +
+                    "<'row'<'col-md-12'tr>>" +
+                    "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
+                'initComplete': function(settings, json) {
+                    $("#tabel").wrap("<div class='overflow-auto position-relative'></div>");
+                    $('.dataTables_filter input[type="search"]').css({
+                        'width': '220px'
+                    });
+                    $('.dataTables_info').css({
+                        'padding-top': '0',
+                        'font-variant-numeric': 'tabular-nums'
+                    });
                 },
-                {
-                    data: 'username'
+                "drawCallback": function() {
+                    var api = this.api();
+                    api.column(0, {
+                        order: 'applied'
+                    }).nodes().each(function(cell, i) {
+                        cell.innerHTML = i + 1;
+                        $(cell).css({
+                            'font-variant-numeric': 'tabular-nums'
+                        });
+                    });
+                    $(".pagination").wrap("<div class='overflow-auto'></div>");
+                    $(".pagination").addClass("pagination-sm");
+                    $('.pagination-sm').css({
+                        '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
+                    });
+                    $(".page-item .page-link").addClass("bg-gradient");
+                    $(".form-control").addClass("rounded-3");
+                    $(".form-select").addClass("rounded-3");
+
+                    // Re-initialize tooltips after table redraw
+                    $('[data-bs-toggle="tooltip"]').tooltip();
                 },
-                {
-                    data: 'role'
+                'buttons': [{
+                    action: function(e, dt, node, config) {
+                        dt.ajax.reload(null, false);
+                    },
+                    text: '<i class="fa-solid fa-arrows-rotate"></i> Refresh',
+                    className: 'btn-primary btn-sm bg-gradient rounded-start-3',
+                    init: function(api, node, config) {
+                        $(node).removeClass('btn-secondary');
+                    },
+                }, {
+                    text: '<i class="fa-solid fa-plus"></i> Add User',
+                    className: 'btn-primary btn-sm bg-gradient rounded-end-3',
+                    attr: {
+                        id: 'addUserBtn'
+                    },
+                    init: function(api, node, config) {
+                        $(node).removeClass('btn-secondary');
+                    },
+                }],
+                "search": {
+                    "caseInsensitive": true
                 },
-            ],
-            "order": [
-                [2, 'desc']
-            ],
-            "columnDefs": [{
-                "target": [0, 1],
-                "orderable": false
-            }, {
-                "target": [0, 1],
-                "width": "0%"
-            }, {
-                "target": [2, 3],
-                "width": "50%"
-            }],
-        });
-        // Initialize Bootstrap tooltips
-        $('[data-bs-toggle="tooltip"]').tooltip();
-        // Re-initialize tooltips on table redraw (server-side events like pagination, etc.)
-        table.on('draw', function() {
+                'pageLength': 25,
+                'lengthMenu': [
+                    [25, 50, 100, 250, 500],
+                    [25, 50, 100, 250, 500]
+                ],
+                "autoWidth": true,
+                "processing": false,
+                "serverSide": true,
+                "ajax": {
+                    "url": "<?= base_url('/users/getusers') ?>",
+                    "type": "POST",
+                    "data": function(d) {
+                        // Include additional parameters
+                        d.search = {
+                            "value": $('.dataTables_filter input[type="search"]').val()
+                        };
+                    },
+                    beforeSend: function() {
+                        // Show the custom processing spinner
+                        $('#loadingSpinner').show();
+                    },
+                    complete: function() {
+                        // Hide the custom processing spinner after the request is complete
+                        $('#loadingSpinner').hide();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        // Hide the custom processing spinner on error
+                        $('#loadingSpinner').hide();
+                        // Show the Bootstrap error toast when the AJAX request fails
+                        showFailedToast('Failed to load data. Please try again.');
+                    }
+                },
+                columns: [{
+                        data: null
+                    },
+                    {
+                        data: null,
+                        render: function(data, type, row) {
+                            return `<div class="btn-group" role="group">
+                            <button class="btn btn-warning text-nowrap bg-gradient rounded-start-3 resetpwd-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Reset Password"><i class="fa-solid fa-key"></i></button>
+                            <button class="btn btn-secondary text-nowrap bg-gradient edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                        </div>`;
+                        }
+                    },
+                    {
+                        data: 'fullname'
+                    },
+                    {
+                        data: 'username'
+                    },
+                    {
+                        data: 'role'
+                    },
+                ],
+                "order": [
+                    [2, 'desc']
+                ],
+                "columnDefs": [{
+                    "targets": [0, 1],
+                    "orderable": false
+                }, {
+                    "targets": [0, 1],
+                    "width": "0%"
+                }, {
+                    "targets": [2, 3],
+                    "width": "50%"
+                }],
+            });
+            // Initialize tooltips initially
             $('[data-bs-toggle="tooltip"]').tooltip();
-        });
+        }
+
+        // Initialize the DataTable
+        initializeDataTable();
         // Show add user modal
         $('#addUserBtn').click(function() {
             $('#userModalLabel').text('Add User');
@@ -259,7 +265,8 @@
         $(document).on('click', '.edit-btn', async function() {
             const $this = $(this);
             const id = $this.data('id');
-
+            // Hide all active Bootstrap tooltips
+            $('[data-bs-toggle="tooltip"]').tooltip('hide');
             // Disable the button and show the loading spinner
             $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
 
@@ -295,12 +302,14 @@
         // Show delete confirmation modal
         $(document).on('click', '.delete-btn', function() {
             userIdToDelete = $(this).data('id');
+            $('[data-bs-toggle="tooltip"]').tooltip('hide');
             $('#deleteMessage').html(`Are you sure want to delete this user?`);
             $('#deleteModal').modal('show');
         });
 
         $(document).on('click', '.resetpwd-btn', function() {
             userIdToDelete = $(this).data('id');
+            $('[data-bs-toggle="tooltip"]').tooltip('hide');
             $('#resetPasswordMessage').html(`Are you sure want to reset this user's password?`);
             $('#resetPasswordModal').modal('show');
         });

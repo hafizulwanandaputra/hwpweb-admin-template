@@ -31,7 +31,6 @@ class Users extends BaseController
 
     public function getUsers()
     {
-        // Administrator Only
         if (session()->get('role') == 'Administrator') {
             $request = $this->request->getPost();
             $search = $request['search']['value']; // Search value
@@ -56,27 +55,23 @@ class Users extends BaseController
             // Get the column to sort by
             $sortColumn = $columnMapping[$sortColumnIndex] ?? 'id_user';
 
-            // Get total records count
-            $totalRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(true);
-
-            // Apply search query
+            $this->AuthModel->select('*')->where('id_user !=', session()->get('id_user'));
             if ($search) {
-                $this->AuthModel
-                    ->groupStart()
+                $this->AuthModel->groupStart()
                     ->like('fullname', $search)
                     ->orLike('username', $search)
-                    ->groupEnd()
-                    ->where('id_user !=', session()->get('id_user'))
-                    ->orderBy($sortColumn, $sortDirection);
+                    ->groupEnd();
             }
 
             // Get filtered records count
             $filteredRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(false);
 
-            // Fetch the data
-            $users = $this->AuthModel->where('id_user !=', session()->get('id_user'))
-                ->orderBy($sortColumn, $sortDirection)
-                ->findAll($length, $start);
+            // Apply sorting and pagination
+            $this->AuthModel->where('id_user !=', session()->get('id_user'))->orderBy($sortColumn, $sortDirection);
+            $users = $this->AuthModel->findAll($length, $start);
+
+            // Get total records count
+            $totalRecords = $this->AuthModel->where('id_user !=', session()->get('id_user'))->countAllResults(false);
 
             // Format the data
             $data = [];
