@@ -15,7 +15,7 @@
     <ul class="list-group shadow-sm rounded-3 mb-3">
         <li class="list-group-item p-1 list-group-item-action">
             <div class="d-flex align-items-start">
-                <a href="<?= base_url('/settings/edit'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;" onclick="showSpinner()">
+                <a href="<?= base_url('/settings/edit'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-pen"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -28,7 +28,7 @@
         </li>
         <li class="list-group-item p-1 list-group-item-action">
             <div class="d-flex align-items-start">
-                <a href="<?= base_url('/settings/changepassword'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;" onclick="showSpinner()">
+                <a href="<?= base_url('/settings/changepassword'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-key"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -42,7 +42,7 @@
         <?php if ($countadmin > 1) : ?>
             <li class="list-group-item p-1 list-group-item-action">
                 <div class=" d-flex align-items-start">
-                    <a href="<?= base_url('/settings/deleteaccount'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;" onclick="showSpinner()">
+                    <a href="<?= base_url('/settings/deleteaccount'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                         <p class="mb-0 text-danger" style="font-size: 1.75rem!important;"><i class="fa-solid fa-trash"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -59,7 +59,7 @@
     <ul class="list-group shadow-sm rounded-3 mb-3">
         <li class="list-group-item p-1 list-group-item-action">
             <div class="d-flex align-items-start">
-                <a href="<?= base_url('/settings/about'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;" onclick="showSpinner()">
+                <a href="<?= base_url('/settings/about'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-circle-info"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">

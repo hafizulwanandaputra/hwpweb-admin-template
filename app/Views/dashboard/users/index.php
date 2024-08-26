@@ -260,25 +260,32 @@
             var $this = $(this);
             var id = $(this).data('id');
             $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
-            $.ajax({
-                url: '<?= base_url('/users/getuser') ?>/' + id,
-                success: function(response) {
+            axios.get('<?= base_url('/users/getuser') ?>/' + id)
+                .then(function(response) {
+                    // Access the data in the response
+                    let data = response.data;
+
+                    // Set the modal title and form fields with the retrieved data
                     $('#userModalLabel').text('Edit User');
-                    $('#userId').val(response.id_user);
-                    $('#fullname').val(response.fullname);
-                    $('#username').val(response.username);
-                    $('#role').val(response.role);
+                    $('#userId').val(data.id_user);
+                    $('#fullname').val(data.fullname);
+                    $('#username').val(data.username);
+                    $('#role').val(data.role);
+
                     // Set the original_username hidden field
-                    $('#original_username').val(response.username);
+                    $('#original_username').val(data.username);
+
+                    // Show the modal
                     $('#userModal').modal('show');
-                },
-                error: function(xhr, status, error) {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
                     showFailedToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .finally(function() {
+                    // Re-enable the button after the request is completed
                     $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
-                }
-            });
+                });
         });
         // Store the ID of the user to be deleted
         var userIdToDelete;
@@ -300,40 +307,44 @@
         $('#confirmDeleteBtn').click(function() {
             $('#deleteModal button').prop('disabled', true);
             $('#deleteMessage').html(`Deleting, please wait...`);
-            $.ajax({
-                url: '<?= base_url('/users/deleteuser') ?>/' + userIdToDelete,
-                type: 'DELETE',
-                success: function(response) {
-                    showSuccessToast(response.message);
+            axios.delete('<?= base_url('/users/deleteuser') ?>/' + userIdToDelete)
+                .then(function(response) {
+                    // Show success message
+                    showSuccessToast(response.data.message);
+
+                    // Reload the table
                     table.ajax.reload();
-                },
-                error: function(xhr, status, error) {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
                     showFailedToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .finally(function() {
+                    // Re-enable the delete button and hide the modal
                     $('#deleteModal').modal('hide');
                     $('#deleteModal button').prop('disabled', false);
-                }
-            });
+                });
         });
         $('#confirmResetPasswordBtn').click(function() {
             $('#resetPasswordModal button').prop('disabled', true);
             $('#resetPasswordMessage').html(`Deleting, please wait...`);
-            $.ajax({
-                url: '<?= base_url('/users/resetpassword') ?>/' + userIdToDelete,
-                type: 'POST',
-                success: function(response) {
-                    showSuccessToast(response.message);
+            axios.post('<?= base_url('/users/resetpassword') ?>/' + userIdToDelete)
+                .then(function(response) {
+                    // Show success message
+                    showSuccessToast(response.data.message);
+
+                    // Reload the table
                     table.ajax.reload();
-                },
-                error: function(xhr, status, error) {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
                     showFailedToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .finally(function() {
+                    // Re-enable the reset password button and hide the modal
                     $('#resetPasswordModal').modal('hide');
                     $('#resetPasswordModal button').prop('disabled', false);
-                }
-            });
+                });
         });
         // Submit user form (Add/Edit)
         $('#userForm').submit(function(e) {
@@ -351,36 +362,36 @@
             `);
             // Disable form inputs
             $('#userForm input, #userForm select, #closeBtn').prop('disabled', true);
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: formData,
-                contentType: false, // Required for FormData
-                processData: false, // Required for FormData
-                success: function(response) {
-                    if (response.success) {
-                        showSuccessToast(response.message, 'success');
+            axios.post(url, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(function(response) {
+                    // Handle the success response
+                    if (response.data.success) {
+                        showSuccessToast(response.data.message, 'success');
                         $('#userModal').modal('hide');
                         table.ajax.reload();
                     } else {
-                        console.log("Validation Errors:", response.errors);
+                        console.log("Validation Errors:", response.data.errors);
 
                         // Clear previous validation states
                         $('#userForm .is-invalid').removeClass('is-invalid');
                         $('#userForm .invalid-feedback').text('').hide();
 
                         // Display new validation errors
-                        for (var field in response.errors) {
-                            if (response.errors.hasOwnProperty(field)) {
+                        for (var field in response.data.errors) {
+                            if (response.data.errors.hasOwnProperty(field)) {
                                 var fieldElement = $('#' + field);
-                                var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust this if necessary
+                                var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust if necessary
 
                                 console.log("Target Field:", fieldElement);
                                 console.log("Target Feedback:", feedbackElement);
 
                                 if (fieldElement.length > 0 && feedbackElement.length > 0) {
                                     fieldElement.addClass('is-invalid');
-                                    feedbackElement.text(response.errors[field]).show();
+                                    feedbackElement.text(response.data.errors[field]).show();
 
                                     // Remove error message when the user corrects the input
                                     fieldElement.on('input change', function() {
@@ -394,17 +405,18 @@
                         }
                         showFailedToast('Please correct the errors in the form.');
                     }
-                },
-                error: function(xhr, status, error) {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
                     showFailedToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .finally(function() {
+                    // Re-enable the submit button and other inputs after the request is completed
                     $('#submitButton').prop('disabled', false).html(`
                         <i class="fa-solid fa-floppy-disk"></i> Save
                     `);
-                    $('#userForm input, #userForm select, #closeBtn').prop('disabled', false)
-                }
-            });
+                    $('#userForm input, #userForm select, #closeBtn').prop('disabled', false);
+                });
         });
         $('#userModal').on('hidden.bs.modal', function() {
             $('#userForm')[0].reset();

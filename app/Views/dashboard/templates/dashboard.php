@@ -27,6 +27,8 @@
     <link href="<?= base_url() ?>assets/fonts/base-font/geist.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <script src="<?= base_url(); ?>webadmin/assets/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
@@ -103,6 +105,7 @@
         body {
             height: 100%;
             margin: 0;
+            overflow: auto;
         }
 
         .wrapper {
@@ -130,7 +133,6 @@
         .toast-container {
             padding-top: 4rem !important;
             right: 0 !important;
-            --bs-toast-zindex: 1019;
         }
 
         .sidebar {
@@ -435,6 +437,9 @@
         function showSpinner() {
             $('#loadingSpinner').show();
         }
+        $(window).on('beforeunload', function() {
+            showSpinner();
+        });
         $(document).on('click', '#confirmLogout', function() {
             $('#logoutModal button').prop('disabled', true);
             $('#logoutMessage').html(`Please wait...`);

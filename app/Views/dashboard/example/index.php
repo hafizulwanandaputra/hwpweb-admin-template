@@ -88,9 +88,16 @@
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-gradient" role="progressbar" style="width: 0%; transition: none;" id="uploadProgressBar"></div>
                         </div>
                     </div>
-                    <button type="submit" id="submitButton" class="btn btn-primary bg-gradient rounded-3">
-                        <i class="fa-solid fa-floppy-disk"></i> Save
-                    </button>
+                    <div class="d-flex justify-content-between w-100">
+                        <div>
+                            <button type="button" id="cancelButton" class="btn btn-danger bg-gradient rounded-3" style="display: none;" disabled>
+                                <i class="fa-solid fa-xmark"></i> Cancel
+                            </button>
+                        </div>
+                        <button type="submit" id="submitButton" class="btn btn-primary bg-gradient rounded-3">
+                            <i class="fa-solid fa-floppy-disk"></i> Save
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -281,20 +288,22 @@
             var $this = $(this);
             var id = $(this).data('id');
             $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
-            $.ajax({
-                url: '<?= base_url('/examples/getexample') ?>/' + id,
-                success: function(response) {
+            axios.get('<?= base_url('/examples/getexample') ?>/' + id)
+                .then(function(response) {
+                    // Access the data in the response
+                    let data = response.data;
+
                     // Set the modal title and form fields with the retrieved data
                     $('#exampleModalLabel').text('Edit Example Data');
-                    $('#exampleId').val(response.id);
-                    $('#name').val(response.name);
-                    $('#email').val(response.email);
-                    $('#phonenumber').val(response.phonenumber);
-                    $('#address').val(response.address);
+                    $('#exampleId').val(data.id);
+                    $('#name').val(data.name);
+                    $('#email').val(data.email);
+                    $('#phonenumber').val(data.phonenumber);
+                    $('#address').val(data.address);
 
                     // Set the image preview, or hide the preview if no image is available
-                    if (response.image) {
-                        $('#image_preview').attr('src', '<?= base_url('uploads/images') ?>/' + response.image);
+                    if (data.image) {
+                        $('#image_preview').attr('src', '<?= base_url('uploads/images') ?>/' + data.image);
                         $('#image_preview_div').show();
                     } else {
                         $('#image_preview_div').hide();
@@ -302,14 +311,15 @@
 
                     // Show the modal
                     $('#exampleModal').modal('show');
-                },
-                error: function(xhr, status, error) {
-                    showToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
+                    showFailedToast('An error occurred. Please try again.');
+                })
+                .finally(function() {
+                    // Re-enable the button after the request is completed
                     $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
-                }
-            });
+                });
         });
 
         // Show image preview when a file is selected
@@ -336,21 +346,23 @@
         $('#confirmDeleteBtn').click(function() {
             $('#deleteModal button').prop('disabled', true);
             $('#deleteMessage').html(`Deleting, please wait...`);
-            $.ajax({
-                url: '<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete,
-                type: 'DELETE',
-                success: function(response) {
-                    showSuccessToast(response.message);
+            axios.delete('<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete)
+                .then(function(response) {
+                    // Show success message
+                    showSuccessToast(response.data.message);
+
+                    // Reload the table
                     table.ajax.reload();
-                },
-                error: function(xhr, status, error) {
+                })
+                .catch(function(error) {
+                    // Handle any error responses
                     showFailedToast('An error occurred. Please try again.');
-                },
-                complete: function() {
+                })
+                .finally(function() {
+                    // Re-enable the delete button and hide the modal
                     $('#deleteModal').modal('hide');
                     $('#deleteModal button').prop('disabled', false);
-                }
-            });
+                });
         });
         // Submit example form (Add/Edit)
         $('#exampleForm').submit(function(e) {
@@ -359,62 +371,61 @@
             var formData = new FormData(this);
             console.log("Form URL:", url);
             console.log("Form Data:", formData);
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
             // Clear previous validation states
             $('#exampleForm .is-invalid').removeClass('is-invalid');
             $('#exampleForm .invalid-feedback').text('').hide();
             // Show processing button and progress bar
             $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
             // Show processing button and progress bar
+            $('#cancelButton').prop('disabled', false).show();
             $('#submitButton').prop('disabled', true).html(`
                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                 <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
             `);
             // Disable form inputs
-            $('#exampleForm input, #closeBtn').prop('disabled', true);
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: formData,
-                contentType: false, // Required for FormData
-                processData: false, // Required for FormData
-                xhr: function() {
-                    var xhr = new XMLHttpRequest();
-                    xhr.upload.addEventListener('progress', function(e) {
-                        if (e.lengthComputable) {
-                            var percent = Math.round((e.loaded / e.total) * 100);
+            $('#exampleForm input').prop('disabled', true);
+            axios.post(url, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    },
+                    onUploadProgress: function(progressEvent) {
+                        if (progressEvent.lengthComputable) {
+                            var percent = Math.round((progressEvent.loaded / progressEvent.total) * 100);
                             $('#uploadProgressBar').css('width', percent + '%');
                             $('#uploadPercentage').html(percent + '%');
                         }
-                    });
-                    return xhr;
-                },
-                success: function(response) {
-                    if (response.success) {
-                        showSuccessToast(response.message, 'success');
+                    },
+                    cancelToken: source.token // Attach the token here
+                })
+                .then(function(response) {
+                    if (response.data.success) {
+                        showSuccessToast(response.data.message, 'success');
                         $('#exampleModal').modal('hide');
                         $('#uploadProgressBar').css('width', '0%');
                         table.ajax.reload();
                     } else {
-                        console.log("Validation Errors:", response.errors);
+                        console.log("Validation Errors:", response.data.errors);
 
                         // Clear previous validation states
                         $('#exampleForm .is-invalid').removeClass('is-invalid');
                         $('#exampleForm .invalid-feedback').text('').hide();
 
                         // Display new validation errors
-                        for (var field in response.errors) {
-                            if (response.errors.hasOwnProperty(field)) {
+                        for (var field in response.data.errors) {
+                            if (response.data.errors.hasOwnProperty(field)) {
                                 var fieldElement = $('#' + field);
-                                var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust this if necessary
+                                var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust if necessary
 
                                 console.log("Target Field:", fieldElement);
                                 console.log("Target Feedback:", feedbackElement);
 
                                 if (fieldElement.length > 0 && feedbackElement.length > 0) {
                                     fieldElement.addClass('is-invalid');
-                                    feedbackElement.text(response.errors[field]).show();
+                                    feedbackElement.text(response.data.errors[field]).show();
 
-                                    // Remove error message when the example corrects the input
+                                    // Remove error message when the user corrects the input
                                     fieldElement.on('input change', function() {
                                         $(this).removeClass('is-invalid');
                                         $(this).siblings('.invalid-feedback').text('').hide();
@@ -427,19 +438,28 @@
                         showFailedToast('Please correct the errors in the form.');
                         $('#uploadProgressBar').addClass('bg-danger');
                     }
-                },
-                error: function(xhr, status, error) {
-                    showFailedToast('An error occurred. Please try again.');
-                    $('#uploadProgressBar').addClass('bg-danger');
-                },
-                complete: function() {
-                    // Hide processing button and progress bar
+                })
+                .catch(function(error) {
+                    if (axios.isCancel(error)) {
+                        showFailedToast(error.message);
+                        $('#uploadProgressBar').css('width', '0%');
+                    } else {
+                        showFailedToast('An error occurred. Please try again.');
+                        $('#uploadProgressBar').addClass('bg-danger');
+                    }
+                })
+                .finally(function() {
+                    // Reset the form and UI elements
                     $('#uploadPercentage').html('0%');
+                    $('#cancelButton').prop('disabled', true).hide();
                     $('#submitButton').prop('disabled', false).html(`
                         <i class="fa-solid fa-floppy-disk"></i> Save
                     `);
-                    $('#exampleForm input, #closeBtn').prop('disabled', false);
-                }
+                    $('#exampleForm input').prop('disabled', false);
+                });
+            // Attach the cancel functionality to the close button
+            $('#closeBtn, #cancelButton').on('click', function() {
+                source.cancel('Operation canceled by the user.');
             });
         });
         $('#exampleModal').on('hidden.bs.modal', function() {
