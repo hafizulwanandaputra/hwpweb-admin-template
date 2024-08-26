@@ -227,7 +227,7 @@
                     data: null,
                     render: function(data, type, row) {
                         return `<div class="btn-group" role="group">
-                                    <button class="btn btn-info text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                    <button class="btn btn-secondary text-nowrap bg-gradient rounded-start-3 edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
                                     <button class="btn btn-danger text-nowrap bg-gradient rounded-end-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>`;
                     }
@@ -284,42 +284,43 @@
             $('#exampleModal').modal('show');
         });
         // Show edit example modal
-        $(document).on('click', '.edit-btn', function() {
+        $(document).on('click', '.edit-btn', async function() {
             var $this = $(this);
-            var id = $(this).data('id');
+            var id = $this.data('id');
+
+            // Disable the button and show a spinner
             $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
-            axios.get('<?= base_url('/examples/getexample') ?>/' + id)
-                .then(function(response) {
-                    // Access the data in the response
-                    let data = response.data;
 
-                    // Set the modal title and form fields with the retrieved data
-                    $('#exampleModalLabel').text('Edit Example Data');
-                    $('#exampleId').val(data.id);
-                    $('#name').val(data.name);
-                    $('#email').val(data.email);
-                    $('#phonenumber').val(data.phonenumber);
-                    $('#address').val(data.address);
+            try {
+                // Make the Axios GET request using async/await
+                let response = await axios.get('<?= base_url('/examples/getexample') ?>/' + id);
+                let data = response.data;
 
-                    // Set the image preview, or hide the preview if no image is available
-                    if (data.image) {
-                        $('#image_preview').attr('src', '<?= base_url('uploads/images') ?>/' + data.image);
-                        $('#image_preview_div').show();
-                    } else {
-                        $('#image_preview_div').hide();
-                    }
+                // Set the modal title and form fields with the retrieved data
+                $('#exampleModalLabel').text('Edit Example Data');
+                $('#exampleId').val(data.id);
+                $('#name').val(data.name);
+                $('#email').val(data.email);
+                $('#phonenumber').val(data.phonenumber);
+                $('#address').val(data.address);
 
-                    // Show the modal
-                    $('#exampleModal').modal('show');
-                })
-                .catch(function(error) {
-                    // Handle any error responses
-                    showFailedToast('An error occurred. Please try again.');
-                })
-                .finally(function() {
-                    // Re-enable the button after the request is completed
-                    $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
-                });
+                // Set the image preview, or hide the preview if no image is available
+                if (data.image) {
+                    $('#image_preview').attr('src', '<?= base_url('uploads/images') ?>/' + data.image);
+                    $('#image_preview_div').show();
+                } else {
+                    $('#image_preview_div').hide();
+                }
+
+                // Show the modal
+                $('#exampleModal').modal('show');
+            } catch (error) {
+                // Handle any error responses
+                showFailedToast('An error occurred. Please try again.');
+            } finally {
+                // Re-enable the button after the request is completed
+                $this.prop('disabled', false).html(`<i class="fa-solid fa-pen-to-square"></i>`);
+            }
         });
 
         // Show image preview when a file is selected
@@ -343,50 +344,59 @@
         });
 
         // Confirm deletion
-        $('#confirmDeleteBtn').click(function() {
+        $('#confirmDeleteBtn').click(async function() {
             $('#deleteModal button').prop('disabled', true);
             $('#deleteMessage').html(`Deleting, please wait...`);
-            axios.delete('<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete)
-                .then(function(response) {
-                    // Show success message
-                    showSuccessToast(response.data.message);
 
-                    // Reload the table
-                    table.ajax.reload();
-                })
-                .catch(function(error) {
-                    // Handle any error responses
-                    showFailedToast('An error occurred. Please try again.');
-                })
-                .finally(function() {
-                    // Re-enable the delete button and hide the modal
-                    $('#deleteModal').modal('hide');
-                    $('#deleteModal button').prop('disabled', false);
-                });
+            try {
+                // Perform the delete operation
+                let response = await axios.delete('<?= base_url('/examples/deleteexample') ?>/' + exampleIdToDelete);
+
+                // Show success message
+                showSuccessToast(response.data.message);
+
+                // Reload the table
+                table.ajax.reload();
+            } catch (error) {
+                // Handle any error responses
+                showFailedToast('An error occurred. Please try again.');
+            } finally {
+                // Re-enable the delete button and hide the modal
+                $('#deleteModal').modal('hide');
+                $('#deleteModal button').prop('disabled', false);
+            }
         });
+
         // Submit example form (Add/Edit)
-        $('#exampleForm').submit(function(e) {
+        $('#exampleForm').submit(async function(e) {
             e.preventDefault();
+
             var url = $('#exampleId').val() ? '<?= base_url('/examples/updateexample') ?>' : '<?= base_url('/examples/addexample') ?>';
             var formData = new FormData(this);
             console.log("Form URL:", url);
             console.log("Form Data:", formData);
+
             const CancelToken = axios.CancelToken;
             const source = CancelToken.source();
+
             // Clear previous validation states
             $('#exampleForm .is-invalid').removeClass('is-invalid');
             $('#exampleForm .invalid-feedback').text('').hide();
+
             // Show processing button and progress bar
             $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
-            // Show processing button and progress bar
             $('#cancelButton').prop('disabled', false).show();
             $('#submitButton').prop('disabled', true).html(`
                 <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
                 <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
             `);
+
             // Disable form inputs
             $('#exampleForm input').prop('disabled', true);
-            axios.post(url, formData, {
+
+            try {
+                // Perform the post request with progress handling
+                let response = await axios.post(url, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     },
@@ -398,70 +408,71 @@
                         }
                     },
                     cancelToken: source.token // Attach the token here
-                })
-                .then(function(response) {
-                    if (response.data.success) {
-                        showSuccessToast(response.data.message, 'success');
-                        $('#exampleModal').modal('hide');
-                        $('#uploadProgressBar').css('width', '0%');
-                        table.ajax.reload();
-                    } else {
-                        console.log("Validation Errors:", response.data.errors);
+                });
 
-                        // Clear previous validation states
-                        $('#exampleForm .is-invalid').removeClass('is-invalid');
-                        $('#exampleForm .invalid-feedback').text('').hide();
+                // Handle successful response
+                if (response.data.success) {
+                    showSuccessToast(response.data.message, 'success');
+                    $('#exampleModal').modal('hide');
+                    $('#uploadProgressBar').css('width', '0%');
+                    table.ajax.reload();
+                } else {
+                    console.log("Validation Errors:", response.data.errors);
 
-                        // Display new validation errors
-                        for (var field in response.data.errors) {
-                            if (response.data.errors.hasOwnProperty(field)) {
-                                var fieldElement = $('#' + field);
-                                var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust if necessary
+                    // Clear previous validation states
+                    $('#exampleForm .is-invalid').removeClass('is-invalid');
+                    $('#exampleForm .invalid-feedback').text('').hide();
 
-                                console.log("Target Field:", fieldElement);
-                                console.log("Target Feedback:", feedbackElement);
+                    // Display new validation errors
+                    for (var field in response.data.errors) {
+                        if (response.data.errors.hasOwnProperty(field)) {
+                            var fieldElement = $('#' + field);
+                            var feedbackElement = fieldElement.siblings('.invalid-feedback'); // Adjust if necessary
 
-                                if (fieldElement.length > 0 && feedbackElement.length > 0) {
-                                    fieldElement.addClass('is-invalid');
-                                    feedbackElement.text(response.data.errors[field]).show();
+                            console.log("Target Field:", fieldElement);
+                            console.log("Target Feedback:", feedbackElement);
 
-                                    // Remove error message when the user corrects the input
-                                    fieldElement.on('input change', function() {
-                                        $(this).removeClass('is-invalid');
-                                        $(this).siblings('.invalid-feedback').text('').hide();
-                                    });
-                                } else {
-                                    console.warn("Element not found for field:", field);
-                                }
+                            if (fieldElement.length > 0 && feedbackElement.length > 0) {
+                                fieldElement.addClass('is-invalid');
+                                feedbackElement.text(response.data.errors[field]).show();
+
+                                // Remove error message when the user corrects the input
+                                fieldElement.on('input change', function() {
+                                    $(this).removeClass('is-invalid');
+                                    $(this).siblings('.invalid-feedback').text('').hide();
+                                });
+                            } else {
+                                console.warn("Element not found for field:", field);
                             }
                         }
-                        showFailedToast('Please correct the errors in the form.');
-                        $('#uploadProgressBar').addClass('bg-danger');
                     }
-                })
-                .catch(function(error) {
-                    if (axios.isCancel(error)) {
-                        showFailedToast(error.message);
-                        $('#uploadProgressBar').css('width', '0%');
-                    } else {
-                        showFailedToast('An error occurred. Please try again.');
-                        $('#uploadProgressBar').addClass('bg-danger');
-                    }
-                })
-                .finally(function() {
-                    // Reset the form and UI elements
-                    $('#uploadPercentage').html('0%');
-                    $('#cancelButton').prop('disabled', true).hide();
-                    $('#submitButton').prop('disabled', false).html(`
-                        <i class="fa-solid fa-floppy-disk"></i> Save
-                    `);
-                    $('#exampleForm input').prop('disabled', false);
-                });
+                    showFailedToast('Please correct the errors in the form.');
+                    $('#uploadProgressBar').addClass('bg-danger');
+                }
+            } catch (error) {
+                if (axios.isCancel(error)) {
+                    showFailedToast(error.message);
+                    $('#uploadProgressBar').css('width', '0%');
+                } else {
+                    showFailedToast('An error occurred. Please try again.');
+                    $('#uploadProgressBar').addClass('bg-danger');
+                }
+            } finally {
+                // Reset the form and UI elements
+                $('#uploadPercentage').html('0%');
+                $('#cancelButton').prop('disabled', true).hide();
+                $('#submitButton').prop('disabled', false).html(`
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                `);
+                $('#exampleForm input').prop('disabled', false);
+            }
+
             // Attach the cancel functionality to the close button
             $('#closeBtn, #cancelButton').on('click', function() {
                 source.cancel('Operation canceled by the user.');
             });
         });
+
         $('#exampleModal').on('hidden.bs.modal', function() {
             $('#exampleForm')[0].reset();
             $('.is-invalid').removeClass('is-invalid');
