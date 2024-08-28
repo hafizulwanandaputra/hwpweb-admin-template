@@ -1,4 +1,4 @@
-# HWPweb Admin Template for CodeIgniter 4 with AJAX Datatables CRUD
+# HWPweb Admin Template for CodeIgniter 4 with Datatables and Axios CRUD
 
 ## What is CodeIgniter?
 
@@ -28,7 +28,8 @@ The user guide corresponding to the latest version of the framework can be found
 3. Run `php spark migrate` to migrate database.
 4. Run `php spark db:seed UserSeeder` to seed the database items.
 5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080). You can use different port by using `php spark serve --port 8081`. Replace `8081` with the desired port number. You need to modify `app.baseURL` in `.env` to match with the desired port number.
-6. Sign in using username `administrator` and password `administrator`.
+6. For production use such as Apache, just open it from URL like [http://localhost/hwpweb-admin-template](http://localhost/hwpweb-admin-template) or others. You need to modify `app.baseURL` in `.env` to match with the desired URL address.
+7. Sign in using username `administrator` and password `administrator`.
 
 ## Progressive Web App (PWA) Setup
 
@@ -73,6 +74,7 @@ To set up PWA application:
 2. Run `php spark serve` or `php spark serve --port 8081`. Replace `8081` with the desired port number.
 3. Open the browser's development tools to check manifest information and service worker status.
 4. If the configuration meets the PWA requirement, you can install the PWA. You can launch it from applications menu or list. Don't forget to run `php spark serve` (or `php spark serve --port 8081` if you use different port) before launching an application.
+5. For production use in hosting (not using `localhost`), you must use HTTPS.
 
 > [!WARNING]
 >
