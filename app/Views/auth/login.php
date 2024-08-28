@@ -41,7 +41,7 @@
             <span>Don't have an account, <a href="<?= base_url('/register') ?>" class="text-decoration-none">click here!</a></span>
         </div>
     </div>
-    <hr class="border-secondary opacity-100">
+    <hr>
     <!-- FOOTER -->
     <div style="font-size: 9pt;">
         <span class="text-center">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?><br></span>

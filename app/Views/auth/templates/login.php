@@ -86,10 +86,6 @@
       background-color: var(--bs-secondary-bg);
     }
 
-    .form-control {
-      border-color: var(--bs-secondary);
-    }
-
     .form-signin .username {
       margin-bottom: -1px;
       border-bottom-right-radius: 0;
