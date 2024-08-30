@@ -1,37 +1,37 @@
 {
     "name": "HWPweb Admin Template PWA (Development)",
     "short_name": "HWPweb Admin Template (Development)",
-    "start_url": "/hwpwebadmin-template",
+    "start_url": "/hwpweb-admin-template",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#000000",
     "icons": [
         {
-            "src": "/hwpwebadmin-template/favicon-1.png",
+            "src": "/hwpweb-admin-template/favicon-1.png",
             "sizes": "16x16",
             "type": "image/png"
         },
         {
-            "src": "/hwpwebadmin-template/favicon-2.png",
+            "src": "/hwpweb-admin-template/favicon-2.png",
             "sizes": "32x32",
             "type": "image/png"
         },
         {
-            "src": "/hwpwebadmin-template/favicon-3.png",
+            "src": "/hwpweb-admin-template/favicon-3.png",
             "sizes": "144x144",
             "type": "image/png"
         }
     ],
     "screenshots": [
     {
-      "src": "/hwpwebadmin-template/wide-screenshot.png",
+      "src": "/hwpweb-admin-template/wide-screenshot.png",
       "sizes": "1366x1024",
       "type": "image/png",
       "label": "Wide Screenshot",
       "form_factor": "wide"
     },
     {
-      "src": "/hwpwebadmin-template/normal-screenshot.jpeg",
+      "src": "/hwpweb-admin-template/normal-screenshot.jpeg",
       "sizes": "610x646",
       "type": "image/jpeg",
       "label": "Normal Screenshot"
