@@ -382,7 +382,7 @@
         </div>
         <div id="toastContainer" class="toast-container position-fixed top-0 p-3" aria-live="polite" aria-atomic="true">
             <?php if (session()->getFlashdata('info')) : ?>
-                <div class="toast fade show align-items-center text-bg-info border border-info rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="infoToast" class="toast align-items-center text-bg-info border border-info rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-info"></i>
@@ -394,8 +394,9 @@
                     </div>
                 </div>
             <?php endif; ?>
+
             <?php if (session()->getFlashdata('msg')) : ?>
-                <div class="toast fade show align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="msgToast" class="toast align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-check"></i>
@@ -407,8 +408,9 @@
                     </div>
                 </div>
             <?php endif; ?>
+
             <?php if (session()->getFlashdata('error')) : ?>
-                <div class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-xmark"></i>
@@ -443,6 +445,40 @@
         $(document).on('click', '#confirmLogout', function() {
             $('#logoutModal button').prop('disabled', true);
             $('#logoutMessage').html(`Please wait...`);
+        });
+        $(document).ready(function() {
+            // Show toast messages if they exist
+            if ($('#infoToast').length) {
+                var infoToast = new bootstrap.Toast($('#infoToast')[0]);
+                infoToast.show();
+            }
+
+            if ($('#msgToast').length) {
+                var msgToast = new bootstrap.Toast($('#msgToast')[0]);
+                msgToast.show();
+            }
+
+            if ($('#errorToast').length) {
+                var errorToast = new bootstrap.Toast($('#errorToast')[0]);
+                errorToast.show();
+            }
+
+            setTimeout(function() {
+                if ($('#infoToast').length) {
+                    var infoToast = new bootstrap.Toast($('#infoToast')[0]);
+                    infoToast.hide();
+                }
+
+                if ($('#msgToast').length) {
+                    var msgToast = new bootstrap.Toast($('#msgToast')[0]);
+                    msgToast.hide();
+                }
+
+                if ($('#errorToast').length) {
+                    var errorToast = new bootstrap.Toast($('#errorToast')[0]);
+                    errorToast.hide();
+                }
+            }, 5000);
         });
     </script>
     <script>

@@ -49,7 +49,7 @@
 </main>
 <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
     <?php if (session()->getFlashdata('msg')) : ?>
-        <div class="toast fade show align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="msgToast" class="toast align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-check"></i>
@@ -62,7 +62,7 @@
         </div>
     <?php endif; ?>
     <?php if (isset($_GET['redirect'])) : ?>
-        <div class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="redirectToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-xmark"></i>
@@ -75,7 +75,7 @@
         </div>
     <?php endif; ?>
     <?php if (session()->getFlashdata('error')) : ?>
-        <div class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-xmark"></i>
@@ -88,7 +88,7 @@
         </div>
     <?php endif; ?>
     <?php if (validation_show_error('username') || validation_show_error('password')) : ?>
-        <div class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="validationToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-xmark"></i>

@@ -117,6 +117,48 @@
   <script src="<?= base_url() ?>assets/fontawesome/js/all.js"></script>
   <script>
     $(document).ready(function() {
+      // Show toast messages if they exist
+      if ($('#redirectToast').length) {
+        var redirectToast = new bootstrap.Toast($('#redirectToast')[0]);
+        redirectToast.show();
+      }
+
+      if ($('#msgToast').length) {
+        var msgToast = new bootstrap.Toast($('#msgToast')[0]);
+        msgToast.show();
+      }
+
+      if ($('#errorToast').length) {
+        var errorToast = new bootstrap.Toast($('#errorToast')[0]);
+        errorToast.show();
+      }
+
+      if ($('#validationToast').length) {
+        var validationToast = new bootstrap.Toast($('#validationToast')[0]);
+        validationToast.show();
+      }
+
+      setTimeout(function() {
+        if ($('#redirectToast').length) {
+          var redirectToast = new bootstrap.Toast($('#redirectToast')[0]);
+          redirectToast.hide();
+        }
+
+        if ($('#msgToast').length) {
+          var msgToast = new bootstrap.Toast($('#msgToast')[0]);
+          msgToast.hide();
+        }
+
+        if ($('#errorToast').length) {
+          var errorToast = new bootstrap.Toast($('#errorToast')[0]);
+          errorToast.hide();
+        }
+
+        if ($('#validationToast').length) {
+          var validationToast = new bootstrap.Toast($('#validationToast')[0]);
+          validationToast.hide();
+        }
+      }, 5000);
       $('input.form-control').on('input', function() {
         // Remove the is-invalid class for the current input field
         $(this).removeClass('is-invalid');
