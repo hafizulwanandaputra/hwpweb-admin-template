@@ -16,7 +16,13 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = 'http://localhost/traceralumnisi-ci4/admin/';
+    public string $baseURL;
+
+    public function __construct()
+    {
+        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+        $this->baseURL = $protocol . '://' . $_SERVER['SERVER_NAME'] . env('requestURL');
+    }
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

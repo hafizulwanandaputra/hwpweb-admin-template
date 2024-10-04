@@ -35,6 +35,14 @@ if (stripos($browser, 'Chrome') !== false) {
 }
 ?>
 <?= $this->extend('dashboard/templates/dashboard'); ?>
+<?= $this->section('header'); ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const jqueryVersion = $.fn.jquery;
+        document.getElementById('jquery-version').innerHTML = `${jqueryVersion}`;
+    });
+</script>
+<?= $this->endSection(); ?>
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <a class="fs-5 me-3" href="<?= base_url('/settings'); ?>"><i class="fa-solid fa-arrow-left"></i></a>
@@ -87,6 +95,17 @@ if (stripos($browser, 'Chrome') !== false) {
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
                 <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">Client IP Address</h5>
+                    <span><?= $_SERVER['REMOTE_ADDR'] ?> via port <?= $_SERVER['REMOTE_PORT'] ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-large"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -112,11 +131,55 @@ if (stripos($browser, 'Chrome') !== false) {
         <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
             <div class="d-flex align-items-start">
                 <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">Server Hostname and IP Address</h5>
+                    <span><?= ($_SERVER['SERVER_NAME'] == $_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '<span class="text-nowrap">' . $_SERVER['SERVER_NAME'] . '</span> (' . $_SERVER['SERVER_ADDR'] . ')'; ?> via port <?= $_SERVER['SERVER_PORT'] ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">HTTPS Connection</h5>
+                    <span><?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'Used' : 'Not Used'; ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-database"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">Database</h5>
+                    <span><?= esc($version_comment) ?> version <?= esc($version) ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                     <h5 class="card-title">PHP and CodeIgniter Version</h5>
                     <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+            <div class="d-flex align-items-start">
+                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
+                </a>
+                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                    <h5 class="card-title">PHP Extensions</h5>
+                    <span><?= esc($php_extensions) ?></span>
                 </div>
             </div>
         </li>
@@ -129,7 +192,7 @@ if (stripos($browser, 'Chrome') !== false) {
                     <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Bootstrap</h5>
+                    <h5 class="card-title">Bootstrap Version</h5>
                     <span>5.3.3</span>
                 </div>
             </div>
@@ -141,7 +204,7 @@ if (stripos($browser, 'Chrome') !== false) {
                 </a>
                 <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                     <h5 class="card-title">jQuery Version</h5>
-                    <span>3.7.1</span>
+                    <span id="jquery-version">Loading...</span>
                 </div>
             </div>
         </li>

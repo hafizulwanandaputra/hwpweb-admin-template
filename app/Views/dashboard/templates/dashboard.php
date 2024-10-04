@@ -258,6 +258,7 @@
             }
         }
     </style>
+    <?= $this->renderSection('header'); ?>
 </head>
 
 <body>
