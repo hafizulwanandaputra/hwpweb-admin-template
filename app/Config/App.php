@@ -20,8 +20,15 @@ class App extends BaseConfig
 
     public function __construct()
     {
-        $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
-        $this->baseURL = $protocol . '://' . $_SERVER['SERVER_NAME'] . env('requestURL');
+        // Is running from CLI
+        if (is_cli()) {
+            // Set default baseURL without $_SERVER
+            $this->baseURL = env('baseURL', 'http://localhost'); // Use env variable or fallback to 'http://localhost'
+        } else {
+            // Use base URL from $_SERVER
+            $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http';
+            $this->baseURL = $protocol . '://' . $_SERVER['SERVER_NAME'] . env('requestURL', '/'); // Fallback to '/' if requestURL is empty
+        }
     }
 
     /**
