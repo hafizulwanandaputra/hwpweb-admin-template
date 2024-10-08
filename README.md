@@ -27,8 +27,9 @@ The user guide corresponding to the latest version of the framework can be found
 2. Create MySQL database match with database name specified in `.env` file.
 3. Run `php spark migrate` to migrate database.
 4. Run `php spark db:seed UserSeeder` to seed the database items.
-5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080). You can use different port by using `php spark serve --port 8081`. Replace `8081` with the desired port number. You need to modify `app.baseURL` in `.env` to match with the desired port number.
-6. For production use such as Apache, just open it from URL like [http://localhost/hwpweb-admin-template](http://localhost/hwpweb-admin-template) or others. You need to modify `app.baseURL` in `.env` to match with the desired URL address.
+5. Run `php spark serve` to start the server. Usually [http://localhost:8080](http://localhost:8080). You can use different port by using `php spark serve --port 8081`. Replace `8081` with the desired port number. You need to modify `requestURL` in `.env` to match with the desired port number.
+6. For production use such as Apache, just open it from URL like [http://localhost/hwpweb-admin-template](http://localhost/hwpweb-admin-template) or others. You need to modify `requestURL` in `.env` to match with the desired URL address. You need to modify `requestURL` in `.env` to match with the desired URL address.
+   > The base URL is based on PHP's `$_SERVER['SERVER_NAME']` value. You just need to change the `requestURL` which consists of the port and the subfolder (if the project is stored in a subfolder).
 7. Sign in using username `administrator` and password `administrator`.
 
 ## Progressive Web App (PWA) Setup
@@ -67,6 +68,7 @@ PWA contents:
      '/normal-screenshot.jpeg' // Normal Screenshot
   ];
   ```
+- If the PWA located in subfolder, add the subfolder in the `start_url` and `src` values in `manifest.json` and values of `CACHE_URLS` in `public/service-worker.js`. You need to clear the browser's cache to apply these settings.
 
 To set up PWA application:
 
