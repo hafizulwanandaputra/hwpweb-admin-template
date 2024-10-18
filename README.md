@@ -45,30 +45,28 @@ PWA contents:
 
 - In `app/Views/auth/templates/login.php` and `app/Views/dashboard/templates/dashboard.php`, there's is a `<link rel="manifest" href="<?= base_url(); ?>/manifest.json">` tag to initiate `manifest.json` and JavaScript code to register service worker located in `public/service-worker.js`:
   ```
-  if ('serviceWorker' in navigator) {
-     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js').then((registration) => {
-           console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch((error) => {
-           console.error('Service Worker registration failed:', error);
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js', {
+            scope: '/'
+        }).then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(error => {
+            console.error('Service Worker registration failed:', error);
         });
-     });
-  }
+    }
   ```
 - Cache file to save files for offline use in `public/service-worker.js`:
   ```
-  const CACHE_URLS = [
-     '/',
-     '/index.php',
-     '/favicon-1.png', // 16x16 icons
-     '/favicon-2.png', // 32x32 icons
-     '/favicon-3.png', // 144x144 icons
-     '/wide-screenshot.png', // Wide Screenshot
-     '/normal-screenshot.jpeg' // Normal Screenshot
-  ];
+    const ASSETS_TO_CACHE  = [
+        '/',
+        '/index.php',
+        '/favicon-1.png', // 16x16 icons
+        '/favicon-2.png', // 32x32 icons
+        '/favicon-3.png', // 144x144 icons
+        '/Screenshot.png', // Screenshot
+    ];
   ```
-- If the PWA located in subfolder, add the subfolder in the `start_url` and `src` values in `manifest.json` and values of `CACHE_URLS` in `public/service-worker.js`. You need to clear the browser's cache to apply these settings.
+- If the PWA located in subfolder, add the subfolder in the `start_url` and `src` values in `manifest.json`. You need to clear the browser's cache to apply these settings.
 
 To set up PWA application:
 
@@ -76,7 +74,7 @@ To set up PWA application:
 2. Run `php spark serve` or `php spark serve --port 8081`. Replace `8081` with the desired port number.
 3. Open the browser's development tools to check manifest information and service worker status.
 4. If the configuration meets the PWA requirement, you can install the PWA. You can launch it from applications menu or list. Don't forget to run `php spark serve` (or `php spark serve --port 8081` if you use different port) before launching an application.
-5. For production use in hosting (not using `localhost`), you must use HTTPS.
+5. If not using `localhost` served using or not using `php spark serve` such as your server's domain or IP address, you must use HTTPS.
 
 > [!WARNING]
 >

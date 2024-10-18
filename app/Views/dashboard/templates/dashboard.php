@@ -32,14 +32,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('<?= base_url(); ?>/service-worker.js')
-                    .then((registration) => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.error('Service Worker registration failed:', error);
-                    });
+            navigator.serviceWorker.register('/scripts/service-worker.js', {
+                scope: '/'
+            }).then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(error => {
+                console.error('Service Worker registration failed:', error);
             });
         }
     </script>

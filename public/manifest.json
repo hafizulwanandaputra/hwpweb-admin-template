@@ -24,15 +24,15 @@
     ],
     "screenshots": [
     {
-      "src": "/hwpweb-admin-template/wide-screenshot.png",
-      "sizes": "1366x1024",
+      "src": "/hwpweb-admin-template/Screenshot.png",
+      "sizes": "1920x1080",
       "type": "image/png",
       "label": "Wide Screenshot",
       "form_factor": "wide"
     },
     {
-      "src": "/hwpweb-admin-template/normal-screenshot.jpeg",
-      "sizes": "610x646",
+      "src": "/hwpweb-admin-template/Screenshot.png",
+      "sizes": "1920x1080",
       "type": "image/jpeg",
       "label": "Normal Screenshot"
     }
