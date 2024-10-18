@@ -22,8 +22,7 @@ The user guide corresponding to the latest version of the framework can be found
 
 ## Setup
 
-1. Copy `.env.example` to `.env` and tailor for your app, specifically the baseURL
-   and any database settings.
+1. Copy `.env.example` to `.env` and tailor for your app, specifically the `requestURL` and any database settings.
 2. Create MySQL database match with database name specified in `.env` file.
 3. Run `php spark migrate` to migrate database.
 4. Run `php spark db:seed UserSeeder` to seed the database items.
