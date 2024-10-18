@@ -45,26 +45,26 @@ PWA contents:
 
 - In `app/Views/auth/templates/login.php` and `app/Views/dashboard/templates/dashboard.php`, there's is a `<link rel="manifest" href="<?= base_url(); ?>/manifest.json">` tag to initiate `manifest.json` and JavaScript code to register service worker located in `public/service-worker.js`:
   ```
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js', {
-            scope: '/'
-        }).then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        }).catch(error => {
-            console.error('Service Worker registration failed:', error);
-        });
-    }
+  if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js', {
+          scope: '/'
+      }).then(registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+      }).catch(error => {
+          console.error('Service Worker registration failed:', error);
+      });
+  }
   ```
 - Cache file to save files for offline use in `public/service-worker.js`:
   ```
-    const ASSETS_TO_CACHE  = [
-        '/',
-        '/index.php',
-        '/favicon-1.png', // 16x16 icons
-        '/favicon-2.png', // 32x32 icons
-        '/favicon-3.png', // 144x144 icons
-        '/Screenshot.png', // Screenshot
-    ];
+  const ASSETS_TO_CACHE  = [
+      '/',
+      '/index.php',
+      '/favicon-1.png', // 16x16 icons
+      '/favicon-2.png', // 32x32 icons
+      '/favicon-3.png', // 144x144 icons
+      '/Screenshot.png', // Screenshot
+  ];
   ```
 - If the PWA located in subfolder, add the subfolder in the `start_url` and `src` values in `manifest.json`. You need to clear the browser's cache to apply these settings.
 
