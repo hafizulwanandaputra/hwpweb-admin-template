@@ -22,9 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/Geist-1.3.0/font-face.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/GeistMono-1.3.0/font-face.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/base-font/geist.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/fonts/inter-hwp/inter-hwp.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <script src="<?= base_url(); ?>webadmin/assets/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
@@ -32,8 +31,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/scripts/service-worker.js', {
-                scope: '/'
+            navigator.serviceWorker.register('<?= base_url('service-worker.js') ?>', {
+                scope: '<?= env('requestURL') ?>'
             }).then(registration => {
                 console.log('Service Worker registered with scope:', registration.scope);
             }).catch(error => {
@@ -316,7 +315,7 @@
 
         <div class="modal modal-sheet p-4 py-md-5 fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="logoutModal" aria-hidden="true" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
+                <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
                     <div class="modal-body p-4 text-center">
                         <h5 class="mb-0" id="logoutMessage">Do you want to logout?</h5>
                     </div>

@@ -21,9 +21,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/Geist-1.3.0/font-face.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/GeistMono-1.3.0/font-face.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/fonts/base-font/geist.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/fonts/inter-hwp/inter-hwp.css" rel="stylesheet">
+    <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <style>
         /* Custom Scrollbar Styles */
         html {
@@ -95,8 +94,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/scripts/service-worker.js', {
-                scope: '/'
+            navigator.serviceWorker.register('<?= base_url('service-worker.js') ?>', {
+                scope: '<?= env('requestURL') ?>'
             }).then(registration => {
                 console.log('Service Worker registered with scope:', registration.scope);
             }).catch(error => {

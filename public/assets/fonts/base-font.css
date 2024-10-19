@@ -1,0 +1,12 @@
+:root {
+  --bs-font-sans-serif: "Inter HWP", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Noto Sans", "Noto Sans Arabic", "Segoe UI", Helvetica, Arial, "Noto Color Emoji", sans-serif;
+
+  --bs-font-monospace: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Courier New", "Liberation Mono", "Noto Color Emoji", monospace;
+}
+
+.date {
+
+  font-variant-numeric: tabular-nums;
+
+}

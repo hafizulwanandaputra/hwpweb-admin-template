@@ -27,7 +27,7 @@
     </div>
     <div class="modal modal-sheet p-4 py-md-5 fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
+            <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
                     <h5 class="mb-0" id="deleteMessage">Are you sure want to delete this user?</h5>
                 </div>
@@ -40,7 +40,7 @@
     </div>
     <div class="modal modal-sheet p-4 py-md-5 fade" id="resetPasswordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="resetPasswordModalLabel" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-body rounded-4 shadow-lg transparent-blur">
+            <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
                 <div class="modal-body p-4 text-center">
                     <h5 class="mb-0" id="resetPasswordMessage"></h5>
                 </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="modal fade" id="userModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable rounded-3">
-            <form id="userForm" enctype="multipart/form-data" class="modal-content bg-body shadow-lg transparent-blur">
+            <form id="userForm" enctype="multipart/form-data" class="modal-content bg-body-tertiary shadow-lg transparent-blur">
                 <div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
                     <h6 class="pe-2 modal-title fs-6 text-truncate" id="userModalLabel" style="font-weight: bold;">Add User</h6>
                     <button type="button" class="btn btn-danger btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="modal" aria-label="Close"><span data-feather="x" class="mb-0" style="width: 30px; height: 30px;"></span></button>
