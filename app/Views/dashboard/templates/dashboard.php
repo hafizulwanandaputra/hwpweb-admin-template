@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#e9ecef" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#343a40" media="(prefers-color-scheme: dark)">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="<?= base_url(); ?>webadmin/assets/css/dashboard/dashboard.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/dashboard/dashboard.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
     <link href="<?= base_url() ?>assets/fonts/inter-hwp/inter-hwp.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
-    <script src="<?= base_url(); ?>webadmin/assets/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="<?= base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
@@ -271,10 +271,10 @@
                             </svg>
                         </div>
                     </a>
-                    <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body transparent-blur" style="width: 240px;">
+                    <ul class="dropdown-menu rounded-3 dropdown-menu-end text-small shadow bg-body-tertiary transparent-blur" style="width: 240px;">
                         <li class="lh-1 p-1">
                             <div class="d-flex align-items-start">
-                                <span style="width: 32px; text-align: center;"><i class="fa-solid fa-user"></i></span>
+                                <span style="min-width: 32px; max-width: 32px; text-align: center;"><i class="fa-solid fa-user"></i></span>
                                 <span><?= session()->get('fullname'); ?></small><br><span class="fw-medium" style="font-size: 8pt;"><?= session()->get('role'); ?></span><br><span class="fw-medium" style="font-size: 8pt;">@<?= session()->get('username'); ?></span></span>
                             </div>
                         </li>
@@ -284,7 +284,7 @@
                         <li>
                             <a class="dropdown-item p-1" href="<?= base_url('/settings'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
-                                    <span style="width: 32px; text-align: center;"><i class="fa-solid fa-gear"></i></span>
+                                    <span style="min-width: 32px; max-width: 32px; text-align: center;"><i class="fa-solid fa-gear"></i></span>
                                     <span>Settings</span>
                                 </div>
                             </a>
@@ -292,7 +292,7 @@
                         <li>
                             <a class="dropdown-item p-1" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <div class="d-flex align-items-start">
-                                    <span style="width: 32px; text-align: center;"><i class="fa-solid fa-right-from-bracket"></i></span>
+                                    <span style="min-width: 32px; max-width: 32px; text-align: center;"><i class="fa-solid fa-right-from-bracket"></i></span>
                                     <span>Logout</span>
                                 </div>
                             </a>
@@ -416,7 +416,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="<?= base_url() ?>assets/fontawesome/js/all.js"></script>
-    <script src="<?= base_url(); ?>webadmin/assets/js/dashboard/dashboard.js"></script>
+    <script src="<?= base_url(); ?>assets/js/dashboard/dashboard.js"></script>
     <?= $this->renderSection('javascript'); ?>
     <?= $this->renderSection('datatable'); ?>
     <?= $this->renderSection('tinymce'); ?>
