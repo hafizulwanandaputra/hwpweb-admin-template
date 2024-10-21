@@ -11,7 +11,7 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pt-3">
-    <div class="alert alert-info bg-gradient rounded-3" role="alert">
+    <div class="alert alert-info rounded-3" role="alert">
         <div class="d-flex align-items-start">
             <div style="width: 12px; text-align: center;">
                 <i class="fa-solid fa-circle-info"></i>
