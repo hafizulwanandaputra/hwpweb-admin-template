@@ -1,8 +1,8 @@
 :root {
   --bs-font-sans-serif: "Inter HWP", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", "Apple Color Emoji", "Segoe UI", "Segoe UI Emoji", Helvetica, Arial, sans-serif;
+    "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", "Apple Color Emoji", sans-serif, "Segoe UI Emoji";
 
-  --bs-font-monospace: ui-monospace, SFMono-Regular, "SF Mono", "Noto Sans Mono", "Noto Color Emoji", "Apple Color Emoji", Menlo, Consolas, "Segoe UI Emoji", "Courier New", monospace;
+  --bs-font-monospace: ui-monospace, SFMono-Regular, "SF Mono", "Noto Sans Mono", "Noto Color Emoji", "Apple Color Emoji", monospace, "Segoe UI Emoji";
 }
 
 .date {
