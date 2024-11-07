@@ -19,47 +19,6 @@ iframe {
   font-family: "NKL Dubai";
 }
 
-/* .display-6,
-.display-5,
-.display-4,
-.display-3,
-.display-2,
-.display-1,
-h3,
-.h3,
-h2,
-.h2,
-h1,
-.h1 {
-  font-family: "GitLab Sans Hinted", system-ui, -apple-system, sans-serif;
-}
-.jawi > .display-6,
-.jawi .display-6,
-.jawi > .display-5,
-.jawi .display-5,
-.jawi > .display-4,
-.jawi .display-4,
-.jawi > .display-3,
-.jawi .display-3,
-.jawi > .display-2,
-.jawi .display-2,
-.jawi > .display-1,
-.jawi .display-1,
-.jawi > .h3,
-.jawi .h3,
-.jawi > h3,
-.jawi h3,
-.jawi > .h2,
-.jawi .h2,
-.jawi > h2,
-.jawi h2,
-.jawi > .h1,
-.jawi .h1,
-.jawi > h1,
-.jawi h1,
-.jawi {
-  font-family: "NKL Dubai";
-} */
 .form-control::-webkit-file-upload-button {
   background-image: var(--bs-gradient);
 }
