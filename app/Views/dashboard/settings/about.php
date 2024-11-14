@@ -54,164 +54,166 @@ if (stripos($browser, 'Chrome') !== false) {
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pt-3">
-    <h5>Client Information</h5>
-    <ul class="list-group shadow-sm rounded-3 mb-3">
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><?= $iconClass; ?></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Operating System</h5>
-                    <span><?= $agent->getPlatform(); ?></span>
-                </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><?= $browserIcon; ?></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Web Browser</h5>
-                    <span><?= $agent->getBrowser() . ' ' . $agent->getVersion(); ?></span>
-                </div>
-            </div>
-        </li>
-        <?php if ($agent->isMobile()) : ?>
+<main class="d-xxl-flex justify-content-center col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pt-3">
+    <div class="no-fluid-content">
+        <h5>Client Information</h5>
+        <ul class="list-group shadow-sm rounded-3 mb-3">
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
                     <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-mobile-screen"></i></p>
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><?= $iconClass; ?></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Mobile Phone</h5>
-                        <span><?= $agent->getMobile(); ?></span>
+                        <h5 class="card-title">Operating System</h5>
+                        <span><?= $agent->getPlatform(); ?></span>
                     </div>
                 </div>
             </li>
-        <?php endif; ?>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Client IP Address</h5>
-                    <span><?= $_SERVER['REMOTE_ADDR'] ?> via port <?= $_SERVER['REMOTE_PORT'] ?></span>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><?= $browserIcon; ?></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Web Browser</h5>
+                        <span><?= $agent->getBrowser() . ' ' . $agent->getVersion(); ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-large"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">User Agent</h5>
-                    <span><?= $agent->getAgentString(); ?></span>
+            </li>
+            <?php if ($agent->isMobile()) : ?>
+                <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                    <div class="d-flex align-items-start">
+                        <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                            <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-mobile-screen"></i></p>
+                        </a>
+                        <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                            <h5 class="card-title">Mobile Phone</h5>
+                            <span><?= $agent->getMobile(); ?></span>
+                        </div>
+                    </div>
+                </li>
+            <?php endif; ?>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Client IP Address</h5>
+                        <span><?= $_SERVER['REMOTE_ADDR'] ?> via port <?= $_SERVER['REMOTE_PORT'] ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    <h5>Backend Information</h5>
-    <ul class="list-group shadow-sm rounded-3 mb-3">
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-server"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Web Server</h5>
-                    <span><?= $_SERVER['SERVER_SOFTWARE']; ?></span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-large"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">User Agent</h5>
+                        <span><?= $agent->getAgentString(); ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Server Hostname and IP Address</h5>
-                    <span><?= ($_SERVER['SERVER_NAME'] == $_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '<span class="text-nowrap">' . $_SERVER['SERVER_NAME'] . '</span> (' . $_SERVER['SERVER_ADDR'] . ')'; ?> via port <?= $_SERVER['SERVER_PORT'] ?></span>
+            </li>
+        </ul>
+        <h5>Backend Information</h5>
+        <ul class="list-group shadow-sm rounded-3 mb-3">
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-server"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Web Server</h5>
+                        <span><?= $_SERVER['SERVER_SOFTWARE']; ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">HTTPS Connection</h5>
-                    <span><?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'Used' : 'Not Used'; ?></span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Server Hostname and IP Address</h5>
+                        <span><?= ($_SERVER['SERVER_NAME'] == $_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '<span class="text-nowrap">' . $_SERVER['SERVER_NAME'] . '</span> (' . $_SERVER['SERVER_ADDR'] . ')'; ?> via port <?= $_SERVER['SERVER_PORT'] ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-database"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Database</h5>
-                    <span><?= esc($version_comment) ?> version <?= esc($version) ?></span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">HTTPS Connection</h5>
+                        <span><?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'Used' : 'Not Used'; ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">PHP and CodeIgniter Version</h5>
-                    <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-database"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Database</h5>
+                        <span><?= esc($version_comment) ?> version <?= esc($version) ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">PHP Extensions</h5>
-                    <span><?= esc($php_extensions) ?></span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">PHP and CodeIgniter Version</h5>
+                        <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    <h5>Frontend Information</h5>
-    <ul class="list-group shadow-sm rounded-3 mb-3">
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">Bootstrap Version</h5>
-                    <span>5.3.3</span>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">PHP Extensions</h5>
+                        <span><?= esc($php_extensions) ?></span>
+                    </div>
                 </div>
-            </div>
-        </li>
-        <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
-            <div class="d-flex align-items-start">
-                <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
-                    <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-js"></i></p>
-                </a>
-                <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                    <h5 class="card-title">jQuery Version</h5>
-                    <span id="jquery-version">Loading...</span>
+            </li>
+        </ul>
+        <h5>Frontend Information</h5>
+        <ul class="list-group shadow-sm rounded-3 mb-3">
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">Bootstrap Version</h5>
+                        <span>5.3.3</span>
+                    </div>
                 </div>
-            </div>
-        </li>
-    </ul>
-    <hr>
-    <!-- Place Copyright Here -->
-    <p>&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>The application's template is based from <a class="text-decoration-none" href="https://github.com/hafizulwanandaputra/hwpweb-admin-template" target="_blank"><span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span> ADMIN Template</a></p>
+            </li>
+            <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
+                <div class="d-flex align-items-start">
+                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-js"></i></p>
+                    </a>
+                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                        <h5 class="card-title">jQuery Version</h5>
+                        <span id="jquery-version">Loading...</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <hr>
+        <!-- Place Copyright Here -->
+        <p>&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>The application's template is based from <a class="text-decoration-none" href="https://github.com/hafizulwanandaputra/hwpweb-admin-template" target="_blank"><span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span> ADMIN Template</a></p>
+    </div>
 </main>
 </div>
 <?= $this->endSection(); ?>

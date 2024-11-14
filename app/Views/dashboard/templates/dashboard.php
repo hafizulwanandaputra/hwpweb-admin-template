@@ -199,6 +199,13 @@
             }
         }
 
+        @media (min-width: 1400px) {
+            .no-fluid-content {
+                min-width: 1118.66px;
+                max-width: 1118.66px;
+            }
+        }
+
         @media (max-width: 767.98px) {
             .toast-container {
                 padding-top: 7rem !important;
