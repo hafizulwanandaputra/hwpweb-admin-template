@@ -69,13 +69,24 @@ class ChangePassword extends BaseController
                 session()->setFlashdata('error', 'The new password <strong>must be different</strong> from the old password!');
                 return redirect()->back();
             } else {
-                // New Password
+                $db = db_connect();
                 $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
+                $current_token = session()->get('session_token');
+                $db->table('user_sessions')
+                    ->where('id_user', session()->get('id_user'))
+                    ->where('session_token !=', $current_token)
+                    ->delete();
+                $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
+                $new_token = bin2hex(random_bytes(32));
+                $db->table('user_sessions')
+                    ->where('session_token', $current_token)
+                    ->update(['session_token' => $new_token]);
                 $this->ChangePasswordModel->save([
                     'id_user' => session()->get('id_user'),
                     'password' => $password_hash
                 ]);
                 session()->remove('password');
+                session()->set('session_token', $new_token);
                 session()->set('password', $password_hash);
                 session()->setFlashdata('msg', 'Your password has been successfully changed to your new password!');
                 return redirect()->back();
