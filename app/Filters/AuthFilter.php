@@ -68,7 +68,15 @@ class AuthFilter implements FilterInterface
 
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {
-        if (session()->get('log') == true) {
+        // Connect to the database and retrieve session token
+        $db = db_connect();
+        $token = session()->get('session_token');
+        // Get session data based on session token
+        $session = $db->table('user_sessions')
+            ->where('session_token', $token)
+            ->get()
+            ->getRowArray();
+        if ($session) {
             // GREETINGS
             $seasonalGreetingA = array();
             $seasonalGreetingA[] = array('dayBegin' => 30, 'monthBegin' => 12, 'dayEnd' => 31, 'monthEnd' => 12, 'text' => 'Happy New Year');
