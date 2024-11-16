@@ -102,11 +102,19 @@ class Sessions extends BaseController
         if (session()->get('role') == 'Administrator') {
             $db = db_connect();
             $current_token = session()->get('session_token');
-            $db->table('user_sessions')
-                ->where('session_token !=', $current_token)
-                ->delete();
-            $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
-            return $this->response->setJSON(['message' => 'User sessions successfully cleaned up']);
+            $builder = $db->table('user_sessions');
+            $otherSessions = $builder->where('session_token !=', $current_token)->countAllResults();
+            if ($otherSessions > 0) {
+                $db->table('user_sessions')
+                    ->where('session_token !=', $current_token)
+                    ->delete();
+                $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
+                return $this->response->setJSON(['message' => 'User sessions successfully cleaned up']);
+            } else {
+                return $this->response->setStatusCode(404)->setJSON([
+                    'error' => 'No user sessions to be cleaned up',
+                ]);
+            }
         } else {
             return $this->response->setStatusCode(404)->setJSON([
                 'error' => 'Page Not Found',

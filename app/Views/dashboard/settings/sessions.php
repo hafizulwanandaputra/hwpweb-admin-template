@@ -313,7 +313,11 @@
                 showSuccessToast(response.data.message);
                 table.ajax.reload(null, false);
             } catch (error) {
-                showFailedToast('An error occured. Please try again later.<br>' + error);
+                if (error.response.request.status === 404) {
+                    showFailedToast(error.response.data.error);
+                } else {
+                    showFailedToast('An error occured. Please try again later.<br>' + error);
+                }
             } finally {
                 $('#flushModal').modal('hide');
                 $('#flushModal button').prop('disabled', false);
