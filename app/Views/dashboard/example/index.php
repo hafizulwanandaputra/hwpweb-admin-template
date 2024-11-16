@@ -9,9 +9,19 @@
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pt-3">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4">
     <div class="d-xxl-flex justify-content-center">
         <div class="no-fluid-content">
+            <div class="sticky-top" style="z-index: 99;">
+                <ul class="list-group shadow-sm rounded-top-0 rounded-bottom-3 mb-2">
+                    <li class="list-group-item border-top-0 bg-body-tertiary">
+                        <div class="input-group input-group-sm">
+                            <input type="search" class="form-control form-control-sm rounded-start-3" id="externalSearch" placeholder="Search">
+                            <button class="btn btn-success btn-sm bg-gradient rounded-end-3" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
             <div class="mb-2">
                 <table id="tabel" class="table table-sm table-hover" style="width:100%; font-size: 9pt;">
                     <thead>
@@ -54,28 +64,28 @@
                 <div class="modal-body py-2">
                     <input type="hidden" id="exampleId" name="id">
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="name" id="name" name="name">
+                        <input type="text" class="form-control rounded-3" autocomplete="off" dir="auto" placeholder="name" id="name" name="name">
                         <label for="name">Name*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="email" id="email" name="email">
+                        <input type="text" class="form-control rounded-3" autocomplete="off" dir="auto" placeholder="email" id="email" name="email">
                         <label for="email">Email*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="phonenumber" id="phonenumber" name="phonenumber">
+                        <input type="text" class="form-control rounded-3" autocomplete="off" dir="auto" placeholder="phonenumber" id="phonenumber" name="phonenumber">
                         <label for="phonenumber">Phone Number*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-floating mb-1 mt-1">
-                        <input type="text" class="form-control" autocomplete="off" dir="auto" placeholder="address" id="address" name="address">
+                        <input type="text" class="form-control rounded-3" autocomplete="off" dir="auto" placeholder="address" id="address" name="address">
                         <label for="address">Address*</label>
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="mb-1 mt-1">
                         <label for="image" class="form-label mb-0">Image (max 8 MB)</label>
-                        <input class="form-control" type="file" id="image" name="image">
+                        <input class="form-control rounded-3" type="file" id="image" name="image">
                         <div class="invalid-feedback"></div>
                     </div>
                     <!-- Image preview -->
@@ -170,24 +180,14 @@
                         '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
                     });
                     $(".page-item .page-link").addClass("bg-gradient");
-                    $(".form-control").addClass("rounded-3");
-                    $(".form-select").addClass("rounded-3");
+                    $('select[name="tabel_length"]').addClass("rounded-3");
 
                     // Re-initialize tooltips after redraw
                     $('[data-bs-toggle="tooltip"]').tooltip();
                 },
                 'buttons': [{
-                    action: function(e, dt, node, config) {
-                        dt.ajax.reload(null, false);
-                    },
-                    text: '<i class="fa-solid fa-arrows-rotate"></i> Refresh',
-                    className: 'btn-success btn-sm bg-gradient rounded-start-3',
-                    init: function(api, node, config) {
-                        $(node).removeClass('btn-secondary')
-                    },
-                }, {
                     text: '<i class="fa-solid fa-plus"></i> Add',
-                    className: 'btn-primary btn-sm bg-gradient rounded-end-3',
+                    className: 'btn-primary btn-sm bg-gradient rounded-3',
                     attr: {
                         id: 'addExampleBtn'
                     },
@@ -198,6 +198,7 @@
                 "search": {
                     "caseInsensitive": true
                 },
+                "searching": false, // Disable the internal search bar
                 'pageLength': 10,
                 'lengthMenu': [
                     [10, 25, 50, 100, 250, 500],
@@ -212,7 +213,7 @@
                     "data": function(d) {
                         // Add the search parameter to the request
                         d.search = {
-                            "value": $('.dataTables_filter input[type="search"]').val()
+                            "value": $('#externalSearch').val()
                         };
                     },
                     beforeSend: function() {
@@ -281,6 +282,19 @@
 
             // Initialize tooltips initially
             $('[data-bs-toggle="tooltip"]').tooltip();
+
+            table.on('draw', function() {
+                $('[data-bs-toggle="tooltip"]').tooltip();
+            });
+
+            // Bind the external search input to the table search
+            $('#externalSearch').on('input', function() {
+                table.search(this.value).draw(); // Trigger search on the table
+            });
+
+            $('#refreshButton').on('click', async function() {
+                table.ajax.reload(null, false);
+            });
         }
 
         // Initialize the DataTable

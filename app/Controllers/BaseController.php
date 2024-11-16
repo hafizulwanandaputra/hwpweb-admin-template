@@ -44,6 +44,27 @@ abstract class BaseController extends Controller
     // protected $session;
 
     /**
+     * System name property.
+     *
+     * @var string
+     */
+    protected $systemName = "HWPweb Admin Template";
+
+    /**
+     * System subtitle name property.
+     *
+     * @var string
+     */
+    protected $systemSubtitleName = "HWPweb Admin Template for CodeIgniter 4";
+
+    /**
+     * Company name property.
+     *
+     * @var string
+     */
+    protected $companyName = "HWPweb";
+
+    /**
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)

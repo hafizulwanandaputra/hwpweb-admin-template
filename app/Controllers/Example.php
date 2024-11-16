@@ -16,7 +16,7 @@ class Example extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Example CRUD',
+            'title' => 'Example CRUD - ' . $this->systemName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('dashboard/example/index', $data);

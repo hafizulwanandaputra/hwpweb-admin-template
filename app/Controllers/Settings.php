@@ -24,7 +24,7 @@ class Settings extends BaseController
         $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         $data = [
             'countadmin' => $countadmin,
-            'title' => 'Settings',
+            'title' => 'Settings - ' . $this->systemName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('dashboard/settings/index', $data);
@@ -92,7 +92,7 @@ class Settings extends BaseController
         $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         if ($countadmin > 1) {
             $data = [
-                'title' => 'Delete Account',
+                'title' => 'Delete Account - ' . $this->systemName,
                 'agent' => $this->request->getUserAgent()
             ];
             return view('dashboard/settings/deleteaccount', $data);
@@ -107,13 +107,22 @@ class Settings extends BaseController
         $php_extensions = get_loaded_extensions();
         $query_version = $db->query('SELECT VERSION() as version');
         $query_comment = $db->query('SHOW VARIABLES LIKE "version_comment"');
+        $query_compile_os = $db->query('SHOW VARIABLES LIKE "version_compile_os"');
+        $query_compile_machine = $db->query('SHOW VARIABLES LIKE "version_compile_machine"');
         $row_version = $query_version->getRow();
         $row_comment = $query_comment->getRow();
+        $row_compile_os = $query_compile_os->getRow();
+        $row_compile_machine = $query_compile_machine->getRow();
         $agent = $this->request->getUserAgent();
         $data = [
             'php_extensions' => implode(', ', $php_extensions),
             'version' => $row_version->version,
             'version_comment' => $row_comment->Value,
+            'version_compile_os' => $row_compile_os->Value,
+            'version_compile_machine' => $row_compile_machine->Value,
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName,
             'agent' => $agent,
             'title' => 'About This System',
             'agent' => $this->request->getUserAgent()

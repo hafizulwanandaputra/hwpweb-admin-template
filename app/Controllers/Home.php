@@ -76,7 +76,7 @@ class Home extends BaseController
             }
         $data = [
             'txtgreeting' => $txtGreeting,
-            'title' => 'Home',
+            'title' => 'Home - ' . $this->systemName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('dashboard/home/index', $data);

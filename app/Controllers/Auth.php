@@ -16,6 +16,7 @@ class Auth extends BaseController
     public function index()
     {
         $data = [
+            'title' =>  $this->systemName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('auth/login', $data);

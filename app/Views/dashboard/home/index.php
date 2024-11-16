@@ -16,11 +16,7 @@
                 <h1 class="h2 mb-0 me-3"><i class="fa-regular fa-face-smile-beam"></i></h1>
                 <h1 class="h2 mb-0"><?= $txtgreeting . ', ' . session()->get('fullname') . '!'; ?></h1>
             </div>
-        </div>
-    </div>
-    <hr>
-    <div class="d-xxl-flex justify-content-center">
-        <div class="no-fluid-content">
+            <hr>
             <p>Hello World!</p>
             <!-- Place Informations Here -->
         </div>
