@@ -16,7 +16,10 @@ class ChangePassword extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Change Password - ' . $this->systemName,
+            'title' => 'Change Password',
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('dashboard/changepassword/index', $data);

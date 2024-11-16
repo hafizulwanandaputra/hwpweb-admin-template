@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $title; ?></title>
+    <title><?= $title . ' - ' . $systemName ?></title>
     <!-- 
     UNCOMMENT IF YOU WANT TO USE AS PWA 
     - Set up your PWA application in public/manifest.json

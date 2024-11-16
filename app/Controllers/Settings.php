@@ -24,7 +24,10 @@ class Settings extends BaseController
         $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         $data = [
             'countadmin' => $countadmin,
-            'title' => 'Settings - ' . $this->systemName,
+            'title' => 'Settings',
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('dashboard/settings/index', $data);
@@ -34,6 +37,9 @@ class Settings extends BaseController
     {
         $data = [
             'title' => 'Change User Information',
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName,
             'agent' => $this->request->getUserAgent(),
             'validation' => \Config\Services::validation()
         ];
@@ -92,7 +98,10 @@ class Settings extends BaseController
         $countadmin = $db->table('user')->where('role', 'Administrator')->countAllResults();
         if ($countadmin > 1) {
             $data = [
-                'title' => 'Delete Account - ' . $this->systemName,
+                'title' => 'Delete Account',
+                'systemName' => $this->systemName,
+                'systemSubtitleName' => $this->systemSubtitleName,
+                'companyName' => $this->companyName,
                 'agent' => $this->request->getUserAgent()
             ];
             return view('dashboard/settings/deleteaccount', $data);

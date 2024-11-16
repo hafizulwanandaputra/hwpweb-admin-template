@@ -20,7 +20,10 @@ class Users extends BaseController
         // Administrator Only
         if (session()->get('role') == 'Administrator') {
             $data = [
-                'title' => 'Users - ' . $this->systemName,
+                'title' => 'Users',
+                'systemName' => $this->systemName,
+                'systemSubtitleName' => $this->systemSubtitleName,
+                'companyName' => $this->companyName,
                 'agent' => $this->request->getUserAgent()
             ];
             return view('dashboard/users/index', $data);
