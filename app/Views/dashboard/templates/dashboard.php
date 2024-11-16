@@ -301,7 +301,14 @@
                                 </div>
                             </div>
                             <div class="text-center w-100 lh-sm mb-3">
-                                <span><?= session()->get('fullname'); ?><br><span style="font-size: 10pt;">@<?= session()->get('username'); ?></span><br><span style="font-size: 9pt;"><?= session()->get('role'); ?></span></span>
+                                <span>
+                                    <?= session()->get('fullname'); ?><br>
+                                    <span style="font-size: 10pt;">@<?= session()->get('username'); ?></span><br>
+                                    <span style="font-size: 9pt;"><?= session()->get('role'); ?></span><br>
+                                    <span class="date" style="font-size: 9pt;">Alamat IP: <?= $_SERVER['REMOTE_ADDR'] ?></span><br>
+                                    <span class="date" style="font-size: 9pt;">Waktu masuk: <?= session()->get('created_at'); ?></span><br>
+                                    <span class="date" style="font-size: 9pt;">Kedaluwarsa: <?= session()->get('expires_at'); ?></span>
+                                </span>
                             </div>
                             <hr class="my-1">
                             <ul class="nav nav-pills flex-column">

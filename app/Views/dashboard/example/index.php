@@ -199,10 +199,10 @@
                     "caseInsensitive": true
                 },
                 "searching": false, // Disable the internal search bar
-                'pageLength': 10,
+                'pageLength': 12,
                 'lengthMenu': [
-                    [10, 25, 50, 100, 250, 500],
-                    [10, 25, 50, 100, 250, 500]
+                    [12, 24, 36, 48, 60],
+                    [12, 24, 36, 48, 60]
                 ],
                 "autoWidth": true,
                 "processing": false,
@@ -507,42 +507,8 @@
             $('#image_preview').attr('src', '#');
             $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
         });
-        // Show toast notification
-        function showSuccessToast(message) {
-            var toastHTML = `<div id="toast" class="toast fade show align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-body d-flex align-items-start">
-                    <div style="width: 24px; text-align: center;">
-                        <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                    <div class="w-100 mx-2 text-start" id="toast-message">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>`;
-            var toastElement = $(toastHTML);
-            $('#toastContainer').append(toastElement); // Make sure there's a container with id `toastContainer`
-            var toast = new bootstrap.Toast(toastElement);
-            toast.show();
-        }
 
-        function showFailedToast(message) {
-            var toastHTML = `<div id="toast" class="toast fade show align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-body d-flex align-items-start">
-                    <div style="width: 24px; text-align: center;">
-                        <i class="fa-solid fa-circle-xmark"></i>
-                    </div>
-                    <div class="w-100 mx-2 text-start" id="toast-message">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            </div>`;
-            var toastElement = $(toastHTML);
-            $('#toastContainer').append(toastElement); // Make sure there's a container with id `toastContainer`
-            var toast = new bootstrap.Toast(toastElement);
-            toast.show();
-        }
+        <?= $this->include('toast/index') ?>
     });
 </script>
 <?= $this->endSection(); ?>

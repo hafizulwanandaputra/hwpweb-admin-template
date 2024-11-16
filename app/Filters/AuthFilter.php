@@ -10,11 +10,36 @@ class AuthFilter implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        // Do something here
-        if (session()->get('log') != true) {
-            $data = array(
-                'redirect' => urlencode(uri_string())
-            );
+        // Connect to the database and retrieve session token
+        $db = db_connect();
+        $token = session()->get('session_token');
+        $currentIP = $_SERVER['REMOTE_ADDR'];
+        $currentUserAgent = service('request')->getUserAgent()->getAgentString();
+
+        // Get session data based on session token
+        $session = $db->table('user_sessions')
+            ->where('session_token', $token)
+            ->get()
+            ->getRowArray();
+
+        // Check for session validity
+        if (!$session || strtotime($session['expires_at']) < time()) {
+            $db->table('user_sessions')
+                ->where('session_token', $token)
+                ->delete();
+            $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
+            session()->remove('id_user');
+            session()->remove('fullname');
+            session()->remove('username');
+            session()->remove('password');
+            session()->remove('profilephoto');
+            session()->remove('role');
+            session()->remove('session_token');
+            session()->remove('created_at');
+            session()->remove('expires_at');
+
+            // Handle redirection
+            $data = array('redirect' => urlencode(uri_string()));
             if (uri_string() == 'home' || uri_string() == '') {
                 session()->setFlashdata('url', base_url('home'));
                 return redirect()->to(base_url());
@@ -22,6 +47,22 @@ class AuthFilter implements FilterInterface
                 session()->setFlashdata('url', http_build_query($data));
                 return redirect()->to(base_url('/?' . session()->getFlashdata('url')));
             }
+        }
+
+        // Check if IP or user agent has changed
+        $updateData = [];
+        if ($session['ip_address'] !== $currentIP) {
+            $updateData['ip_address'] = $currentIP;
+        }
+        if ($session['user_agent'] !== $currentUserAgent) {
+            $updateData['user_agent'] = $currentUserAgent;
+        }
+
+        // Update the session record if either IP or user agent has changed
+        if (!empty($updateData)) {
+            $db->table('user_sessions')
+                ->where('session_token', $token)
+                ->update($updateData);
         }
     }
 

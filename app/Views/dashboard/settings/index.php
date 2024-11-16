@@ -14,6 +14,21 @@
         <!-- Place Settings Item Here -->
         <h5>Account Settings</h5>
         <ul class="list-group shadow-sm rounded-3 mb-3">
+            <?php if (session()->get('role') == "Administrator") : ?>
+                <li class="list-group-item p-1 list-group-item-action">
+                    <div class="d-flex align-items-start">
+                        <a href="<?= base_url('/settings/sessions'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                            <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-users-gear"></i></p>
+                        </a>
+                        <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
+                            <h5 class="card-title">Session Manager</h5>
+                        </div>
+                        <div class="align-self-center" style="min-width: 48px; max-width: 48px; text-align: center;">
+                            <span class="text-body-tertiary"><i class="fa-solid fa-angle-right"></i></span>
+                        </div>
+                    </div>
+                </li>
+            <?php endif; ?>
             <li class="list-group-item p-1 list-group-item-action">
                 <div class="d-flex align-items-start">
                     <a href="<?= base_url('/settings/edit'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">

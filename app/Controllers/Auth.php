@@ -50,13 +50,30 @@ class Auth extends BaseController
         // Check Login
         if ($check) {
             if (password_verify($password, $check['password'])) {
-                // Success Login
-                session()->set('log', true);
+                $db = db_connect();
+                $session_token = bin2hex(random_bytes(32));
+
+                $user_agent = $this->request->getUserAgent()->getAgentString();
+                $ip_address = $this->request->getIPAddress();
+
+                $expires_at = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+                $db->table('user_sessions')->insert([
+                    'id_user' => $check['id_user'],
+                    'session_token' => $session_token,
+                    'user_agent' => $user_agent,
+                    'ip_address' => $ip_address,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'expires_at' => $expires_at
+                ]);
                 session()->set('id_user', $check['id_user']);
                 session()->set('fullname', $check['fullname']);
                 session()->set('username', $check['username']);
                 session()->set('password', $check['password']);
                 session()->set('role', $check['role']);
+                session()->set('session_token', $session_token);
+                session()->set('created_at', date('Y-m-d H:i:s'));
+                session()->set('expires_at', $expires_at);
                 session()->set('url', $url);
                 return redirect()->to($url);
             } else {
@@ -132,13 +149,20 @@ class Auth extends BaseController
 
     public function logout()
     {
-        // Remove Sessions
-        session()->remove('log');
+        $db = db_connect();
+        $db->table('user_sessions')
+            ->where('id_user', session()->get('id_user'))
+            ->where('session_token', session()->get('session_token'))
+            ->delete();
+        $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
         session()->remove('id_user');
         session()->remove('fullname');
         session()->remove('username');
         session()->remove('password');
         session()->remove('role');
+        session()->remove('session_token');
+        session()->remove('created_at');
+        session()->remove('expires_at');
         session()->remove('url');
         session()->setFlashdata('msg', 'Logout successful!');
         return redirect()->to(base_url());
@@ -182,14 +206,19 @@ class Auth extends BaseController
             }
 
             $db->transCommit();
-
-            // Clear the session data
-            session()->remove('log');
+            $db->table('user_sessions')
+                ->where('id_user', session()->get('id_user'))
+                ->where('session_token', session()->get('session_token'))
+                ->delete();
+            $db->query('ALTER TABLE `user_sessions` auto_increment = 1');
             session()->remove('id_user');
             session()->remove('fullname');
             session()->remove('username');
             session()->remove('password');
             session()->remove('role');
+            session()->remove('session_token');
+            session()->remove('created_at');
+            session()->remove('expires_at');
             session()->remove('url');
 
             // Set success message and redirect to home

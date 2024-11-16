@@ -38,6 +38,13 @@ $routes->post('/(?i)users/(?i)getusers', 'Users::getUsers');
 // SETTINGS
 $routes->get('/(?i)settings', 'Settings::index');
 
+// SESSION MANAGER
+$routes->get('/(?i)settings/(?i)sessions', 'Sessions::index');
+$routes->post('/(?i)settings/(?i)sessionslist', 'Sessions::sessionslist');
+$routes->delete('/(?i)settings/(?i)flush', 'Sessions::flush');
+$routes->delete('/(?i)settings/(?i)deleteexpired', 'Sessions::deleteexpired');
+$routes->delete('/(?i)settings/(?i)deletesession/(:any)', 'Sessions::deletesession/$1');
+
 // CHANGE USER INFORMATION
 $routes->get('/(?i)settings/(?i)edit', 'Settings::edit');
 $routes->post('/(?i)settings/(?i)update', 'Settings::update');
