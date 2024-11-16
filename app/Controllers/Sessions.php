@@ -112,7 +112,7 @@ class Sessions extends BaseController
                 return $this->response->setJSON(['message' => 'User sessions successfully cleaned up']);
             } else {
                 return $this->response->setStatusCode(404)->setJSON([
-                    'error' => 'No user sessions to be cleaned up',
+                    'error' => 'User sessions is empty',
                 ]);
             }
         } else {
