@@ -9,17 +9,15 @@
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4">
-    <div class="d-xxl-flex justify-content-center">
-        <div class="no-fluid-content">
-            <div class="d-flex justify-content-start align-items-start pt-3">
-                <h1 class="h2 mb-0 me-3"><i class="fa-regular fa-face-smile-beam"></i></h1>
-                <h1 class="h2 mb-0"><?= $txtgreeting . ', ' . session()->get('fullname') . '!'; ?></h1>
-            </div>
-            <hr>
-            <p>Hello World!</p>
-            <!-- Place Informations Here -->
+<main class="col-md-9 ms-sm-auto col-lg-10 px-3">
+    <div class="no-fluid-content">
+        <div class="d-flex justify-content-start align-items-start pt-3">
+            <h1 class="h2 mb-0 me-3"><i class="fa-regular fa-face-smile-beam"></i></h1>
+            <h1 class="h2 mb-0"><?= $txtgreeting . ', ' . session()->get('fullname') . '!'; ?></h1>
         </div>
+        <hr>
+        <p>Hello World!</p>
+        <!-- Place Informations Here -->
     </div>
 </main>
 </div>

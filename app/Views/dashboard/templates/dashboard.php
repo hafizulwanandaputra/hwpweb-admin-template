@@ -171,6 +171,11 @@
             border-radius: var(--bs-border-radius-lg) !important;
         }
 
+        table.dataTable {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+        }
+
         .modal-body div.dataTables_wrapper div.dataTables_processing.card {
             background-color: rgba(var(--bs-body-bg-rgb), var(--bs-bg-opacity)) !important;
             --bs-bg-opacity: 1;
@@ -192,6 +197,10 @@
             word-break: break-all;
         }
 
+        .card {
+            --bs-card-border-color: var(--bs-border-color);
+        }
+
         @media (prefers-reduced-transparency) {
             div.dataTables_wrapper div.dataTables_processing.card {
                 --bs-bg-opacity: 1;
@@ -199,11 +208,15 @@
             }
         }
 
-        @media (min-width: 1400px) {
-            .no-fluid-content {
-                min-width: 1118.66px;
-                max-width: 1118.66px;
-            }
+        .no-fluid-content {
+            --bs-gutter-x: 0;
+            --bs-gutter-y: 0;
+            width: 100%;
+            padding-right: calc(var(--bs-gutter-x) * 0.5);
+            padding-left: calc(var(--bs-gutter-x) * 0.5);
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 1140px;
         }
 
         @media (max-width: 767.98px) {

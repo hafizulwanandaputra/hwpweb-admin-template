@@ -54,7 +54,7 @@ if (stripos($browser, 'Chrome') !== false) {
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="d-xxl-flex justify-content-center col-md-9 ms-sm-auto col-lg-10 px-3 px-md-4 pt-3">
+<main class="col-md-9 ms-sm-auto col-lg-10 px-3 pt-3">
     <div class="no-fluid-content">
         <div>
             <p><span class="h2"><?= $systemName ?></span><br><span class="fs-4"><?= $systemSubtitleName ?></span><br>&copy; 2024 <?= (date('Y') !== "2024") ? "- " . date('Y') : ''; ?> <?= $companyName ?></p>
