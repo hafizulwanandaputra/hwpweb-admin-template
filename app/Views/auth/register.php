@@ -7,34 +7,34 @@
             Register your Account
         </h1>
         <div class="form-floating mb-2">
-            <input type="text" class="form-control rounded-3 <?= (validation_show_error('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" value="<?= old('fullname'); ?>" autocomplete="off" dir="auto" placeholder="fullname">
+            <input type="text" class="form-control <?= (validation_show_error('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" value="<?= old('fullname'); ?>" autocomplete="off" dir="auto" placeholder="fullname">
             <label for="fullname">Full Name*</label>
             <div class="invalid-feedback">
                 <?= validation_show_error('fullname'); ?>
             </div>
         </div>
         <div class="form-floating mb-2">
-            <input type="text" class="form-control rounded-3 <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="<?= old('username'); ?>" autocomplete="off" dir="auto" placeholder="username">
+            <input type="text" class="form-control <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="<?= old('username'); ?>" autocomplete="off" dir="auto" placeholder="username">
             <label for="username">User Name*</label>
             <div class="invalid-feedback">
                 <?= validation_show_error('username'); ?>
             </div>
         </div>
         <div class="form-floating mb-2">
-            <input type="password" class="form-control rounded-3 <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?>" id="new_password1" name="new_password1" placeholder="new_password1">
+            <input type="password" class="form-control <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?>" id="new_password1" name="new_password1" placeholder="new_password1">
             <label for="new_password1">New Password*</label>
             <div class="invalid-feedback">
                 <?= validation_show_error('new_password1'); ?>
             </div>
         </div>
         <div class="form-floating mb-2">
-            <input type="password" class="form-control rounded-3 <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?>" id="new_password2" name="new_password2" placeholder="new_password2">
+            <input type="password" class="form-control <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?>" id="new_password2" name="new_password2" placeholder="new_password2">
             <label for="new_password2">Confirm New Password*</label>
             <div class="invalid-feedback">
                 <?= validation_show_error('new_password2'); ?>
             </div>
         </div>
-        <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit" id="registerBtn">
+        <button class="w-100 btn btn-lg btn-primary bg-gradient" type="submit" id="registerBtn">
             <i class="fa-solid fa-user-plus"></i> REGISTER
         </button>
         <?= form_close(); ?>
@@ -45,7 +45,7 @@
 </main>
 <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
     <?php if (session()->getFlashdata('msg')) : ?>
-        <div id="msgToast" class="toast align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="msgToast" class="toast align-items-center text-bg-success border border-success transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-check"></i>
@@ -58,7 +58,7 @@
         </div>
     <?php endif; ?>
     <?php if (isset($_GET['redirect'])) : ?>
-        <div id="redirectToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="redirectToast" class="toast align-items-center text-bg-danger border border-danger transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-xmark"></i>
@@ -71,7 +71,7 @@
         </div>
     <?php endif; ?>
     <?php if (session()->getFlashdata('error')) : ?>
-        <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-body d-flex align-items-start">
                 <div style="width: 24px; text-align: center;">
                     <i class="fa-solid fa-circle-xmark"></i>

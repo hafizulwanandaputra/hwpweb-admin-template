@@ -7,7 +7,7 @@
             Login to Your Account
         </h1>
         <div class="form-floating">
-            <input type="text" class="form-control username rounded-top-3 <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
+            <input type="text" class="form-control username <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
             <label for="floatingInput">
                 <div class="d-flex align-items-start">
                     <div style="width: 12px; text-align: center;">
@@ -20,7 +20,7 @@
             </label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control rounded-bottom-3 <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="floatingPassword" name="password" placeholder="Password" autocomplete="off">
+            <input type="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="floatingPassword" name="password" placeholder="Password" autocomplete="off">
             <label for="floatingPassword">
                 <div class="d-flex align-items-start">
                     <div style="width: 12px; text-align: center;">
@@ -33,7 +33,7 @@
             </label>
         </div>
         <input type="hidden" name="url" value="<?= (isset($_GET['redirect'])) ? base_url('/' . urldecode($_GET['redirect'])) : base_url('/home'); ?>">
-        <button class="w-100 btn btn-lg btn-primary rounded-3 bg-gradient" type="submit" id="loginBtn">
+        <button class="w-100 btn btn-lg btn-primary rounded bg-gradient" type="submit" id="loginBtn">
             <i class="fa-solid fa-right-to-bracket"></i> LOGIN
         </button>
         <?= form_close(); ?>

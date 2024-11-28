@@ -15,7 +15,7 @@
         <?= form_open_multipart('/delete/' . session()->get('id_user'), 'id="deleteAccountForm"'); ?>
         <?= csrf_field(); ?>
         <input type="hidden" name="_method" value="DELETE">
-        <div class="alert alert-danger bg-gradient rounded-3" role="alert">
+        <div class="alert alert-danger bg-gradient" role="alert">
             <div class="d-flex align-items-start">
                 <div style="width: 12px; text-align: center;">
                     <i class="fa-solid fa-circle-exclamation"></i>
@@ -25,10 +25,10 @@
                 </div>
             </div>
         </div>
-        <fieldset class="border rounded-3 px-2 py-0">
+        <fieldset class="border rounded px-2 py-0">
             <legend class="float-none w-auto mb-0 px-1 fs-6 fw-bold">Password</legend>
             <div class="form-floating mb-2">
-                <input type="password" class="form-control rounded-3 <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
+                <input type="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
                 <label for="password">Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('password'); ?>
@@ -37,7 +37,7 @@
         </fieldset>
         <hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-danger rounded-3 bg-gradient" type="submit" id="submitBtn"><i class="fa-solid fa-trash"></i> Delete</button>
+            <button class="btn btn-danger bg-gradient" type="submit" id="submitBtn"><i class="fa-solid fa-trash"></i> Delete</button>
         </div>
         <?= form_close(); ?>
     </div>

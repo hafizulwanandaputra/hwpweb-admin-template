@@ -5,6 +5,13 @@
       rgba(255, 255, 255, 0.25) 0%,
       rgba(255, 255, 255, 0) 10px,
       rgba(0, 0, 0, 0.25) 100%);
+  --bs-border-radius: 0.5rem;
+  --bs-border-radius-sm: 0.5rem;
+  --bs-border-radius-lg: 0.75rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-xxl: 2rem;
+  --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+  --bs-border-radius-pill: 50rem;
 }
 
 iframe {

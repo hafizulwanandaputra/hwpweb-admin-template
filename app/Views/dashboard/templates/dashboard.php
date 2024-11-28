@@ -276,7 +276,7 @@
                     My Admin Panel
                 </span>
             </div>
-            <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3 rounded-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+            <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
             <div class="d-flex flex-nowrap w-100 align-items-center" style="min-height: 48px;">
                 <div class="w-100 ps-3 pe-1 pe-lg-3 text-truncate">
                     <?= $this->renderSection('title'); ?>
@@ -303,7 +303,7 @@
                                     My Admin Panel
                                 </span>
                             </div>
-                            <button id="closeOffcanvasBtn" type="button" class="btn btn-secondary btn-sm bg-gradient ps-0 pe-0 pt-0 pb-0 rounded-3" data-bs-dismiss="offcanvas" aria-label="Close"><span data-feather="chevrons-right" class="mb-0" style="width: 30px; height: 30px;"></span></button>
+                            <button id="closeOffcanvasBtn" type="button" class="btn btn-secondary bg-gradient" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-angles-right"></i></button>
                         </div>
                         <div class="offcanvas-body p-1">
                             <div class="d-flex justify-content-center">
@@ -377,7 +377,7 @@
                     <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->
                         <li class="nav-item">
-                            <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'home') === 0) ? 'active' : '' ?>" href="<?= base_url('/home'); ?>" onclick="showSpinner()">
+                            <a class="nav-link p-2 <?= (strpos(uri_string(), 'home') === 0) ? 'active' : '' ?>" href="<?= base_url('/home'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
                                     <div <?= (strpos(uri_string(), 'home') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-house"></i>
@@ -389,7 +389,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'examples') === 0) ? 'active' : '' ?>" href="<?= base_url('/examples'); ?>" onclick="showSpinner()">
+                            <a class="nav-link p-2 <?= (strpos(uri_string(), 'examples') === 0) ? 'active' : '' ?>" href="<?= base_url('/examples'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
                                     <div <?= (strpos(uri_string(), 'examples') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-database"></i>
@@ -402,7 +402,7 @@
                         </li>
                         <?php if (session()->get('role') == 'Administrator') : ?>
                             <li class="nav-item">
-                                <a class="nav-link rounded-3 p-2 <?= (strpos(uri_string(), 'users') === 0) ? 'active' : '' ?>" href="<?= base_url('/users'); ?>" onclick="showSpinner()">
+                                <a class="nav-link p-2 <?= (strpos(uri_string(), 'users') === 0) ? 'active' : '' ?>" href="<?= base_url('/users'); ?>" onclick="showSpinner()">
                                     <div class="d-flex align-items-start">
                                         <div <?= (strpos(uri_string(), 'users') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
                                             <i class="fa-solid fa-users"></i>
@@ -423,7 +423,7 @@
         </div>
         <div id="toastContainer" class="toast-container position-fixed top-0 p-3" aria-live="polite" aria-atomic="true">
             <?php if (session()->getFlashdata('info')) : ?>
-                <div id="infoToast" class="toast align-items-center text-bg-info border border-info rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="infoToast" class="toast align-items-center text-bg-info border border-info transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-info"></i>
@@ -437,7 +437,7 @@
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('msg')) : ?>
-                <div id="msgToast" class="toast align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="msgToast" class="toast align-items-center text-bg-success border border-success transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-check"></i>
@@ -451,7 +451,7 @@
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('error')) : ?>
-                <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+                <div id="errorToast" class="toast align-items-center text-bg-danger border border-danger transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-body d-flex align-items-start">
                         <div style="width: 24px; text-align: center;">
                             <i class="fa-solid fa-circle-xmark"></i>

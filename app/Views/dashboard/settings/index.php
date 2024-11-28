@@ -13,7 +13,7 @@
     <div class="no-fluid-content">
         <!-- Place Settings Item Here -->
         <h5>Account Settings</h5>
-        <ul class="list-group shadow-sm rounded-3 mb-3">
+        <ul class="list-group shadow-sm mb-3">
             <?php if (session()->get('role') == "Administrator") : ?>
                 <li class="list-group-item p-1 list-group-item-action">
                     <div class="d-flex align-items-start">
@@ -72,7 +72,7 @@
             <?php endif; ?>
         </ul>
         <h5>System</h5>
-        <ul class="list-group shadow-sm rounded-3 mb-3">
+        <ul class="list-group shadow-sm mb-3">
             <li class="list-group-item p-1 list-group-item-action">
                 <div class="d-flex align-items-start">
                     <a href="<?= base_url('/settings/about'); ?>" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">

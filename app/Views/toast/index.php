@@ -1,5 +1,5 @@
 function showSuccessToast(message) {
-var toastHTML = `<div id="toast" class="toast fade align-items-center text-bg-success border border-success rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+var toastHTML = `<div id="toast" class="toast fade align-items-center text-bg-success border border-success transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body d-flex align-items-start">
         <div style="width: 24px; text-align: center;">
             <i class="fa-solid fa-circle-check"></i>
@@ -17,7 +17,7 @@ toast.show();
 }
 
 function showFailedToast(message) {
-var toastHTML = `<div id="toast" class="toast fade align-items-center text-bg-danger border border-danger rounded-3 transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
+var toastHTML = `<div id="toast" class="toast fade align-items-center text-bg-danger border border-danger transparent-blur" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body d-flex align-items-start">
         <div style="width: 24px; text-align: center;">
             <i class="fa-solid fa-circle-xmark"></i>

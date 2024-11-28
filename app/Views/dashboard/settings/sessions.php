@@ -16,8 +16,8 @@
             <li class="list-group-item border-top-0 border-end-0 border-start-0 bg-body-tertiary transparent-blur">
                 <div class="no-fluid-content">
                     <div class="input-group input-group-sm">
-                        <input type="search" class="form-control form-control-sm rounded-start-3" id="externalSearch" placeholder="Search">
-                        <button class="btn btn-success btn-sm bg-gradient rounded-end-3" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+                        <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
+                        <button class="btn btn-success btn-sm bg-gradient" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
                     </div>
                 </div>
             </li>
@@ -110,7 +110,7 @@
                 "<'row'<'col-md-12'tr>>" +
                 "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
             'initComplete': function(settings, json) {
-                $("#tabel").wrap("<div class='card shadow-sm rounded-3 mb-3 overflow-auto position-relative datatables-height'></div>");
+                $("#tabel").wrap("<div class='card shadow-sm mb-3 overflow-auto position-relative datatables-height'></div>");
                 $('.dataTables_filter input[type="search"]').css({
                     'width': '220px'
                 });
@@ -122,15 +122,11 @@
             "drawCallback": function() {
                 $(".pagination").wrap("<div class='overflow-auto'></div>");
                 $(".pagination").addClass("pagination-sm");
-                $('.pagination-sm').css({
-                    '--bs-pagination-border-radius': 'var(--bs-border-radius-lg)'
-                });
                 $(".page-item .page-link").addClass("bg-gradient");
-                $('select[name="tabel_length"]').addClass("rounded-3");
             },
             'buttons': [{
                 text: '<i class="fa-solid fa-broom"></i> Cleanup',
-                className: 'btn-danger btn-sm bg-gradient rounded-start-3',
+                className: 'btn-danger btn-sm bg-gradient',
                 attr: {
                     id: 'flushBtn'
                 },
@@ -139,7 +135,7 @@
                 },
             }, {
                 text: '<i class="fa-solid fa-trash"></i> Expired',
-                className: 'btn-danger btn-sm bg-gradient rounded-end-3',
+                className: 'btn-danger btn-sm bg-gradient',
                 attr: {
                     id: 'deleteExpiredBtn'
                 },
@@ -190,7 +186,7 @@
                         return `
                             <div class="d-grid">
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-outline-danger text-nowrap bg-gradient rounded-3 delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-username="${row.username}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-outline-danger text-nowrap bg-gradient delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 9pt;" data-id="${row.id}" data-username="${row.username}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         `;
