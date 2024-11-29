@@ -91,6 +91,7 @@ class Auth extends BaseController
     public function register()
     {
         $data = [
+            'title' =>  'User Registration - ' . $this->systemName,
             'agent' => $this->request->getUserAgent()
         ];
         return view('auth/register', $data);
