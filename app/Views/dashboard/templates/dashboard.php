@@ -286,8 +286,9 @@
                 </div>
                 <div class="mx-3">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#userOffcanvas" role="button" aria-controls="userOffcanvas">
-                        <div class="me-2 d-none d-lg-block text-end lh-1" style="font-size: 9pt;">
-                            @<?= session()->get('username') ?>
+                        <div class="me-2 d-none d-lg-block text-end lh-1">
+                            <span class="text-nowrap" style="font-size: 10pt;"><?= session()->get('fullname') ?></span><br>
+                            <span class="text-nowrap" style="font-size: 8pt;">@<?= session()->get('username') ?> • <span class="date"><?= $_SERVER['REMOTE_ADDR'] ?></span></span>
                         </div>
                         <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
