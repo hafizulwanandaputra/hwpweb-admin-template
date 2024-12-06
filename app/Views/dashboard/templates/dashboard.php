@@ -302,7 +302,7 @@
                 </span>
             </div>
             <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
-            <div class="d-flex flex-nowrap w-100 align-items-center" style="max-height: 48px; min-height: 48px;">
+            <div class="d-flex flex-nowrap w-100 align-items-center" style="min-height: 48px;">
                 <div class="w-100 ps-3 pe-1 pe-lg-3 text-truncate">
                     <?= $this->renderSection('title'); ?>
                 </div>
