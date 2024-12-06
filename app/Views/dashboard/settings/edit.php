@@ -10,12 +10,12 @@
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-3 pt-3">
+<main class="main-content-inside px-3 pt-3">
     <div class="no-fluid-content">
         <?= form_open_multipart('/settings/update', 'id="userInfoForm"'); ?>
         <?= csrf_field(); ?>
-        <fieldset class="border rounded px-2 py-0">
-            <legend class="float-none w-auto mb-0 px-1 fs-6 fw-bold">User Information</legend>
+        <div class="mb-3">
+            <div class="fw-bold mb-2 border-bottom">User Information</div>
             <div class="form-floating mb-2">
                 <input type="text" class="form-control <?= (validation_show_error('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" value="<?= (old('fullname')) ? old('fullname') : htmlspecialchars(session()->get('fullname')); ?>" autocomplete="off" dir="auto" placeholder="fullname">
                 <label for="fullname">Full Name*</label>
@@ -30,7 +30,7 @@
                     <?= validation_show_error('username'); ?>
                 </div>
             </div>
-        </fieldset>
+        </div>
         <hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
             <button class="btn btn-primary bg-gradient" type="submit" id="submitBtn"><i class="fa-solid fa-user-pen"></i> Change</button>

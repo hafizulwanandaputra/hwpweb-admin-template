@@ -135,6 +135,15 @@
             /* Enables scrolling in the content area */
         }
 
+        .main-content-inside {
+            margin-left: 210px;
+        }
+
+        #sidebarMenu,
+        #sidebarHeader {
+            min-width: 210px;
+        }
+
         .profilephotosidebar {
             background-color: var(--bs-body-bg);
             width: 32px;
@@ -216,7 +225,11 @@
             padding-left: calc(var(--bs-gutter-x) * 0.5);
             margin-right: auto;
             margin-left: auto;
-            max-width: 1140px;
+            max-width: 960px;
+        }
+
+        .no-caret::after {
+            display: none;
         }
 
         @media (max-width: 767.98px) {
@@ -224,6 +237,10 @@
                 padding-top: 7rem !important;
                 transform: translateX(-50%) !important;
                 left: 50% !important;
+            }
+
+            .main-content-inside {
+                margin-left: 0;
             }
 
             .sidebar {
@@ -240,9 +257,14 @@
             }
 
             #sidebarMenu {
+                min-width: 0;
                 opacity: 0;
                 transition: opacity 0.25s ease-out, transform 0.25s ease-out;
                 transform: translateY(-10px);
+            }
+
+            #sidebarHeader {
+                min-width: 0;
             }
 
             #sidebarMenu.show {
@@ -271,7 +293,7 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
-            <div class="d-flex justify-content-center align-items-center col-md-3 col-lg-2 me-0 px-3 py-md-1" style="min-height: 48px;">
+            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="min-height: 48px;">
                 <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
                     My Admin Panel
                 </span>
@@ -287,8 +309,8 @@
                 <div class="mx-3">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#userOffcanvas" role="button" aria-controls="userOffcanvas">
                         <div class="me-2 d-none d-xl-block text-end lh-1">
-                            <span class="text-nowrap" style="font-size: 10pt;"><?= session()->get('fullname') ?></span><br>
-                            <span class="text-nowrap" style="font-size: 8pt;">@<?= session()->get('username') ?> • <span class="date"><?= $_SERVER['REMOTE_ADDR'] ?></span></span>
+                            <span class="text-nowrap" style="font-size: 0.85em;"><?= session()->get('fullname') ?></span><br>
+                            <span class="text-nowrap" style="font-size: 0.7em;">@<?= session()->get('username') ?> • <span class="date"><?= $_SERVER['REMOTE_ADDR'] ?></span></span>
                         </div>
                         <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
@@ -317,11 +339,11 @@
                             <div class="text-center w-100 lh-sm mb-3">
                                 <span>
                                     <?= session()->get('fullname'); ?><br>
-                                    <span style="font-size: 10pt;">@<?= session()->get('username'); ?></span><br>
-                                    <span style="font-size: 9pt;"><?= session()->get('role'); ?></span><br>
-                                    <span class="date" style="font-size: 9pt;">IP address: <?= $_SERVER['REMOTE_ADDR'] ?></span><br>
-                                    <span class="date" style="font-size: 9pt;">Login time: <?= session()->get('created_at'); ?></span><br>
-                                    <span class="date" style="font-size: 9pt;">Expires: <?= session()->get('expires_at'); ?></span>
+                                    <span style="font-size: 0.85em;">@<?= session()->get('username'); ?></span><br>
+                                    <span style="font-size: 0.75em;"><?= session()->get('role'); ?></span><br>
+                                    <span class="date" style="font-size: 0.75em;">IP address: <?= $_SERVER['REMOTE_ADDR'] ?></span><br>
+                                    <span class="date" style="font-size: 0.75em;">Login time: <?= session()->get('created_at'); ?></span><br>
+                                    <span class="date" style="font-size: 0.75em;">Expires: <?= session()->get('expires_at'); ?></span>
                                 </span>
                             </div>
                             <hr class="my-1">
@@ -373,7 +395,7 @@
 
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar shadow-sm collapse">
+            <nav id="sidebarMenu" class="d-md-block bg-body-tertiary sidebar shadow-sm collapse">
                 <div id="sidebarMenu2" class="position-sticky sidebar-sticky p-1">
                     <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->

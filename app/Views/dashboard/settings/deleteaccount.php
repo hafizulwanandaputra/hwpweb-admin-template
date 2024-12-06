@@ -10,7 +10,7 @@
 <div style="min-width: 1px; max-width: 1px;"></div>
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
-<main class="col-md-9 ms-sm-auto col-lg-10 px-3 pt-3">
+<main class="main-content-inside px-3 pt-3">
     <div class="no-fluid-content">
         <?= form_open_multipart('/delete/' . session()->get('id_user'), 'id="deleteAccountForm"'); ?>
         <?= csrf_field(); ?>
@@ -25,8 +25,8 @@
                 </div>
             </div>
         </div>
-        <fieldset class="border rounded px-2 py-0">
-            <legend class="float-none w-auto mb-0 px-1 fs-6 fw-bold">Password</legend>
+        <div class="mb-3">
+            <div class="fw-bold mb-2 border-bottom">Password</div>
             <div class="form-floating mb-2">
                 <input type="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
                 <label for="password">Password</label>
@@ -34,7 +34,7 @@
                     <?= validation_show_error('password'); ?>
                 </div>
             </div>
-        </fieldset>
+        </div>
         <hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
             <button class="btn btn-danger bg-gradient" type="submit" id="submitBtn"><i class="fa-solid fa-trash"></i> Delete</button>
