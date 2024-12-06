@@ -141,6 +141,7 @@
 
         #sidebarMenu,
         #sidebarHeader {
+            max-width: 210px;
             min-width: 210px;
         }
 
@@ -257,6 +258,7 @@
             }
 
             #sidebarMenu {
+                max-width: 100%;
                 min-width: 0;
                 opacity: 0;
                 transition: opacity 0.25s ease-out, transform 0.25s ease-out;
@@ -264,6 +266,7 @@
             }
 
             #sidebarHeader {
+                max-width: 100%;
                 min-width: 0;
             }
 
@@ -293,13 +296,13 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
-            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="min-height: 48px;">
+            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="max-height: 48px; min-height: 48px;">
                 <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
                     My Admin Panel
                 </span>
             </div>
             <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
-            <div class="d-flex flex-nowrap w-100 align-items-center" style="min-height: 48px;">
+            <div class="d-flex flex-nowrap w-100 align-items-center" style="max-height: 48px; min-height: 48px;">
                 <div class="w-100 ps-3 pe-1 pe-lg-3 text-truncate">
                     <?= $this->renderSection('title'); ?>
                 </div>
@@ -321,7 +324,7 @@
 
                     <div class="offcanvas offcanvas-end bg-body-tertiary shadow-sm transparent-blur" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
                         <div class="offcanvas-header pt-0 pb-0 d-flex justify-content-between">
-                            <div class="d-flex align-items-center col-md-3 col-lg-2 me-0 py-md-1" style="min-height: 48px; max-height: 48px;">
+                            <div class="d-flex align-items-center col-md-3 col-lg-2 me-0 py-md-1" style="max-height: 48px; min-height: 48px; max-height: 48px;">
                                 <span class="navbar-brand mx-0 fs-6 lh-1">
                                     My Admin Panel
                                 </span>
