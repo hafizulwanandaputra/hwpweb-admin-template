@@ -302,14 +302,14 @@
                 </span>
             </div>
             <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
-            <div class="d-flex flex-nowrap w-100 align-items-center" style="min-height: 48px;">
-                <div class="w-100 ps-3 pe-1 pe-lg-3 text-truncate">
+            <div class="d-flex w-100 align-items-center text-truncate" style="min-height: 48px; max-height: 48px;">
+                <div class="w-100 ps-3 pe-1 pe-xl-2 text-truncate" style="flex: 1; min-width: 0;">
                     <?= $this->renderSection('title'); ?>
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="vr d-none d-xl-block border-success-subtle" style="height: 32px;"></div>
                 </div>
-                <div class="mx-3">
+                <div class="me-3 ms-1 ms-xl-3">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#userOffcanvas" role="button" aria-controls="userOffcanvas">
                         <div class="me-2 d-none d-xl-block text-end">
                             <div class="d-flex flex-column">

@@ -2,7 +2,7 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm" role="status">
+    <div id="loadingSpinner" class="spinner-border spinner-border-sm mx-2" role="status" style="min-width: 1rem;">
         <span class="visually-hidden">Loading...</span>
     </div>
 </div>
