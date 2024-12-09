@@ -64,7 +64,7 @@ if (stripos($browser, 'Chrome') !== false) {
         <ul class="list-group shadow-sm mb-3">
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><?= $iconClass; ?></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -75,7 +75,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><?= $browserIcon; ?></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -87,7 +87,7 @@ if (stripos($browser, 'Chrome') !== false) {
             <?php if ($agent->isMobile()) : ?>
                 <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                     <div class="d-flex align-items-start">
-                        <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                        <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                             <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-mobile-screen"></i></p>
                         </a>
                         <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -99,7 +99,7 @@ if (stripos($browser, 'Chrome') !== false) {
             <?php endif; ?>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -110,7 +110,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-large"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -124,7 +124,7 @@ if (stripos($browser, 'Chrome') !== false) {
         <ul class="list-group shadow-sm mb-3">
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-server"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -135,7 +135,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -146,7 +146,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -157,7 +157,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-database"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -168,7 +168,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -179,7 +179,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -193,7 +193,7 @@ if (stripos($browser, 'Chrome') !== false) {
         <ul class="list-group shadow-sm mb-3">
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
@@ -204,7 +204,7 @@ if (stripos($browser, 'Chrome') !== false) {
             </li>
             <li class="list-group-item p-1 list-group-item-action disabled" aria-disabled="true">
                 <div class="d-flex align-items-start">
-                    <a href="#" class="stretched-link" style="min-width: 48px; max-width: 48px; text-align: center;">
+                    <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-js"></i></p>
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
