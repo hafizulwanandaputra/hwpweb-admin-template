@@ -284,7 +284,7 @@
             // Hide all active Bootstrap tooltips
             $('[data-bs-toggle="tooltip"]').tooltip('hide');
             // Disable the button and show the loading spinner
-            $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 11px; height: 11px;" aria-hidden="true"></span>`);
+            $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span>`);
 
             try {
                 // Make the GET request
