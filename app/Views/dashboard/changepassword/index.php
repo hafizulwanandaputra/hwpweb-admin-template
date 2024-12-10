@@ -26,21 +26,33 @@
         <div class="mb-3">
             <div class="fw-bold mb-2 border-bottom">Password</div>
             <div class="form-floating mb-2">
-                <input type="password" class="form-control <?= (validation_show_error('current_password')) ? 'is-invalid' : ''; ?>" id="current_password" name="current_password" placeholder="current_password">
+                <input type="password" class="form-control <?= (validation_show_error('current_password')) ? 'is-invalid' : ''; ?>" id="current_password" name="current_password" placeholder="current_password" data-bs-toggle="popover"
+                    data-bs-placement="top"
+                    data-bs-trigger="manual"
+                    data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
                 <label for="current_password">Old Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('current_password'); ?>
                 </div>
             </div>
             <div class="form-floating mb-2">
-                <input type="password" class="form-control <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?>" id="new_password1" name="new_password1" placeholder="new_password1">
+                <input type="password" class="form-control <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?>" id="new_password1" name="new_password1" placeholder="new_password1" data-bs-toggle="popover"
+                    data-bs-placement="top"
+                    data-bs-trigger="manual"
+                    data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
                 <label for="new_password1">New Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('new_password1'); ?>
                 </div>
             </div>
             <div class="form-floating mb-2">
-                <input type="password" class="form-control <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?>" id="new_password2" name="new_password2" placeholder="new_password2">
+                <input type="password" class="form-control <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?>" id="new_password2" name="new_password2" placeholder="new_password2" data-bs-toggle="popover"
+                    data-bs-placement="top"
+                    data-bs-trigger="manual"
+                    data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
                 <label for="new_password2">Confirm New Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('new_password2'); ?>
@@ -59,6 +71,40 @@
 <?= $this->section('javascript'); ?>
 <script>
     $(document).ready(function() {
+        $('input[type="password"]').each(function() {
+            const passwordInput = $(this);
+            const popover = new bootstrap.Popover(passwordInput[0], {
+                html: true,
+                template: '<div class="popover shadow-lg" role="tooltip">' +
+                    '<div class="popover-arrow"></div>' +
+                    '<h3 class="popover-header"></h3>' +
+                    '<div class="popover-body">Caps Lock is active!</div>' +
+                    '</div>'
+            });
+
+            let capsLockActive = false;
+
+            passwordInput.on('focus', function() {
+                passwordInput[0].addEventListener('keyup', function(event) {
+                    const currentCapsLock = event.getModifierState('CapsLock');
+
+                    if (currentCapsLock !== capsLockActive) {
+                        capsLockActive = currentCapsLock;
+                        if (capsLockActive) {
+                            popover.show();
+                        } else {
+                            popover.hide();
+                        }
+                    }
+                });
+            });
+
+            passwordInput.on('blur', function() {
+                popover.hide();
+                passwordInput[0].removeEventListener('keyup', function() {});
+                capsLockActive = false;
+            });
+        });
         $('#loadingSpinner').hide();
         $('input.form-control').on('input', function() {
             // Remove the is-invalid class for the current input field

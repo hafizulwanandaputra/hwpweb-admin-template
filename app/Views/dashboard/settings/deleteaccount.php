@@ -28,7 +28,11 @@
         <div class="mb-3">
             <div class="fw-bold mb-2 border-bottom">Password</div>
             <div class="form-floating mb-2">
-                <input type="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
+                <input type="password" class="form-control <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password" data-bs-toggle="popover"
+                    data-bs-placement="top"
+                    data-bs-trigger="manual"
+                    data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
                 <label for="password">Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('password'); ?>
@@ -47,6 +51,40 @@
 <?= $this->section('javascript'); ?>
 <script>
     $(document).ready(function() {
+        $('input[type="password"]').each(function() {
+            const passwordInput = $(this);
+            const popover = new bootstrap.Popover(passwordInput[0], {
+                html: true,
+                template: '<div class="popover shadow-lg" role="tooltip">' +
+                    '<div class="popover-arrow"></div>' +
+                    '<h3 class="popover-header"></h3>' +
+                    '<div class="popover-body">Caps Lock is active!</div>' +
+                    '</div>'
+            });
+
+            let capsLockActive = false;
+
+            passwordInput.on('focus', function() {
+                passwordInput[0].addEventListener('keyup', function(event) {
+                    const currentCapsLock = event.getModifierState('CapsLock');
+
+                    if (currentCapsLock !== capsLockActive) {
+                        capsLockActive = currentCapsLock;
+                        if (capsLockActive) {
+                            popover.show();
+                        } else {
+                            popover.hide();
+                        }
+                    }
+                });
+            });
+
+            passwordInput.on('blur', function() {
+                popover.hide();
+                passwordInput[0].removeEventListener('keyup', function() {});
+                capsLockActive = false;
+            });
+        });
         $('#loadingSpinner').hide();
         $('input.form-control').on('input', function() {
             // Remove the is-invalid class for the current input field
