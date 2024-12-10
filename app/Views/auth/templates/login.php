@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#e9ecef" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#2b3035" media="(prefers-color-scheme: dark)">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/5.3/examples/sign-in/sign-in.css" rel="stylesheet">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
@@ -81,96 +81,39 @@
             background-position: center;
         }
 
+        html,
         body {
-            background-color: var(--bs-secondary-bg);
+            height: 100%;
         }
 
-        .form-signin .username {
-            margin-bottom: -1px;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
+        .kbd {
+            border-radius: 4px !important;
+        }
+
+        .no-fluid-content {
+            --bs-gutter-x: 0;
+            --bs-gutter-y: 0;
+            width: 100%;
+            padding-right: calc(var(--bs-gutter-x) * 0.5);
+            padding-left: calc(var(--bs-gutter-x) * 0.5);
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 1140px;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 
-<body class="d-flex align-items-center py-4 text-center" id="background">
+<body class="bg-body-secondary d-flex flex-column h-100">
 
     <?= $this->renderSection('content'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="<?= base_url() ?>assets/fontawesome/js/all.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Show toast messages if they exist
-            if ($('#redirectToast').length) {
-                var redirectToast = new bootstrap.Toast($('#redirectToast')[0]);
-                redirectToast.show();
-            }
 
-            if ($('#msgToast').length) {
-                var msgToast = new bootstrap.Toast($('#msgToast')[0]);
-                msgToast.show();
-            }
+    <?= $this->renderSection('javascript'); ?>
 
-            if ($('#errorToast').length) {
-                var errorToast = new bootstrap.Toast($('#errorToast')[0]);
-                errorToast.show();
-            }
-
-            if ($('#validationToast').length) {
-                var validationToast = new bootstrap.Toast($('#validationToast')[0]);
-                validationToast.show();
-            }
-
-            setTimeout(function() {
-                if ($('#redirectToast').length) {
-                    var redirectToast = new bootstrap.Toast($('#redirectToast')[0]);
-                    redirectToast.hide();
-                }
-
-                if ($('#msgToast').length) {
-                    var msgToast = new bootstrap.Toast($('#msgToast')[0]);
-                    msgToast.hide();
-                }
-
-                if ($('#errorToast').length) {
-                    var errorToast = new bootstrap.Toast($('#errorToast')[0]);
-                    errorToast.hide();
-                }
-
-                if ($('#validationToast').length) {
-                    var validationToast = new bootstrap.Toast($('#validationToast')[0]);
-                    validationToast.hide();
-                }
-            }, 5000);
-            $('input.form-control').on('input', function() {
-                // Remove the is-invalid class for the current input field
-                $(this).removeClass('is-invalid');
-                // Hide the invalid-feedback message for the current input field
-                $(this).siblings('.invalid-feedback').hide();
-            });
-            $(document).on('click', '#loginBtn', function(e) {
-                e.preventDefault();
-                $('#loginForm').submit();
-                $('input').prop('disabled', true).removeClass('is-invalid');
-                $('#loginBtn').prop('disabled', true).html(`
-          <span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span>
-          <span role="status">PLEASE WAIT...</span>
-        `);
-            });
-            $(document).on('click', '#registerBtn', function(e) {
-                e.preventDefault();
-                $('#registerForm').submit();
-                $('input').prop('disabled', true).removeClass('is-invalid');
-                $('#registerBtn').prop('disabled', true).html(`
-          <span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span>
-          <span role="status">PLEASE WAIT...</span>
-        `);
-            });
-        });
-    </script>
     <script>
         /*!
          * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)

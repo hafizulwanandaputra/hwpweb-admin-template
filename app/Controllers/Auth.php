@@ -17,7 +17,10 @@ class Auth extends BaseController
     {
         $data = [
             'title' =>  $this->systemName,
-            'agent' => $this->request->getUserAgent()
+            'agent' => $this->request->getUserAgent(),
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName
         ];
         return view('auth/login', $data);
     }
@@ -92,7 +95,10 @@ class Auth extends BaseController
     {
         $data = [
             'title' =>  'User Registration - ' . $this->systemName,
-            'agent' => $this->request->getUserAgent()
+            'agent' => $this->request->getUserAgent(),
+            'systemName' => $this->systemName,
+            'systemSubtitleName' => $this->systemSubtitleName,
+            'companyName' => $this->companyName
         ];
         return view('auth/register', $data);
     }
