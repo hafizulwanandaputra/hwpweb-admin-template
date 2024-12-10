@@ -41,7 +41,7 @@
                         </label>
                     </div>
                     <div class="d-grid w-auto">
-                        <button id="loginBtn" class="w-100 btn btn-primary bg-gradient fs-4" type="submit">
+                        <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded" type="submit">
                             <i class="fa-solid fa-right-to-bracket"></i> <span class="d-md-none">LOGIN</span>
                         </button>
                     </div>
