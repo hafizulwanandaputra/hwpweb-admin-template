@@ -69,15 +69,40 @@
                 </li>
             </ol>
             <hr>
-            <p>For modal, use this element for header:</p>
+            <p>
+                For modal, use this element for header:
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);"&gt;
     &lt;h6 class="pe-2 modal-title fs-6 text-truncate" style="font-weight: bold;"&gt;Modal Title&lt;/h6&gt;
     &lt;button id="closeBtn" type="button" class="btn btn-danger bg-gradient" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;&lt;/button&gt;
 &lt;/div&gt;</pre>
             </div>
+            </p>
+            <p>
+                and for footer:
+            <div class="rounded bg-body-tertiary p-3 text-break">
+                <pre class="mb-0">&lt;div class=&quot;modal-footer justify-content-end pt-2 pb-2&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+    &lt;div class=&quot;mb-1 mt-1 w-100&quot; id=&quot;uploadProgressDiv&quot;&gt;
+        &lt;div class=&quot;progress&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent); border-bottom: 1px solid var(--bs-border-color-translucent); border-left: 1px solid var(--bs-border-color-translucent); border-right: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+            &lt;div class=&quot;progress-bar progress-bar-striped progress-bar-animated bg-gradient&quot; role=&quot;progressbar&quot; style=&quot;width: 0%; transition: none;&quot; id=&quot;uploadProgressBar&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;d-flex justify-content-between w-100&quot;&gt;
+        &lt;div&gt;
+            &lt;button type=&quot;button&quot; id=&quot;cancelButton&quot; class=&quot;btn btn-danger bg-gradient&quot; style=&quot;display: none;&quot; disabled&gt;
+                &lt;i class=&quot;fa-solid fa-xmark&quot;&gt;&lt;/i&gt; Cancel
+            &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;button type=&quot;submit&quot; id=&quot;submitButton&quot; class=&quot;btn btn-primary bg-gradient&quot;&gt;
+            &lt;i class=&quot;fa-solid fa-floppy-disk&quot;&gt;&lt;/i&gt; Save
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            </div>
+            </p>
             <hr>
-            <p>This is the code for modal sheet</p>
+            <p>
+                This is the code for modal sheet
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class="modal modal-sheet p-4 py-md-5 fade" id="sheetModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="sheetModal" aria-hidden="true" role="dialog"&gt;
     &lt;div class="modal-dialog modal-dialog-centered" role="document"&gt;
@@ -94,6 +119,7 @@
     &lt;/div&gt;
 &lt;/div&gt;</pre>
             </div>
+            </p>
         </div>
     </div>
 </main>
