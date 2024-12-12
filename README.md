@@ -31,6 +31,10 @@ The user guide corresponding to the latest version of the framework can be found
    > The base URL is based on PHP's `$_SERVER['SERVER_NAME']` value. You just need to change the `requestURL` which consists of the port and the subfolder (if the app is stored in a subfolder).
 7. Sign in using username `administrator` and password `administrator`. You need to change the password from `{your_base_url}/settings/changepassword` and we recommend using a strong password for better security.
 
+## Bootstrap 5.3 Notes
+
+[Click here](https://hafizulwanandaputra.github.io/hwpweb-admin-template/) for notes about Bootstrap 5.3 used on this repository.
+
 ## Progressive Web App (PWA) Setup
 
 The `manifest.json` file contains the application configuration for the PWA located in the public folder.
