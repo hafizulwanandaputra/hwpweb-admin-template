@@ -309,13 +309,17 @@ div.dataTables_wrapper div.dataTables_info {
   --bs-backdrop-opacity: 0.25;
 }
 
+.offcanvas-backdrop.show {
+  opacity: 0.25;
+}
+
 .fade {
-  transition: opacity 0.15s linear;
+  transition: opacity 0.25s ease-out;
 }
 
 .modal.fade .modal-dialog {
-  transition: transform 0.15s ease-in-out;
-  transform: scale(0.9);
+  transition: transform 0.25s ease-out;
+  transform: scale(0.95);
 }
 
 .modal.show .modal-dialog {
