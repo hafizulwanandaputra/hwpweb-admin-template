@@ -11,8 +11,7 @@
     - Set up your PWA service worker in public/service-worker.js
     -->
     <link rel="manifest" href="<?= base_url(); ?>/manifest.json">
-    <meta name="theme-color" content="#e9ecef" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#2b3035" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#e9ecef">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="<?= base_url(); ?>assets/css/dashboard/dashboard.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
@@ -51,10 +50,10 @@
 
                 if (isDarkMode) {
                     $('html').attr('data-bs-theme', 'dark');
-                    themeColor = '#051b11';
+                    themeColor = '#2b3035';
                 } else {
                     $('html').attr('data-bs-theme', theme);
-                    themeColor = '#d1e7dd';
+                    themeColor = '#e9ecef';
                 }
                 $('meta[name="theme-color"]').attr('content', themeColor);
 
