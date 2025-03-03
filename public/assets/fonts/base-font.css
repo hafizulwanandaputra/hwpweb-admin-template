@@ -6,7 +6,12 @@
 }
 
 .date {
-
   font-variant-numeric: tabular-nums;
+}
 
+@supports (font-variation-settings: normal) {
+  :root {
+    --bs-font-sans-serif: "Inter HWP Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", "Apple Color Emoji", sans-serif, "Segoe UI Emoji";
+  }
 }
