@@ -1,6 +1,6 @@
 :root {
-  --bs-font-sans-serif: "Inter HWP", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", "Apple Color Emoji", sans-serif, "Segoe UI Emoji";
+  --bs-font-sans-serif: "Inter HWP", "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  ;
 
   --bs-font-monospace: ui-monospace, SFMono-Regular, "SF Mono", "Noto Sans Mono", "Noto Color Emoji", "Apple Color Emoji", monospace, "Segoe UI Emoji";
 }
@@ -11,7 +11,7 @@
 
 @supports (font-variation-settings: normal) {
   :root {
-    --bs-font-sans-serif: "Inter HWP Variable", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Noto Sans", "Noto Sans Arabic", "Noto Color Emoji", "Apple Color Emoji", sans-serif, "Segoe UI Emoji";
+    --bs-font-sans-serif: "Inter HWP Variable", "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+    ;
   }
 }
