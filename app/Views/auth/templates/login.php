@@ -19,7 +19,7 @@
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="<?= base_url(); ?>assets/fonts/iosevka-term-ss06/IosevkaTermSS06.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fonts/inter-hwp/inter-hwp.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/fonts/roboto/stylesheet.css" rel="stylesheet">
     <link href="<?= base_url(); ?>assets/fonts/noto-sans-lgc/stylesheet.css" rel="stylesheet">

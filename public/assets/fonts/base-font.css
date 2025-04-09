@@ -1,6 +1,6 @@
 :root {
   --bs-font-sans-serif: "Inter HWP", Roboto, "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
-  --bs-font-monospace: "Iosevka Term SS06 Web", Menlo, Monaco, Consolas, "Courier New", "Liberation Mono", monospace;
+  --bs-font-monospace: "Iosevka HWP Mono Web", Menlo, Monaco, Consolas, "Courier New", "Liberation Mono", monospace;
 }
 
 .date {
