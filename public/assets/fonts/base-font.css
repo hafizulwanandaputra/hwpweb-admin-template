@@ -1,8 +1,6 @@
 :root {
-  --bs-font-sans-serif: "Inter HWP", "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
-  ;
-
-  --bs-font-monospace: ui-monospace, SFMono-Regular, "SF Mono", "Noto Sans Mono", "Noto Color Emoji", "Apple Color Emoji", monospace, "Segoe UI Emoji";
+  --bs-font-sans-serif: "Inter HWP", Roboto, "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --bs-font-monospace: "Iosevka Term SS06 Web", Menlo, Monaco, Consolas, "Courier New", "Liberation Mono", monospace;
 }
 
 .date {
