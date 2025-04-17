@@ -218,7 +218,7 @@
             $('#registerForm').submit();
             $('input').prop('disabled', true).removeClass('is-invalid');
             $('#registerBtn').prop('disabled', true).html(`
-          <span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span> PLEASE WAIT
+            <?= $this->include('spinner/spinner'); ?> PLEASE WAIT
         `);
         });
     });

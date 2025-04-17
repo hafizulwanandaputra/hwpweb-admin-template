@@ -187,7 +187,7 @@
 
         .sidebar {
             box-shadow: inset 0px 0 0 rgba(0, 0, 0, 0);
-            border-right: 1px solid var(--bs-border-color-translucent);
+            border-right: 1px solid var(--bs-border-color);
             height: 100%;
             overflow: auto;
         }
@@ -312,7 +312,7 @@
                 top: 48px;
                 backdrop-filter: blur(20px);
                 --bs-bg-opacity: 0.6667;
-                border-right: 0px solid var(--bs-border-color-translucent);
+                border-right: 0px solid var(--bs-border-color);
                 width: 100%;
             }
 
@@ -353,13 +353,14 @@
             }
         }
     </style>
+    <?= $this->include('spinner/spinner-css'); ?>
     <?= $this->renderSection('header'); ?>
 </head>
 
-<body>
+<body class="bg-body-tertiary">
     <div class="wrapper">
         <!-- HEADER -->
-        <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
+        <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color);">
             <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="max-height: 48px; min-height: 48px;">
                 <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
                     My Admin Panel
@@ -488,7 +489,7 @@
 
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
-            <nav id="sidebarMenu" class="d-md-block bg-body-tertiary sidebar shadow-sm collapse">
+            <nav id="sidebarMenu" class="d-md-block bg-body-secondary sidebar shadow-sm collapse">
                 <div id="sidebarMenu2" class="position-sticky sidebar-sticky p-1">
                     <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->

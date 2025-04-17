@@ -47,8 +47,8 @@ if (stripos($browser, 'Chrome') !== false) {
 <div class="d-flex justify-content-start align-items-center">
     <a class="fs-5 me-3" href="<?= base_url('/settings'); ?>"><i class="fa-solid fa-arrow-left"></i></a>
     <span class="fw-medium fs-5 flex-fill text-truncate">About This System</span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm mx-2" role="status" style="min-width: 1rem;">
-        <span class="visually-hidden">Loading...</span>
+    <div id="loadingSpinner" class="px-2">
+        <?= $this->include('spinner/spinner'); ?>
     </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>

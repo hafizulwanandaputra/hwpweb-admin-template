@@ -2,8 +2,8 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm mx-2" role="status" style="min-width: 1rem;">
-        <span class="visually-hidden">Loading...</span>
+    <div id="loadingSpinner" class="px-2">
+        <?= $this->include('spinner/spinner'); ?>
     </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
@@ -12,7 +12,7 @@
 <main class="main-content-inside">
     <div class="sticky-top" style="z-index: 99;">
         <ul class="list-group shadow-sm rounded-0">
-            <li class="list-group-item border-top-0 border-end-0 border-start-0 bg-body-tertiary transparent-blur">
+            <li class="list-group-item border-top-0 border-end-0 border-start-0 bg-body-secondary transparent-blur">
                 <div class="no-fluid-content">
                     <div class="input-group input-group-sm">
                         <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
@@ -61,7 +61,7 @@
             <form id="exampleForm" enctype="multipart/form-data" class="modal-content bg-body-tertiary shadow-lg transparent-blur">
                 <div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);">
                     <h6 class="pe-2 modal-title fs-6 text-truncate" id="exampleModalLabel" style="font-weight: bold;">Add Example Data</h6>
-                    <button id="closeBtn" type="button" class="btn btn-danger bg-gradient" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                    <button id="closeBtn" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body py-2">
                     <input type="hidden" id="exampleId" name="id">
@@ -312,7 +312,7 @@
             var id = $this.data('id');
             $('[data-bs-toggle="tooltip"]').tooltip('hide');
             // Disable the button and show a spinner
-            $this.prop('disabled', true).html(`<span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span>`);
+            $this.prop('disabled', true).html(`<?= $this->include('spinner/spinner'); ?>`);
 
             try {
                 // Make the Axios GET request using async/await
@@ -411,7 +411,7 @@
             $('#uploadProgressBar').removeClass('bg-danger').css('width', '0%');
             $('#cancelButton').prop('disabled', false).show();
             $('#submitButton').prop('disabled', true).html(`
-                <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                <?= $this->include('spinner/spinner'); ?>
                 <span role="status">Processing <span id="uploadPercentage" style="font-variant-numeric: tabular-nums;">0%</span></span>
             `);
 

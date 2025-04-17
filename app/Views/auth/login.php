@@ -228,7 +228,7 @@
             $('#loginForm').submit();
             $('input').prop('disabled', true).removeClass('is-invalid');
             $('#loginBtn').prop('disabled', true).html(`
-          <span class="spinner-border" style="width: 1em; height: 1em;" aria-hidden="true"></span>  <span class="d-md-none">PLEASE WAIT</span>
+            <?= $this->include('spinner/spinner'); ?> <span class="d-md-none">PLEASE WAIT</span>
         `);
         });
     });

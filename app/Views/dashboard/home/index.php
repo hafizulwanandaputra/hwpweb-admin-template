@@ -2,8 +2,8 @@
 <?= $this->section('title'); ?>
 <div class="d-flex justify-content-start align-items-center">
     <span class="fw-medium fs-5 flex-fill text-truncate"><?= $title; ?></span>
-    <div id="loadingSpinner" class="spinner-border spinner-border-sm mx-2" role="status" style="min-width: 1rem;">
-        <span class="visually-hidden">Loading...</span>
+    <div id="loadingSpinner" class="px-2">
+        <?= $this->include('spinner/spinner'); ?>
     </div>
 </div>
 <div style="min-width: 1px; max-width: 1px;"></div>
@@ -72,9 +72,9 @@
             <p>
                 For modal, use this element for header:
             <div class="rounded bg-body-tertiary p-3 text-break">
-                <pre class="mb-0">&lt;div class="modal-header justify-content-between pt-2 pb-2" style="border-bottom: 1px solid var(--bs-border-color-translucent);"&gt;
-    &lt;h6 class="pe-2 modal-title fs-6 text-truncate" style="font-weight: bold;"&gt;Modal Title&lt;/h6&gt;
-    &lt;button id="closeBtn" type="button" class="btn btn-danger bg-gradient" data-bs-dismiss="modal" aria-label="Close"&gt;&lt;i class="fa-solid fa-xmark"&gt;&lt;/i&gt;&lt;/button&gt;
+                <pre class="mb-0">&lt;div class=&quot;modal-header justify-content-between pt-2 pb-2&quot; style=&quot;border-bottom: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+    &lt;h6 class=&quot;pe-2 modal-title fs-6 text-truncate&quot; style=&quot;font-weight: bold;&quot;&gt;Modal Title&lt;/h6&gt;
+    &lt;button id=&quot;closeBtn&quot; type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
 &lt;/div&gt;</pre>
             </div>
             </p>
@@ -104,16 +104,16 @@
             <p>
                 This is the code for modal sheet
             <div class="rounded bg-body-tertiary p-3 text-break">
-                <pre class="mb-0">&lt;div class="modal modal-sheet p-4 py-md-5 fade" id="sheetModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="sheetModal" aria-hidden="true" role="dialog"&gt;
-    &lt;div class="modal-dialog modal-dialog-centered" role="document"&gt;
-        &lt;div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur"&gt;
-            &lt;div class="modal-body p-4 text-center"&gt;
-                &lt;h5 class="mb-0" id="sheetMessage"&gt;Message?&lt;/h5&gt;
-                &lt;h6 class="mb-0" id="sheetSubmessage"&gt;&lt;/h6&gt;
+                <pre class="mb-0">&lt;div class=&quot;modal modal-sheet p-4 py-md-5 fade&quot; id=&quot;sheetModal&quot; data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot; tabindex=&quot; -1&quot; aria-labelledby=&quot;sheetModal&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot;&gt;
+    &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot;&gt;
+        &lt;div class=&quot;modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur&quot;&gt;
+            &lt;div class=&quot;modal-body p-4 text-center&quot;&gt;
+                &lt;h5 class=&quot;mb-0&quot; id=&quot;sheetMessage&quot;&gt;Message?&lt;/h5&gt;
+                &lt;h6 class=&quot;mb-0&quot; id=&quot;sheetSubmessage&quot;&gt;&lt;/h6&gt;
             &lt;/div&gt;
-            &lt;div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);"&gt;
-                &lt;button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal" style="border-right: 1px solid var(--bs-border-color-translucent);"&gt;No&lt;/button&gt;
-                &lt;button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmSheet"&gt;Yes&lt;/a&gt;
+            &lt;div class=&quot;modal-footer flex-nowrap p-0&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0&quot; data-bs-dismiss=&quot;modal&quot; style=&quot;border-right: 1px solid var(--bs-border-color-translucent);&quot;&gt;No&lt;/button&gt;
+                &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0&quot; id=&quot;confirmSheet&quot;&gt;Yes&lt;/a&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;

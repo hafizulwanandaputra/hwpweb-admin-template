@@ -167,6 +167,7 @@
             max-width: 1140px;
         }
     </style>
+    <?= $this->include('spinner/spinner-css'); ?>
 </head>
 
 <body class="bg-body-secondary d-flex flex-column h-100">
