@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>HWPweb Admin Template Notes</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
       crossorigin="anonymous"
     />
     <link href="assets/css/dashboard/dashboard.css" rel="stylesheet" />
@@ -27,7 +27,10 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap"
       rel="stylesheet"
     />
-    <link href="assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css" rel="stylesheet">
+    <link
+      href="assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css"
+      rel="stylesheet"
+    />
     <link href="assets/fonts/inter-hwp/inter-hwp.css" rel="stylesheet" />
     <link href="assets/fonts/base-font.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/all.css" rel="stylesheet" />
@@ -317,6 +320,20 @@
                 </p>
                 <hr />
                 <p>
+                  The <code>&lt;body&gt;</code> tag uses
+                  <code>bg-body-hwpweb</code> class, which means:
+                </p>
+                <ol>
+                  <li>
+                    If the light theme is applied, the background color is
+                    <code>--bs-tertiary-bg</code>.
+                  </li>
+                  <li>
+                    If the dark theme is applied, the background color is
+                    <code>--bs-body-bg</code>.
+                  </li>
+                </ol>
+                <p>
                   Bootstrap 5.3 elements has been modified to use gradients on
                   some elements but not all. Add <code>bg-gradient</code> for
                   elements of:
@@ -430,19 +447,19 @@
                   </li>
                 </ol>
                 <hr />
-                <p>
-                  For modal, use this element for header:
-              <div class="rounded bg-body-tertiary p-3 text-break">
-                  <pre class="mb-0">&lt;div class=&quot;modal-header justify-content-between pt-2 pb-2&quot; style=&quot;border-bottom: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+                For modal, use this element for header:
+                <div class="rounded bg-body-tertiary p-3 text-break">
+                  <pre class="mb-0">
+&lt;div class=&quot;modal-header justify-content-between pt-2 pb-2&quot; style=&quot;border-bottom: 1px solid var(--bs-border-color-translucent);&quot;&gt;
       &lt;h6 class=&quot;pe-2 modal-title fs-6 text-truncate&quot; style=&quot;font-weight: bold;&quot;&gt;Modal Title&lt;/h6&gt;
       &lt;button id=&quot;closeBtn&quot; type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
-  &lt;/div&gt;</pre>
-              </div>
-              </p>
-              <p>
-                  and for footer:
-              <div class="rounded bg-body-tertiary p-3 text-break">
-                  <pre class="mb-0">&lt;div class=&quot;modal-footer justify-content-end pt-2 pb-2&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
+  &lt;/div&gt;</pre
+                  >
+                </div>
+                and for footer:
+                <div class="rounded bg-body-tertiary p-3 text-break">
+                  <pre class="mb-0">
+&lt;div class=&quot;modal-footer justify-content-end pt-2 pb-2&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
       &lt;div class=&quot;mb-1 mt-1 w-100&quot; id=&quot;uploadProgressDiv&quot;&gt;
           &lt;div class=&quot;progress&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent); border-bottom: 1px solid var(--bs-border-color-translucent); border-left: 1px solid var(--bs-border-color-translucent); border-right: 1px solid var(--bs-border-color-translucent);&quot;&gt;
               &lt;div class=&quot;progress-bar progress-bar-striped progress-bar-animated bg-gradient&quot; role=&quot;progressbar&quot; style=&quot;width: 0%; transition: none;&quot; id=&quot;uploadProgressBar&quot;&gt;&lt;/div&gt;
@@ -458,14 +475,14 @@
               &lt;i class=&quot;fa-solid fa-floppy-disk&quot;&gt;&lt;/i&gt; Save
           &lt;/button&gt;
       &lt;/div&gt;
-  &lt;/div&gt;</pre>
-              </div>
-              </p>
-              <hr>
-              <p>
-                  This is the code for modal sheet
-              <div class="rounded bg-body-tertiary p-3 text-break">
-                  <pre class="mb-0">&lt;div class=&quot;modal modal-sheet p-4 py-md-5 fade&quot; id=&quot;sheetModal&quot; data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot; tabindex=&quot; -1&quot; aria-labelledby=&quot;sheetModal&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot;&gt;
+  &lt;/div&gt;</pre
+                  >
+                </div>
+                <hr />
+                This is the code for modal sheet
+                <div class="rounded bg-body-tertiary p-3 text-break">
+                  <pre class="mb-0">
+&lt;div class=&quot;modal modal-sheet p-4 py-md-5 fade&quot; id=&quot;sheetModal&quot; data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot; tabindex=&quot; -1&quot; aria-labelledby=&quot;sheetModal&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot;&gt;
       &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot;&gt;
           &lt;div class=&quot;modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur&quot;&gt;
               &lt;div class=&quot;modal-body p-4 text-center&quot;&gt;
@@ -478,9 +495,9 @@
               &lt;/div&gt;
           &lt;/div&gt;
       &lt;/div&gt;
-  &lt;/div&gt;</pre>
-              </div>
-              </p>
+  &lt;/div&gt;</pre
+                  >
+                </div>
               </div>
             </div>
           </main>
@@ -493,8 +510,8 @@
       crossorigin="anonymous"
     ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
       crossorigin="anonymous"
     ></script>
     <script

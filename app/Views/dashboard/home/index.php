@@ -20,7 +20,12 @@
         <div class="mb-3">
             <p>For more information about Bootstrap 5.3 components, <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">click here</a>.</p>
             <hr>
-            <p>Bootstrap 5.3 elements has been modified to use gradients on some elements but not all. Add <code>bg-gradient</code> for elements of:</p>
+            <p>The <code>&lt;body&gt;</code> tag uses <code>bg-body-hwpweb</code> class, which means:</p>
+            <ol>
+                <li>If the light theme is applied, the background color is <code>--bs-tertiary-bg</code>.</li>
+                <li>If the dark theme is applied, the background color is <code>--bs-body-bg</code>.</li>
+            </ol>
+            <p>Some Bootstrap 5.3 elements has been modified to use gradients on some elements but not all. Add <code>bg-gradient</code> for elements of:</p>
             <ol>
                 <li class="mb-2">
                     <span class="badge text-bg-primary bg-gradient">Badge</span>
@@ -69,17 +74,14 @@
                 </li>
             </ol>
             <hr>
-            <p>
-                For modal, use this element for header:
+            For modal, use this element for header:
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class=&quot;modal-header justify-content-between pt-2 pb-2&quot; style=&quot;border-bottom: 1px solid var(--bs-border-color-translucent);&quot;&gt;
     &lt;h6 class=&quot;pe-2 modal-title fs-6 text-truncate&quot; style=&quot;font-weight: bold;&quot;&gt;Modal Title&lt;/h6&gt;
     &lt;button id=&quot;closeBtn&quot; type=&quot;button&quot; class=&quot;btn-close&quot; data-bs-dismiss=&quot;modal&quot; aria-label=&quot;Close&quot;&gt;&lt;/button&gt;
 &lt;/div&gt;</pre>
             </div>
-            </p>
-            <p>
-                and for footer:
+            and for footer:
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class=&quot;modal-footer justify-content-end pt-2 pb-2&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
     &lt;div class=&quot;mb-1 mt-1 w-100&quot; id=&quot;uploadProgressDiv&quot;&gt;
@@ -99,10 +101,8 @@
     &lt;/div&gt;
 &lt;/div&gt;</pre>
             </div>
-            </p>
             <hr>
-            <p>
-                This is the code for modal sheet
+            This is the code for modal sheet
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class=&quot;modal modal-sheet p-4 py-md-5 fade&quot; id=&quot;sheetModal&quot; data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot; tabindex=&quot; -1&quot; aria-labelledby=&quot;sheetModal&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot;&gt;
     &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot;&gt;
@@ -119,7 +119,6 @@
     &lt;/div&gt;
 &lt;/div&gt;</pre>
             </div>
-            </p>
         </div>
     </div>
 </main>
