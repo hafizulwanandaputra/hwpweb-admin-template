@@ -357,7 +357,7 @@
     <?= $this->renderSection('header'); ?>
 </head>
 
-<body class="bg-body-tertiary">
+<body class="bg-body-hwpweb">
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color);">
