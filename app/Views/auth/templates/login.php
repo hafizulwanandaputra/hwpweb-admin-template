@@ -50,7 +50,7 @@
 
                 if (isDarkMode) {
                     $('html').attr('data-bs-theme', 'dark');
-                    themeColor = '#2b3035';
+                    themeColor = '#343a40';
                 } else {
                     $('html').attr('data-bs-theme', theme);
                     themeColor = '#e9ecef';
