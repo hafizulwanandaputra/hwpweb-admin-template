@@ -480,7 +480,7 @@
 
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
-            <nav id="sidebarMenu" class="d-md-block bg-body-secondary sidebar shadow-sm collapse">
+            <nav id="sidebarMenu" class="d-md-block bg-body-secondary sidebar shadow-sm collapse transparent-blur">
                 <div id="sidebarMenu2" class="position-sticky sidebar-sticky p-1">
                     <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->
