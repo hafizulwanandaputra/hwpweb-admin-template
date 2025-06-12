@@ -389,7 +389,7 @@
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="dropdown">
-                                    <button class="btn btn-outline-body bg-gradient dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+                                    <button class="btn btn-secondary bg-gradient dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                                         <i class="fa-solid fa-palette"></i>
                                     </button>
                                     <ul class="dropdown-menu shadow-sm dropdown-menu-end bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
@@ -466,13 +466,17 @@
 
         <div class="modal modal-sheet p-4 py-md-5 fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex=" -1" aria-labelledby="logoutModal" aria-hidden="true" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
+                <div class="modal-content bg-body-tertiary rounded-5 shadow-lg transparent-blur">
                     <div class="modal-body p-4 text-center">
                         <h5 class="mb-0" id="logoutMessage">Do you want to logout?</h5>
-                    </div>
-                    <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal" style="border-right: 1px solid var(--bs-border-color-translucent);">No</button>
-                        <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmLogout" onclick="window.location.href='<?= base_url('/logout'); ?>';">Yes</a>
+                        <div class="row gx-2 pt-3">
+                            <div class="col d-grid">
+                                <button type="button" class="btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                            </div>
+                            <div class="col d-grid">
+                                <button type="button" class="btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4" id="confirmLogout" onclick="window.location.href='<?= base_url('/logout'); ?>';">Yes</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

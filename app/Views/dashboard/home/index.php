@@ -106,14 +106,18 @@
             <div class="rounded bg-body-tertiary p-3 text-break">
                 <pre class="mb-0">&lt;div class=&quot;modal modal-sheet p-4 py-md-5 fade&quot; id=&quot;sheetModal&quot; data-bs-backdrop=&quot;static&quot; data-bs-keyboard=&quot;false&quot; tabindex=&quot; -1&quot; aria-labelledby=&quot;sheetModal&quot; aria-hidden=&quot;true&quot; role=&quot;dialog&quot;&gt;
     &lt;div class=&quot;modal-dialog modal-dialog-centered&quot; role=&quot;document&quot;&gt;
-        &lt;div class=&quot;modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur&quot;&gt;
+        &lt;div class=&quot;modal-content bg-body-tertiary rounded-5 shadow-lg transparent-blur&quot;&gt;
             &lt;div class=&quot;modal-body p-4 text-center&quot;&gt;
-                &lt;h5 class=&quot;mb-0&quot; id=&quot;sheetMessage&quot;&gt;Message?&lt;/h5&gt;
-                &lt;h6 class=&quot;mb-0&quot; id=&quot;sheetSubmessage&quot;&gt;&lt;/h6&gt;
-            &lt;/div&gt;
-            &lt;div class=&quot;modal-footer flex-nowrap p-0&quot; style=&quot;border-top: 1px solid var(--bs-border-color-translucent);&quot;&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0&quot; data-bs-dismiss=&quot;modal&quot; style=&quot;border-right: 1px solid var(--bs-border-color-translucent);&quot;&gt;No&lt;/button&gt;
-                &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0&quot; id=&quot;confirmSheet&quot;&gt;Yes&lt;/a&gt;
+                &lt;h5 class=&quot;mb-0&quot; id=&quot;sheetMessage&quot;&gt;&lt;/h5&gt;
+                &lt;h6 class=&quot;mb-0 fw-normal&quot; id=&quot;sheetSubmessage&quot;&gt;&lt;/h6&gt;
+                &lt;div class=&quot;row gx-2 pt-3&quot;&gt;
+                    &lt;div class=&quot;col d-grid&quot;&gt;
+                        &lt;button type=&quot;button&quot; class=&quot;btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4&quot; data-bs-dismiss=&quot;modal&quot;&gt;No&lt;/button&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;col d-grid&quot;&gt;
+                        &lt;button type=&quot;submit&quot; class=&quot;btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4&quot; id=&quot;confirmSheet&quot;&gt;Yes&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/div&gt;

@@ -10,7 +10,7 @@
             <div class="col-md">
                 <?= form_open('check-login', 'id="loginForm"'); ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control form-control-sm <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
+                    <input type="text" class="form-control form-control-sm <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
                     <label for="floatingInput">
                         <div class="d-flex align-items-start">
                             <div style="width: 12px; text-align: center;">
@@ -24,7 +24,7 @@
                 </div>
                 <div class="d-flex flex-column flex-md-row column-gap-3">
                     <div class="flex-fill form-floating mb-3 mb-md-0">
-                        <input type="password" class="form-control form-control-sm <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?>" id="floatingPassword" name="password" placeholder="Password" autocomplete="off" data-bs-toggle="popover"
+                        <input type="password" class="form-control form-control-sm <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingPassword" name="password" placeholder="Password" autocomplete="off" data-bs-toggle="popover"
                             data-bs-placement="top"
                             data-bs-trigger="manual"
                             data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
@@ -41,7 +41,7 @@
                         </label>
                     </div>
                     <div class="d-grid w-auto">
-                        <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded" type="submit">
+                        <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded-4" type="submit">
                             <i class="fa-solid fa-right-to-bracket"></i> <span class="d-md-none">LOGIN</span>
                         </button>
                     </div>
@@ -52,7 +52,7 @@
                     <span>Don't have an account? <a href="<?= base_url('register') ?>" class="text-decoration-none">click here!</a></span>
                 </div>
                 <div class="dropdown d-grid mt-3">
-                    <button class="btn btn-outline-body bg-gradient btn-sm dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+                    <button class="btn btn-outline-body bg-gradient btn-sm rounded-4 dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                         <i class="fa-solid fa-palette"></i> Set Theme
                     </button>
                     <ul class="dropdown-menu shadow-sm w-100 bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">

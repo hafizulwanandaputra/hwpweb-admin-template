@@ -10,21 +10,21 @@
             <div class="col-md">
                 <?= form_open('register/create', 'id="registerForm"'); ?>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= (validation_show_error('fullname')) ? 'is-invalid' : ''; ?>" id="fullname" name="fullname" value="<?= old('fullname'); ?>" autocomplete="off" dir="auto" placeholder="fullname">
+                    <input type="text" class="form-control <?= (validation_show_error('fullname')) ? 'is-invalid' : ''; ?> rounded-4" id="fullname" name="fullname" value="<?= old('fullname'); ?>" autocomplete="off" dir="auto" placeholder="fullname">
                     <label for="fullname">Full Name*</label>
                     <div class="invalid-feedback">
                         <?= validation_show_error('fullname'); ?>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" value="<?= old('username'); ?>" autocomplete="off" dir="auto" placeholder="username">
+                    <input type="text" class="form-control <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?> rounded-4" id="username" name="username" value="<?= old('username'); ?>" autocomplete="off" dir="auto" placeholder="username">
                     <label for="username">User Name*</label>
                     <div class="invalid-feedback">
                         <?= validation_show_error('username'); ?>
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?>" id="new_password1" name="new_password1" placeholder="new_password1" data-bs-toggle="popover"
+                    <input type="password" class="form-control <?= (validation_show_error('new_password1')) ? 'is-invalid' : ''; ?> rounded-4" id="new_password1" name="new_password1" placeholder="new_password1" data-bs-toggle="popover"
                         data-bs-placement="top"
                         data-bs-trigger="manual"
                         data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="password" class="form-control <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?>" id="new_password2" name="new_password2" placeholder="new_password2" data-bs-toggle="popover"
+                    <input type="password" class="form-control <?= (validation_show_error('new_password2')) ? 'is-invalid' : ''; ?> rounded-4" id="new_password2" name="new_password2" placeholder="new_password2" data-bs-toggle="popover"
                         data-bs-placement="top"
                         data-bs-trigger="manual"
                         data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
@@ -45,7 +45,7 @@
                         <?= validation_show_error('new_password2'); ?>
                     </div>
                 </div>
-                <button class="w-100 btn btn-lg btn-primary bg-gradient rounded" type="submit" id="registerBtn">
+                <button class="w-100 btn btn-lg btn-primary bg-gradient rounded-4" type="submit" id="registerBtn">
                     <i class="fa-solid fa-user-plus"></i> REGISTER
                 </button>
 
@@ -55,7 +55,7 @@
                     <span>Already have an account? <a href="<?= base_url() ?>" class="text-decoration-none">click here!</a></span>
                 </div>
                 <div class="dropdown d-grid mt-3">
-                    <button class="btn btn-outline-body bg-gradient btn-sm dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+                    <button class="btn btn-outline-body bg-gradient btn-sm rounded-4 dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                         <i class="fa-solid fa-palette"></i> Set Theme
                     </button>
                     <ul class="dropdown-menu shadow-sm w-100 bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
