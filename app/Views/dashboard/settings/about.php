@@ -198,7 +198,7 @@ if (stripos($browser, 'Chrome') !== false) {
                     </a>
                     <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
                         <h5 class="card-title">Bootstrap Version</h5>
-                        <span>5.3.5</span>
+                        <span>5.3.7</span>
                     </div>
                 </div>
             </li>
