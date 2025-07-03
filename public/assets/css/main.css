@@ -381,7 +381,7 @@ div.dataTables_wrapper div.dataTables_info {
 @media (prefers-reduced-transparency: no-preference) {
   .transparent-blur {
     --bs-bg-opacity: 0.6667;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
   }
 }
 
