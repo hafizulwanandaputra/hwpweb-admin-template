@@ -1,15 +1,8 @@
 :root {
-  --bs-font-sans-serif: "Inter HWP", Roboto, "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+  --bs-font-sans-serif: Roboto, "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
   --bs-font-monospace: "Iosevka HWP Mono Web", Menlo, Monaco, Consolas, "Courier New", "Liberation Mono", monospace;
 }
 
 .date {
   font-variant-numeric: tabular-nums;
-}
-
-@supports (font-variation-settings: normal) {
-  :root {
-    --bs-font-sans-serif: "Inter HWP Variable", "Noto Sans", "Noto Sans Arabic", system-ui, -apple-system, "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
-    ;
-  }
 }
