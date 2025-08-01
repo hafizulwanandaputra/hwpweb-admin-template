@@ -21,10 +21,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="<?= base_url(); ?>assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/fonts/roboto/stylesheet.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/fonts/noto-sans-lgc/stylesheet.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/fonts/noto-sans-lgc-mono/stylesheet.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/fonts/noto-sans-arabic/stylesheet.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
     <script src="<?= base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script>
