@@ -5,15 +5,19 @@ $browser = $agent->getBrowser();
 $browserIcon = '';
 
 if (stripos($platform, 'Windows') !== false) {
-    $iconClass = '<i class="fa-brands fa-windows"></i>';
-} elseif (stripos($platform, 'Mac') !== false) {
+    $iconClass = '<i class="fa-brands fa-microsoft"></i>';
+} elseif (stripos($platform, 'Mac') !== false || stripos($platform, 'macOS') !== false || stripos($platform, 'iOS') !== false || stripos($platform, 'iPadOS') !== false) {
     $iconClass = '<i class="fa-brands fa-apple"></i>';
 } elseif (stripos($platform, 'Linux') !== false) {
     $iconClass = '<i class="fa-brands fa-linux"></i>';
 } elseif (stripos($platform, 'Android') !== false) {
     $iconClass = '<i class="fa-brands fa-android"></i>';
-} elseif (stripos($platform, 'iOS') !== false || stripos($platform, 'iPhone') !== false || stripos($platform, 'iPad') !== false) {
-    $iconClass = '<i class="fa-brands fa-apple"></i>';
+} elseif (stripos($platform, 'BlackBerry') !== false) {
+    $iconClass = '<i class="fa-brands fa-blackberry"></i>';
+} elseif (stripos($platform, 'FreeBSD') !== false) {
+    $iconClass = '<i class="fa-brands fa-freebsd"></i>';
+} elseif (stripos($platform, 'Debian') !== false) {
+    $iconClass = '<i class="fa-brands fa-debian"></i>';
 } else {
     $iconClass = '<i class="fa-solid fa-computer"></i>';
 }
@@ -24,7 +28,7 @@ if (stripos($browser, 'Chrome') !== false) {
     $browserIcon = '<i class="fa-brands fa-firefox-browser"></i>';
 } elseif (stripos($browser, 'Safari') !== false) {
     $browserIcon = '<i class="fa-brands fa-safari"></i>';
-} elseif (stripos($browser, 'Edge') !== false) {
+} elseif (stripos($browser, 'Edge') !== false || stripos($browser, 'Spartan') !== false) {
     $browserIcon = '<i class="fa-brands fa-edge"></i>';
 } elseif (stripos($browser, 'Opera') !== false || stripos($browser, 'OPR') !== false) {
     $browserIcon = '<i class="fa-brands fa-opera"></i>';
