@@ -206,13 +206,16 @@
 
         .profilephotosidebar {
             background-color: var(--bs-body-bg);
-            width: 32px;
             aspect-ratio: 1/1;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
             outline: 1px solid var(--bs-body-bg);
+            min-height: 2rem;
+            max-height: 2rem;
+            min-width: 2rem;
+            max-width: 2rem;
             box-shadow: 0 0 0 2px var(--bs-secondary);
         }
 
@@ -368,7 +371,7 @@
                                 <div class="text-nowrap lh-sm" style="font-size: 0.7em;">@<?= session()->get('username') ?> • <span class="date"><?= $_SERVER['REMOTE_ADDR'] ?></span></div>
                             </div>
                         </div>
-                        <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center" style="min-height: 2rem; max-height: 2rem; min-width: 2rem; max-width: 2rem;">
+                        <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-4-6-4-6 4-6 4 1 0 6 0 6 0 6 0z" />
                             </svg>
