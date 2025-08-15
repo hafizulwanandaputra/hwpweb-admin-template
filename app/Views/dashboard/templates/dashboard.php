@@ -176,7 +176,7 @@
         }
 
         .toast-container {
-            padding-top: 4rem !important;
+            padding-top: calc(3rem + 1rem) !important;
             right: 0 !important;
         }
 
@@ -294,7 +294,7 @@
 
         @media (max-width: 767.98px) {
             .toast-container {
-                padding-top: 7rem !important;
+                padding-top: calc(6rem + 1rem) !important;
                 transform: translateX(-50%) !important;
                 left: 50% !important;
             }
@@ -304,13 +304,13 @@
             }
 
             .sidebar {
-                top: 48px;
+                top: 3rem;
                 border-right: 0px solid var(--bs-border-color);
                 width: 100%;
             }
 
             #sidebarMenu2 {
-                height: calc(100vh - 96px);
+                height: calc(100% - 3rem);
                 padding-top: 0;
             }
 
@@ -347,18 +347,18 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color);">
-            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="max-height: 48px; min-height: 48px;">
+            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                 <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
                     My Admin Panel
                 </span>
             </div>
             <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
-            <div class="d-flex w-100 align-items-center text-truncate" style="min-height: 48px; max-height: 48px;">
+            <div class="d-flex w-100 align-items-center text-truncate" style="min-height: 3rem; max-height: 3rem;">
                 <div class="w-100 ps-3 pe-1 pe-lg-2 text-truncate" style="flex: 1; min-width: 0;">
                     <?= $this->renderSection('title'); ?>
                 </div>
                 <div class="d-flex justify-content-center">
-                    <div class="vr d-none d-lg-block border-success-subtle" style="height: 32px;"></div>
+                    <div class="vr d-none d-lg-block border-success-subtle" style="height: 2.5rem;"></div>
                 </div>
                 <div class="me-3 ms-1 ms-lg-3">
                     <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none" data-bs-toggle="offcanvas" data-bs-target="#userOffcanvas" role="button" aria-controls="userOffcanvas">
@@ -368,8 +368,8 @@
                                 <div class="text-nowrap lh-sm" style="font-size: 0.7em;">@<?= session()->get('username') ?> • <span class="date"><?= $_SERVER['REMOTE_ADDR'] ?></span></div>
                             </div>
                         </div>
-                        <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+                        <div class="rounded-pill bg-body profilephotosidebar d-flex justify-content-center align-items-center" style="min-height: 2rem; max-height: 2rem; min-width: 2rem; max-width: 2rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 16 16">
                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM14 14s-1-4-6-4-6 4-6 4 1 0 6 0 6 0 6 0z" />
                             </svg>
                         </div>
@@ -377,7 +377,7 @@
 
                     <div class="offcanvas offcanvas-end bg-body-tertiary shadow-sm transparent-blur" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
                         <div class="offcanvas-header pt-0 pb-0 d-flex justify-content-between">
-                            <div class="d-flex align-items-center col-md-3 col-lg-2 me-0 py-md-1" style="max-height: 48px; min-height: 48px; max-height: 48px;">
+                            <div class="d-flex align-items-center col-md-3 col-lg-2 me-0 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                                 <span class="navbar-brand mx-0 fs-6 lh-1">
                                     My Admin Panel
                                 </span>
