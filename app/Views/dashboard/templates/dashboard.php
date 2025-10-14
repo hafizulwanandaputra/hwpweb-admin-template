@@ -361,7 +361,7 @@
             </div>
             <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
             <div class="d-flex w-100 align-items-center text-truncate" style="min-height: 3rem; max-height: 3rem;">
-                <div class="w-100 ps-3 pe-1 pe-lg-2 text-truncate" style="flex: 1; min-width: 0;">
+                <div class="w-100 ps-3 ps-md-2 pe-1 pe-lg-2 text-truncate" style="flex: 1; min-width: 0;">
                     <?= $this->renderSection('title'); ?>
                 </div>
                 <div class="d-flex justify-content-center">
