@@ -12,7 +12,7 @@
     -->
     <link rel="manifest" href="<?= base_url(); ?>/manifest.json">
     <meta name="theme-color" content="#e9ecef">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="<?= base_url(); ?>assets/css/dashboard/dashboard.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
@@ -182,9 +182,9 @@
 
         .sidebar {
             box-shadow: inset 0px 0 0 rgba(0, 0, 0, 0);
-            border-right: 1px solid var(--bs-border-color);
-            height: 100%;
+            border: 1px solid var(--bs-border-color);
             overflow: auto;
+            border-radius: var(--bs-border-radius);
         }
 
         .main-content {
@@ -195,7 +195,7 @@
         }
 
         .main-content-inside {
-            margin-left: 220px;
+            margin-left: calc(0.5rem + 220px);
         }
 
         #sidebarMenu,
@@ -312,21 +312,21 @@
 
             .sidebar {
                 top: 3rem;
-                border-right: 0px solid var(--bs-border-color);
                 width: 100%;
             }
 
             #sidebarMenu2 {
-                height: calc(100% - 3rem);
+                height: 100%;
                 padding-top: 0;
             }
 
             #sidebarMenu {
-                max-width: 100%;
+                height: calc(100% - 7rem);
+                max-width: calc(100% - 1rem);
                 min-width: 0;
                 opacity: 0;
                 transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-                transform: translateY(-10px);
+                transform: translateY(-5%) scale(0.9);
             }
 
             #sidebarHeader {
@@ -336,7 +336,7 @@
 
             #sidebarMenu.show {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
 
             @media (prefers-reduced-motion: reduce) {
@@ -354,7 +354,7 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color);">
-            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
+            <div id="sidebarHeader" class="d-flex justify-content-center align-items-center mx-0 mx-md-2 px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                 <span class="navbar-brand mx-0 fs-6 text-start text-md-center lh-1">
                     My Admin Panel
                 </span>
@@ -581,7 +581,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
     <script src="<?= base_url() ?>assets/fontawesome/js/all.js"></script>
     <script src="<?= base_url(); ?>assets/js/dashboard/dashboard.js"></script>

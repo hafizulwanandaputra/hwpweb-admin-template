@@ -10,8 +10,8 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <main class="main-content-inside">
-    <div class="sticky-top" style="z-index: 99;">
-        <ul class="list-group shadow-sm rounded-0">
+    <div class="sticky-top px-3 pt-2" style="z-index: 99;">
+        <ul class="list-group no-fluid-content shadow-sm border border-bottom-0">
             <li class="list-group-item border-top-0 border-end-0 border-start-0 bg-body-secondary transparent-blur">
                 <div class="no-fluid-content">
                     <div class="input-group input-group-sm">

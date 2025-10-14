@@ -71,9 +71,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><?= $iconClass; ?></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Operating System</h5>
-                        <span><?= $agent->getPlatform(); ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Operating System</h5>
+                            <span><?= $agent->getPlatform(); ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -82,9 +84,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><?= $browserIcon; ?></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Web Browser</h5>
-                        <span><?= $agent->getBrowser() . ' ' . $agent->getVersion(); ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Web Browser</h5>
+                            <span><?= $agent->getBrowser() . ' ' . $agent->getVersion(); ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -94,9 +98,11 @@ if (stripos($browser, 'Chrome') !== false) {
                         <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                             <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-mobile-screen"></i></p>
                         </a>
-                        <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                            <h5 class="card-title">Mobile Phone</h5>
-                            <span><?= $agent->getMobile(); ?></span>
+                        <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                            <div>
+                                <h5 class="card-title">Mobile Phone</h5>
+                                <span><?= $agent->getMobile(); ?></span>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -106,9 +112,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Client IP Address</h5>
-                        <span><?= $_SERVER['REMOTE_ADDR'] ?> via port <?= $_SERVER['REMOTE_PORT'] ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Client IP Address</h5>
+                            <span><?= $_SERVER['REMOTE_ADDR'] ?> via port <?= $_SERVER['REMOTE_PORT'] ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -117,9 +125,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-user-large"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">User Agent</h5>
-                        <span><?= $agent->getAgentString(); ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">User Agent</h5>
+                            <span><?= $agent->getAgentString(); ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -131,9 +141,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-server"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Web Server</h5>
-                        <span><?= $_SERVER['SERVER_SOFTWARE']; ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Web Server</h5>
+                            <span><?= $_SERVER['SERVER_SOFTWARE']; ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -142,9 +154,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Server Hostname and IP Address</h5>
-                        <span><?= ($_SERVER['SERVER_NAME'] == $_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '<span class="text-nowrap">' . $_SERVER['SERVER_NAME'] . '</span> (' . $_SERVER['SERVER_ADDR'] . ')'; ?> via port <?= $_SERVER['SERVER_PORT'] ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Server Hostname and IP Address</h5>
+                            <span><?= ($_SERVER['SERVER_NAME'] == $_SERVER['SERVER_ADDR']) ? $_SERVER['SERVER_ADDR'] : '<span class="text-nowrap">' . $_SERVER['SERVER_NAME'] . '</span> (' . $_SERVER['SERVER_ADDR'] . ')'; ?> via port <?= $_SERVER['SERVER_PORT'] ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -153,9 +167,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-globe"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">HTTPS Connection</h5>
-                        <span><?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'Used' : 'Not Used'; ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">HTTPS Connection</h5>
+                            <span><?= (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'Used' : 'Not Used'; ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -164,9 +180,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-solid fa-database"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">MySQL/MariaDB Database Server Version</h5>
-                        <span><?= esc($version) ?> (<?= esc($version_comment) . ' • ' . esc($version_compile_os) . ' ' . esc($version_compile_machine) ?>)</span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">MySQL/MariaDB Database Server Version</h5>
+                            <span><?= esc($version) ?> (<?= esc($version_comment) . ' • ' . esc($version_compile_os) . ' ' . esc($version_compile_machine) ?>)</span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -175,9 +193,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">PHP and CodeIgniter Version</h5>
-                        <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">PHP and CodeIgniter Version</h5>
+                            <span><?= phpversion(); ?> • <?= CodeIgniter\CodeIgniter::CI_VERSION ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -186,9 +206,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-php"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">PHP Extensions</h5>
-                        <span><?= esc($php_extensions) ?></span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">PHP Extensions</h5>
+                            <span><?= esc($php_extensions) ?></span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -200,9 +222,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-bootstrap"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">Bootstrap Version</h5>
-                        <span>5.3.7</span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">Bootstrap Version</h5>
+                            <span>5.3.8</span>
+                        </div>
                     </div>
                 </div>
             </li>
@@ -211,9 +235,11 @@ if (stripos($browser, 'Chrome') !== false) {
                     <a href="#" class="stretched-link" style="min-width: 3rem; max-width: 3rem; text-align: center;">
                         <p class="mb-0" style="font-size: 1.75rem!important;"><i class="fa-brands fa-js"></i></p>
                     </a>
-                    <div class="align-self-center flex-fill ps-1 text-wrap overflow-hidden" style="text-overflow: ellipsis;">
-                        <h5 class="card-title">jQuery Version</h5>
-                        <span id="jquery-version">Loading...</span>
+                    <div class="align-self-stretch flex-fill ps-1 text-wrap overflow-hidden d-flex align-items-center" style="text-overflow: ellipsis;">
+                        <div>
+                            <h5 class="card-title">jQuery Version</h5>
+                            <span id="jquery-version">Loading...</span>
+                        </div>
                     </div>
                 </div>
             </li>
