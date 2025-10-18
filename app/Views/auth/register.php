@@ -3,7 +3,7 @@
 <div class="my-auto">
     <div class="no-fluid-content px-3 py-3 px-md-5">
         <div class="row align-items-center">
-            <div class="col-md-6 col-lg-7 text-center text-md-start align-self-start">
+            <div class="col-md-6 col-lg-7 text-start align-self-start">
                 <h1 class="display-6 fw-bold lh-1 mb-3">Register Your Account</h1>
                 <p class="fs-6"><?= $systemName ?><br><small class="fw-bold"><?= $systemSubtitleName ?></small></p>
             </div>
@@ -51,7 +51,7 @@
 
                 <input type="hidden" name="url" value="<?= (isset($_GET['redirect'])) ? base_url('/' . urldecode($_GET['redirect'])) : base_url('/home'); ?>">
                 <hr>
-                <div class="text-center">
+                <div class="text-start">
                     <span>Already have an account? <a href="<?= base_url() ?>" class="text-decoration-none">click here!</a></span>
                 </div>
                 <div class="dropdown d-grid mt-3">
@@ -77,8 +77,8 @@
                     </ul>
                 </div>
                 <hr>
-                <div class="text-center" style="font-size: 0.75em;">
-                    <span class="text-center">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?><br></span>
+                <div class="text-start" style="font-size: 0.75em;">
+                    <span class="text-start">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?><br></span>
                 </div>
                 <?= form_close(); ?>
             </div>
