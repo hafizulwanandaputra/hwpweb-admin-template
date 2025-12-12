@@ -28,13 +28,13 @@
                 <table id="tabel" class="table table-sm table-hover m-0 p-0" style="width:100%; font-size: 0.75em;">
                     <thead>
                         <tr class="align-middle">
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">#</th>
-                            <th scope="col" class="bg-body-secondary border-secondary text-nowrap" style="border-bottom-width: 2px;">Actions</th>
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Image</th>
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Name</th>
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Email</th>
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Phone Number</th>
-                            <th scope="col" class="bg-body-secondary border-secondary" style="border-bottom-width: 2px;">Address</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">#</th>
+                            <th scope="col" class="text-nowrap" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Actions</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Image</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Name</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Email</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Phone Number</th>
+                            <th scope="col" style="background-color: var(--bs-card-cap-bg); border-bottom-width: 2px;">Address</th>
                         </tr>
                     </thead>
                     <tbody class="align-top">
