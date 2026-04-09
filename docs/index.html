@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -27,10 +27,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+Arabic:wdth,wght@62.5..100,100..900&family=Noto+Sans+Mono:wdth,wght@62.5..100,100..900&family=Noto+Sans:ital,wdth,wght@0,62.5..100,100..900;1,62.5..100,100..900&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css"
-      rel="stylesheet"
-    />
+    <link href="assets/fonts/HwpSansMono/HwpSansMono.css" rel="stylesheet" />
     <link href="assets/fonts/base-font.css" rel="stylesheet" />
     <link href="assets/fontawesome/css/all.css" rel="stylesheet" />
     <script src="assets/tinymce/js/tinymce/tinymce.min.js"></script>
@@ -266,7 +263,9 @@
           max-width: 100%;
           min-width: 0;
           opacity: 0;
-          transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+          transition:
+            opacity 0.25s ease-out,
+            transform 0.25s ease-out;
           transform: translateY(-10px);
         }
 
@@ -570,10 +569,10 @@
 
           const themeSwitcherText = document.querySelector("#bd-theme-text");
           const activeThemeIcon = document.querySelector(
-            ".theme-icon-active use"
+            ".theme-icon-active use",
           );
           const btnToActive = document.querySelector(
-            `[data-bs-theme-value="${theme}"]`
+            `[data-bs-theme-value="${theme}"]`,
           );
           const svgOfActiveBtn = btnToActive
             .querySelector("svg use")

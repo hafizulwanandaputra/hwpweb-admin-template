@@ -18,7 +18,7 @@
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="<?= base_url(); ?>assets/fonts/IosevkaHwpMono/IosevkaHwpMono.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/fonts/HwpSansMono/HwpSansMono.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
 
