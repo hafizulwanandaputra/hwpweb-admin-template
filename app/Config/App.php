@@ -18,6 +18,8 @@ class App extends BaseConfig
      */
     public string $baseURL;
 
+    public string $permittedURIChars = 'a-z 0-9~%.:_\-';
+
     public function __construct()
     {
         // Is running from CLI
