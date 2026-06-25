@@ -26,7 +26,7 @@
     <script src="<?= base_url(); ?>assets/tinymce/js/tinymce/tinymce.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
     <script>
         (() => {
             'use strict'
