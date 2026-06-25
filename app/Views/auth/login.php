@@ -192,7 +192,7 @@
             $('#loginForm').submit();
             $('input').prop('disabled', true).removeClass('is-invalid');
             $('#loginBtn').prop('disabled', true).html(`
-            <?= $this->include('spinner/spinner'); ?> <span class="d-md-none">PLEASE WAIT</span>
+            <?= $this->include('spinner/spinner'); ?> PLEASE WAIT
         `);
         });
     });
