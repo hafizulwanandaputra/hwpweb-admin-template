@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <link rel="manifest" href="<?= base_url(); ?>/manifest.json">
     <meta name="theme-color" content="#e9ecef">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/heroes/">
+    <link href="https://getbootstrap.com/docs/5.3/examples/cover/cover.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/main.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/css/JawiDubai.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     <link href="<?= base_url() ?>assets/fonts/base-font.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/fontawesome/css/all.css" rel="stylesheet">
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/jquery-4.0.0.js"></script>
     <script>
         (() => {
             'use strict'
@@ -162,12 +162,48 @@
             max-width: 1140px;
         }
     </style>
+    <style>
+        body {
+            text-shadow: none;
+            box-shadow: none;
+        }
+    </style>
     <?= $this->include('spinner/spinner-css'); ?>
 </head>
 
-<body class="bg-body-secondary d-flex flex-column h-100">
+<body class="d-flex h-100 text-center bg-body-secondary">
 
-    <?= $this->renderSection('content'); ?>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <nav class="nav justify-content-center">
+                    <div class="dropdown">
+                        <a class="nav-link py-1 dropdown-toggle" id="bd-theme" role="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)" style="padding-right: var(--bs-navbar-nav-link-padding-x); padding-left: var(--bs-navbar-nav-link-padding-x);">
+                            <i class="fa-solid fa-palette"></i> Theme
+                        </a>
+                        <ul class="dropdown-menu shadow-sm dropdown-menu-end dropdown-menu-lg-start bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
+                            <li>
+                                <button type="button" class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                                    Light
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                                    Dark
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="dropdown-item active" data-bs-theme-value="auto" aria-pressed="true">
+                                    System
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <?= $this->renderSection('content'); ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>

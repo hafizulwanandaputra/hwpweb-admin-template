@@ -1,87 +1,51 @@
 <?= $this->extend('auth/templates/login'); ?>
 <?= $this->section('content'); ?>
-<div class="my-auto">
-    <div class="no-fluid-content px-3 py-3 px-md-5">
-        <div class="row align-items-center">
-            <div class="col-md-6 col-lg-7 text-start align-self-start">
-                <h1 class="display-6 fw-bold lh-1 mb-3">Login to Your Account</h1>
-                <p class="fs-6"><?= $systemName ?><br><small class="fw-bold"><?= $systemSubtitleName ?></small></p>
+<main class="px-3">
+    <h1><?= $systemName ?></h1>
+    <p class="lead"><?= $systemSubtitleName ?></p>
+    <?= form_open('check-login', 'id="loginForm"'); ?>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control form-control-sm <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
+        <label for="floatingInput">
+            <div class="d-flex align-items-start">
+                <div style="width: 12px; text-align: center;">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="w-100 ms-3">
+                    Username
+                </div>
             </div>
-            <div class="col-md">
-                <?= form_open('check-login', 'id="loginForm"'); ?>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control form-control-sm <?= (validation_show_error('username')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingInput" name="username" placeholder="Username" value="" autocomplete="off">
-                    <label for="floatingInput">
-                        <div class="d-flex align-items-start">
-                            <div style="width: 12px; text-align: center;">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                            <div class="w-100 ms-3">
-                                Username
-                            </div>
-                        </div>
-                    </label>
-                </div>
-                <div class="d-flex flex-column flex-md-row column-gap-3">
-                    <div class="flex-fill form-floating mb-3 mb-md-0">
-                        <input type="password" class="form-control form-control-sm <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingPassword" name="password" placeholder="Password" autocomplete="off" data-bs-toggle="popover"
-                            data-bs-placement="top"
-                            data-bs-trigger="manual"
-                            data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-                            data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
-                        <label for="floatingPassword">
-                            <div class="d-flex align-items-start">
-                                <div style="width: 12px; text-align: center;">
-                                    <i class="fa-solid fa-key"></i>
-                                </div>
-                                <div class="w-100 ms-3">
-                                    Password
-                                </div>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="d-grid w-auto">
-                        <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded-4" type="submit">
-                            <i class="fa-solid fa-right-to-bracket"></i> <span class="d-md-none">LOGIN</span>
-                        </button>
-                    </div>
-                </div>
-                <input type="hidden" name="url" value="<?= (isset($_GET['redirect'])) ? base_url('/' . urldecode($_GET['redirect'])) : base_url('/home'); ?>">
-                <hr>
-                <div class="text-start">
-                    <span>Don't have an account? <a href="<?= base_url('register') ?>" class="text-decoration-none">click here!</a></span>
-                </div>
-                <div class="dropdown d-grid mt-3">
-                    <button class="btn btn-outline-body bg-gradient btn-sm rounded-4 dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
-                        <i class="fa-solid fa-palette"></i> Set Theme
-                    </button>
-                    <ul class="dropdown-menu shadow-sm w-100 bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
-                        <li>
-                            <button type="button" class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
-                                Light
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
-                                Dark
-                            </button>
-                        </li>
-                        <li>
-                            <button type="button" class="dropdown-item active" data-bs-theme-value="auto" aria-pressed="true">
-                                System
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-                <hr>
-                <div class="text-start" style="font-size: 0.75em;">
-                    <span class="text-start">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ''; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span><br>Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a><br>Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?><br></span>
-                </div>
-                <?= form_close(); ?>
-            </div>
-        </div>
+        </label>
     </div>
-</div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control form-control-sm <?= (validation_show_error('password')) ? 'is-invalid' : ''; ?> rounded-4" id="floatingPassword" name="password" placeholder="Password" autocomplete="off" data-bs-toggle="popover"
+            data-bs-placement="top"
+            data-bs-trigger="manual"
+            data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
+            data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+        <label for="floatingPassword">
+            <div class="d-flex align-items-start">
+                <div style="width: 12px; text-align: center;">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+                <div class="w-100 ms-3">
+                    Password
+                </div>
+            </div>
+        </label>
+    </div>
+    <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded-4 mb-2" type="submit">
+        <i class="fa-solid fa-right-to-bracket"></i> LOGIN
+    </button>
+    <span class="lead">Don't have an account? <a href="<?= base_url('register') ?>" class="text-decoration-none">click here!</a></span>
+    <input type="hidden" name="url" value="<?= (isset($_GET['redirect'])) ? base_url('/' . urldecode($_GET['redirect'])) : base_url('/home'); ?>">
+    <?= form_close(); ?>
+</main>
+<footer class="mt-auto">
+    <div class="no-fluid-content mt-3" style="font-size: 0.75em;" id="footer">
+        <p class="text-center mb-0">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ""; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span> - Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a> - Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?></p>
+    </div>
+</footer>
 
 <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3">
     <?php if (session()->getFlashdata('msg')) : ?>
