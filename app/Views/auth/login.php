@@ -42,7 +42,7 @@
     <?= form_close(); ?>
 </main>
 <footer class="mt-auto">
-    <div class="no-fluid-content mt-3" style="font-size: 0.75em;" id="footer">
+    <div class="no-fluid-content my-3" style="font-size: 0.75em;" id="footer">
         <p class="text-center mb-0">&copy; 2020 <?= (date('Y') !== "2020") ? "- " . date('Y') : ""; ?> <span style="font-weight: 900;">HWP</span><span style="font-weight: 300;">web</span> - Made with <a class="text-decoration-none" href="https://getbootstrap.com/" target="_blank">Bootstrap 5.3.3</a> - Powered by <a class="text-decoration-none" href="https://www.php.net/releases" target="_blank">PHP <?= phpversion(); ?></a> with <a class="text-decoration-none" href="https://codeigniter.com/user_guide/changelogs/v<?= CodeIgniter\CodeIgniter::CI_VERSION ?>.html" target="_blank">CodeIgniter <?= CodeIgniter\CodeIgniter::CI_VERSION ?></a> using <?= $_SERVER['SERVER_SOFTWARE']; ?></p>
     </div>
 </footer>
