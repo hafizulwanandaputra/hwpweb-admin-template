@@ -175,7 +175,7 @@
 
     <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
         <header class="mb-auto">
-            <div class="my-3">
+            <div class="my-3 px-3">
                 <nav class="nav justify-content-center">
                     <div class="dropdown">
                         <a class="nav-link py-1 dropdown-toggle" id="bd-theme" role="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)" style="padding-right: var(--bs-navbar-nav-link-padding-x); padding-left: var(--bs-navbar-nav-link-padding-x);">
