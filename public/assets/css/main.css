@@ -417,12 +417,11 @@ div.dataTables_wrapper div.dataTables_info {
 
 .nav-pills {
   --bs-nav-pills-link-active-color: var(--bs-body-color);
-  --bs-nav-pills-link-active-bg: #ced4da;
+  --bs-nav-pills-link-active-bg: rgba(0, 0, 0, 0.15);
 }
 
 [data-bs-theme=dark] .nav-pills {
-  --bs-nav-pills-link-active-color: var(--bs-body-color);
-  --bs-nav-pills-link-active-bg: #495057;
+  --bs-nav-pills-link-active-bg: rgba(255, 255, 255, 0.15);
 }
 
 .nav-link {

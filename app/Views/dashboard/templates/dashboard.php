@@ -450,7 +450,7 @@
                                             <div style="min-width: 24px; max-width: 24px; text-align: center;">
                                                 <i class="fa-solid fa-gear"></i>
                                             </div>
-                                            <div class="flex-fill ms-2 link-body-emphasis">
+                                            <div class="flex-fill ms-2">
                                                 Settings
                                             </div>
                                         </div>
@@ -462,7 +462,7 @@
                                             <div style="min-width: 24px; max-width: 24px; text-align: center;">
                                                 <i class="fa-solid fa-right-from-bracket"></i>
                                             </div>
-                                            <div class="flex-fill ms-2 link-body-emphasis">
+                                            <div class="flex-fill ms-2">
                                                 Logout
                                             </div>
                                         </div>
