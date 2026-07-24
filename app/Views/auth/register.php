@@ -22,7 +22,7 @@
             data-bs-placement="top"
             data-bs-trigger="manual"
             data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-            data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+            data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
         <label for="new_password1">New Password*</label>
         <div class="invalid-feedback">
             <?= validation_show_error('new_password1'); ?>
@@ -33,13 +33,13 @@
             data-bs-placement="top"
             data-bs-trigger="manual"
             data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-            data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+            data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
         <label for="new_password2">Confirm New Password*</label>
         <div class="invalid-feedback">
             <?= validation_show_error('new_password2'); ?>
         </div>
     </div>
-    <button class="w-100 btn btn-lg btn-primary bg-gradient rounded-4 mb-2" type="submit" id="registerBtn">
+    <button class="w-100 btn btn-lg btn-primary  rounded-4 mb-2" type="submit" id="registerBtn">
         <i class="fa-solid fa-user-plus"></i> REGISTER
     </button>
     <span class="lead">Already have an account? <a href="<?= base_url() ?>" class="text-decoration-none">click here!</a></span>

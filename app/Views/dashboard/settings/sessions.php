@@ -12,12 +12,12 @@
 <?= $this->section('content'); ?>
 <main class="main-content-inside">
     <div class="sticky-top px-2 pt-2" style="z-index: 99;">
-        <ul class="list-group no-fluid-content-list-group shadow-sm border border-bottom-0">
+        <ul class="list-group no-fluid-content-list-group  border border-bottom-0">
             <li class="list-group-item px-2 border-top-0 border-end-0 border-start-0 bg-body-secondary transparent-blur">
                 <div class="no-fluid-content">
                     <div class="input-group input-group-sm">
                         <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
-                        <button class="btn btn-success btn-sm bg-gradient" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+                        <button class="btn btn-success btn-sm " type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
                     </div>
                 </div>
             </li>
@@ -46,39 +46,51 @@
     </div>
     <div class="modal modal-sheet p-4 py-md-5 fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
-                <div class="modal-body p-4 text-center">
+            <div class="modal-content bg-body-tertiary rounded-5 shadow-lg transparent-blur">
+                <div class="modal-body p-4">
                     <h5 class="mb-0" id="deleteMessage"></h5>
-                </div>
-                <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmDeleteBtn">Yes</button>
+                    <div class="row gx-2 pt-4">
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                        </div>
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-danger  fs-6 mb-0 rounded-4" id="confirmDeleteBtn">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal modal-sheet p-4 py-md-5 fade" id="flushModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="flushModal" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
-                <div class="modal-body p-4 text-center">
+            <div class="modal-content bg-body-tertiary rounded-5 shadow-lg transparent-blur">
+                <div class="modal-body p-4">
                     <h5 class="mb-0" id="flushMessage"></h5>
-                </div>
-                <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal" style="border-right: 1px solid var(--bs-border-color-translucent);">No</button>
-                    <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmFlushBtn">Yes</a>
+                    <div class="row gx-2 pt-4">
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                        </div>
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-danger  fs-6 mb-0 rounded-4" id="confirmFlushBtn">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal modal-sheet p-4 py-md-5 fade" id="deleteExpiredModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteExpiredModalLabel" aria-hidden="true" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-body-tertiary rounded-4 shadow-lg transparent-blur">
-                <div class="modal-body p-4 text-center">
+            <div class="modal-content bg-body-tertiary rounded-5 shadow-lg transparent-blur">
+                <div class="modal-body p-4">
                     <h5 class="mb-0" id="deleteExpiredMessage"></h5>
-                </div>
-                <div class="modal-footer flex-nowrap p-0" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" style="border-right: 1px solid var(--bs-border-color-translucent)!important;" data-bs-dismiss="modal">No</button>
-                    <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" id="confirmDeleteExpiredBtn">Yes</button>
+                    <div class="row gx-2 pt-4">
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                        </div>
+                        <div class="col d-grid">
+                            <button type="button" class="btn btn-lg btn-danger  fs-6 mb-0 rounded-4" id="confirmDeleteExpiredBtn">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,7 +122,7 @@
                 "<'row'<'col-md-12'tr>>" +
                 "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
             'initComplete': function(settings, json) {
-                $("#tabel").wrap("<div class='card shadow-sm mb-3 overflow-auto position-relative datatables-height'></div>");
+                $("#tabel").wrap("<div class='card  mb-3 overflow-auto position-relative datatables-height'></div>");
                 $('.dataTables_filter input[type="search"]').css({
                     'width': '220px'
                 });
@@ -122,11 +134,11 @@
             "drawCallback": function() {
                 $(".pagination").wrap("<div class='overflow-auto'></div>");
                 $(".pagination").addClass("pagination-sm");
-                $(".page-item .page-link").addClass("bg-gradient");
+                $(".page-item .page-link").addClass("");
             },
             'buttons': [{
                 text: '<i class="fa-solid fa-broom"></i> Cleanup',
-                className: 'btn-danger btn-sm bg-gradient',
+                className: 'btn-danger btn-sm ',
                 attr: {
                     id: 'flushBtn'
                 },
@@ -135,7 +147,7 @@
                 },
             }, {
                 text: '<i class="fa-solid fa-trash"></i> Expired',
-                className: 'btn-danger btn-sm bg-gradient',
+                className: 'btn-danger btn-sm ',
                 attr: {
                     id: 'deleteExpiredBtn'
                 },
@@ -186,7 +198,7 @@
                         return `
                             <div class="d-grid">
                                 <div class="btn-group" role="group">
-                                    <button class="btn btn-outline-danger text-nowrap bg-gradient delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-username="${row.username}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                    <button class="btn btn-outline-danger text-nowrap  delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-username="${row.username}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         `;
@@ -202,8 +214,8 @@
                         // Check if 'expires_at' has passed the current date and time
                         const isExpired = expiresAt < currentDate;
                         const statusBadge = isExpired ?
-                            '<span class="badge bg-danger bg-gradient">Expired</span>' :
-                            '<span class="badge bg-success bg-gradient">Active</span>';
+                            '<span class="badge bg-danger ">Expired</span>' :
+                            '<span class="badge bg-success ">Active</span>';
                         return `<strong>${row.fullname}</strong><br>@${data} ${statusBadge}`;
                     }
                 },

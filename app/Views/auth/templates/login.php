@@ -181,7 +181,7 @@
                         <a class="nav-link py-1 dropdown-toggle" id="bd-theme" role="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)" style="padding-right: var(--bs-navbar-nav-link-padding-x); padding-left: var(--bs-navbar-nav-link-padding-x);">
                             <i class="fa-solid fa-palette"></i> Theme
                         </a>
-                        <ul class="dropdown-menu shadow-sm dropdown-menu-end dropdown-menu-lg-start bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
+                        <ul class="dropdown-menu  dropdown-menu-end dropdown-menu-lg-start bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
                             <li>
                                 <button type="button" class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
                                     Light

@@ -22,7 +22,7 @@
             data-bs-placement="top"
             data-bs-trigger="manual"
             data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-            data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+            data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
         <label for="floatingPassword">
             <div class="d-flex align-items-start">
                 <div style="width: 12px; text-align: center;">
@@ -34,7 +34,7 @@
             </div>
         </label>
     </div>
-    <button id="loginBtn" class="w-100 btn btn-primary bg-gradient btn-lg rounded-4 mb-2" type="submit">
+    <button id="loginBtn" class="w-100 btn btn-primary  btn-lg rounded-4 mb-2" type="submit">
         <i class="fa-solid fa-right-to-bracket"></i> LOGIN
     </button>
     <span class="lead">Don't have an account? <a href="<?= base_url('register') ?>" class="text-decoration-none">click here!</a></span>

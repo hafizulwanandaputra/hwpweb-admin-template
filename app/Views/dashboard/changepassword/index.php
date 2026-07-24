@@ -30,7 +30,7 @@
                     data-bs-placement="top"
                     data-bs-trigger="manual"
                     data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
                 <label for="current_password">Old Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('current_password'); ?>
@@ -41,7 +41,7 @@
                     data-bs-placement="top"
                     data-bs-trigger="manual"
                     data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
                 <label for="new_password1">New Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('new_password1'); ?>
@@ -52,7 +52,7 @@
                     data-bs-placement="top"
                     data-bs-trigger="manual"
                     data-bs-title="<em>CAPS LOCK</em> IS ACTIVE"
-                    data-bs-content="Please check the status of <span class='badge text-bg-dark bg-gradient kbd'>Caps Lock</span> on your keyboard.">
+                    data-bs-content="Please check the status of <span class='badge text-bg-dark  kbd'>Caps Lock</span> on your keyboard.">
                 <label for="new_password2">Confirm New Password</label>
                 <div class="invalid-feedback">
                     <?= validation_show_error('new_password2'); ?>
@@ -61,7 +61,7 @@
         </div>
         <hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-            <button class="btn btn-primary bg-gradient" type="submit"><i class="fa-solid fa-pen-to-square" id="submitBtn"></i> Change</button>
+            <button class="btn btn-primary " type="submit"><i class="fa-solid fa-pen-to-square" id="submitBtn"></i> Change</button>
         </div>
         <?= form_close(); ?>
     </div>

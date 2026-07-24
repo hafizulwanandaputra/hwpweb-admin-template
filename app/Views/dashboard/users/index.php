@@ -10,17 +10,20 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <main class="main-content-inside">
-    <div class="sticky-top px-2 pt-2" style="z-index: 99;">
-        <ul class="list-group no-fluid-content-list-group shadow-sm border border-bottom-0">
-            <li class="list-group-item px-2 border-top-0 border-end-0 border-start-0 bg-body-secondary transparent-blur">
-                <div class="no-fluid-content">
-                    <div class="input-group input-group-sm">
-                        <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
-                        <button class="btn btn-success btn-sm bg-gradient" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+    <div class="sticky-top" style="z-index: 99;">
+        <div class="filter-bg"></div>
+        <div class="filter-content px-2 pt-2">
+            <ul class="list-group no-fluid-content-list-group list-group-flush">
+                <li class="list-group-item px-2 border-top-0 border-end-0 border-start-0 bg-body-secondary" style="--bs-bg-opacity: 0;">
+                    <div class="no-fluid-content">
+                        <div class="input-group input-group-sm">
+                            <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
+                            <button class="btn btn-success btn-sm " type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="px-3 mt-3">
         <div class="no-fluid-content">
@@ -48,10 +51,10 @@
                     <h5 class="mb-0" id="deleteMessage">Are you sure want to delete this user?</h5>
                     <div class="row gx-2 pt-4">
                         <div class="col d-grid">
-                            <button type="button" class="btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
                         </div>
                         <div class="col d-grid">
-                            <button type="submit" class="btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4" id="confirmDeleteBtn">Yes</button>
+                            <button type="submit" class="btn btn-lg btn-primary  fs-6 mb-0 rounded-4" id="confirmDeleteBtn">Yes</button>
                         </div>
                     </div>
                 </div>
@@ -65,10 +68,10 @@
                     <h5 class="mb-0" id="resetPasswordMessage"></h5>
                     <div class="row gx-2 pt-4">
                         <div class="col d-grid">
-                            <button type="button" class="btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
                         </div>
                         <div class="col d-grid">
-                            <button type="submit" class="btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4" id="confirmResetPasswordBtn">Yes</button>
+                            <button type="submit" class="btn btn-lg btn-primary  fs-6 mb-0 rounded-4" id="confirmResetPasswordBtn">Yes</button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +109,7 @@
                     </div>
                 </div>
                 <div class="modal-footer justify-content-end pt-2 pb-2" style="border-top: 1px solid var(--bs-border-color-translucent);">
-                    <button type="submit" id="submitButton" class="btn btn-primary bg-gradient">
+                    <button type="submit" id="submitButton" class="btn btn-primary ">
                         <i class="fa-solid fa-floppy-disk"></i> Save
                     </button>
                 </div>
@@ -150,7 +153,7 @@
                     "<'row'<'col-md-12'tr>>" +
                     "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
                 'initComplete': function(settings, json) {
-                    $("#tabel").wrap("<div class='card shadow-sm mb-3 overflow-auto position-relative datatables-height'></div>");
+                    $("#tabel").wrap("<div class='card  mb-3 overflow-auto position-relative datatables-height'></div>");
                     $('.dataTables_filter input[type="search"]').css({
                         'width': '220px'
                     });
@@ -171,14 +174,14 @@
                     });
                     $(".pagination").wrap("<div class='overflow-auto'></div>");
                     $(".pagination").addClass("pagination-sm");
-                    $(".page-item .page-link").addClass("bg-gradient");
+                    $(".page-item .page-link").addClass("");
 
                     // Re-initialize tooltips after table redraw
                     $('[data-bs-toggle="tooltip"]').tooltip();
                 },
                 'buttons': [{
                     text: '<i class="fa-solid fa-plus"></i> Add User',
-                    className: 'btn-primary btn-sm bg-gradient',
+                    className: 'btn-primary btn-sm ',
                     attr: {
                         id: 'addUserBtn'
                     },
@@ -229,9 +232,9 @@
                         data: null,
                         render: function(data, type, row) {
                             return `<div class="btn-group" role="group">
-                            <button class="btn btn-outline-body text-nowrap bg-gradient resetpwd-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Reset Password"><i class="fa-solid fa-key"></i></button>
-                            <button class="btn btn-outline-body text-nowrap bg-gradient edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                            <button class="btn btn-outline-danger text-nowrap bg-gradient delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                            <button class="btn btn-outline-body text-nowrap  resetpwd-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Reset Password"><i class="fa-solid fa-key"></i></button>
+                            <button class="btn btn-outline-body text-nowrap  edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                            <button class="btn btn-outline-danger text-nowrap  delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id_user}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                         </div>`;
                         }
                     },

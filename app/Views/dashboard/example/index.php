@@ -10,20 +10,47 @@
 <?= $this->endSection(); ?>
 <?= $this->section('content'); ?>
 <main class="main-content-inside">
-    <div class="sticky-top px-2 pt-2" style="z-index: 99;">
-        <ul class="list-group no-fluid-content-list-group shadow-sm border border-bottom-0">
-            <li class="list-group-item px-2 border-top-0 border-end-0 border-start-0 bg-body-secondary transparent-blur">
-                <div class="no-fluid-content">
-                    <div class="input-group input-group-sm">
-                        <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
-                        <button class="btn btn-success btn-sm bg-gradient" type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+    <div class="sticky-top" style="z-index: 99;">
+        <div class="filter-bg"></div>
+        <div class="filter-content px-2 pt-2">
+            <ul class="list-group no-fluid-content-list-group list-group-flush">
+                <li class="list-group-item px-2 border-top-0 border-end-0 border-start-0 bg-body-secondary" style="--bs-bg-opacity: 0;">
+                    <div class="no-fluid-content">
+                        <div class="input-group input-group-sm">
+                            <input type="search" class="form-control form-control-sm" id="externalSearch" placeholder="Search">
+                            <button class="btn btn-success btn-sm " type="button" id="refreshButton"><i class="fa-solid fa-sync"></i></button>
+                        </div>
                     </div>
-                </div>
-            </li>
-        </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="px-3 mt-3">
         <div class="no-fluid-content">
+            <h1>Progressive Blur</h1>
+            <p>Lorem ipsum dolor sit amet, nulla anim exercitation voluptate minim duis. Non eiusmod deserunt laboris duis cupidatat est aute dolore. Aliqua do fugiat laborum consequat cillum nisi est elit sunt. Qui nostrud pariatur tempor irure duis ut esse laboris et irure esse culpa.</p>
+
+            <p>Duis enim elit occaecat in incididunt ullamco excepteur proident commodo voluptate ullamco. Ut dolore labore sed in occaecat ut proident in officia. Labore consectetur sed sint eiusmod consectetur anim in culpa magna minim do cillum. Culpa veniam officia culpa esse minim non adipiscing aliquip occaecat. Ullamco ad id qui ea nostrud ullamco exercitation minim veniam non.</p>
+
+            <p>Veniam sunt nostrud dolore duis in excepteur nisi fugiat adipiscing. Ad ad duis enim laboris adipiscing duis quis in quis sunt laboris. Sed consequat in fugiat elit nostrud nisi dolore proident. Excepteur tempor sed culpa ut adipiscing ea ad excepteur eiusmod minim voluptate in. Cillum esse pariatur aliquip aliqua adipiscing adipiscing reprehenderit ex.</p>
+
+            <p>Mollit enim consequat non do occaecat veniam cillum deserunt. Cupidatat sed dolore eu reprehenderit reprehenderit voluptate aliquip. Ex elit occaecat do commodo ut pariatur adipiscing anim aliqua ex id. Qui laboris incididunt reprehenderit exercitation non nostrud cupidatat sunt. Incididunt et ut ad mollit sint laborum laborum. Occaecat ad qui in labore proident nulla mollit.</p>
+
+            <p>Irure ut commodo eiusmod et ullamco sint incididunt incididunt nisi sed sint enim. Elit occaecat et in aliqua eu nisi culpa sint exercitation officia proident. Ea in est in dolor duis ut sed esse officia sint. Ut velit sint enim dolore laboris esse exercitation non velit ad est. Tempor nostrud sint laboris laboris fugiat dolore velit.</p>
+
+            <p>Eiusmod cupidatat aute exercitation et et exercitation esse cillum sint id. Exercitation ut dolore laborum elit veniam do ea. Eiusmod qui est dolor adipiscing ullamco mollit enim eu. Nisi minim excepteur laborum cupidatat enim id sint aliqua aliqua quis ut. Enim dolore proident incididunt ad ex aliqua do. Deserunt do id occaecat irure adipiscing excepteur id ex anim.</p>
+
+            <p>Lorem ipsum dolor sit amet, nulla anim exercitation voluptate minim duis. Non eiusmod deserunt laboris duis cupidatat est aute dolore. Aliqua do fugiat laborum consequat cillum nisi est elit sunt. Qui nostrud pariatur tempor irure duis ut esse laboris et irure esse culpa.</p>
+
+            <p>Duis enim elit occaecat in incididunt ullamco excepteur proident commodo voluptate ullamco. Ut dolore labore sed in occaecat ut proident in officia. Labore consectetur sed sint eiusmod consectetur anim in culpa magna minim do cillum. Culpa veniam officia culpa esse minim non adipiscing aliquip occaecat. Ullamco ad id qui ea nostrud ullamco exercitation minim veniam non.</p>
+
+            <p>Veniam sunt nostrud dolore duis in excepteur nisi fugiat adipiscing. Ad ad duis enim laboris adipiscing duis quis in quis sunt laboris. Sed consequat in fugiat elit nostrud nisi dolore proident. Excepteur tempor sed culpa ut adipiscing ea ad excepteur eiusmod minim voluptate in. Cillum esse pariatur aliquip aliqua adipiscing adipiscing reprehenderit ex.</p>
+
+            <p>Mollit enim consequat non do occaecat veniam cillum deserunt. Cupidatat sed dolore eu reprehenderit reprehenderit voluptate aliquip. Ex elit occaecat do commodo ut pariatur adipiscing anim aliqua ex id. Qui laboris incididunt reprehenderit exercitation non nostrud cupidatat sunt. Incididunt et ut ad mollit sint laborum laborum. Occaecat ad qui in labore proident nulla mollit.</p>
+
+            <p>Irure ut commodo eiusmod et ullamco sint incididunt incididunt nisi sed sint enim. Elit occaecat et in aliqua eu nisi culpa sint exercitation officia proident. Ea in est in dolor duis ut sed esse officia sint. Ut velit sint enim dolore laboris esse exercitation non velit ad est. Tempor nostrud sint laboris laboris fugiat dolore velit.</p>
+
+            <p>Eiusmod cupidatat aute exercitation et et exercitation esse cillum sint id. Exercitation ut dolore laborum elit veniam do ea. Eiusmod qui est dolor adipiscing ullamco mollit enim eu. Nisi minim excepteur laborum cupidatat enim id sint aliqua aliqua quis ut. Enim dolore proident incididunt ad ex aliqua do. Deserunt do id occaecat irure adipiscing excepteur id ex anim.</p>
             <div class="mb-3">
                 <table id="tabel" class="table table-sm table-hover m-0 p-0" style="width:100%; font-size: 0.75em;">
                     <thead>
@@ -48,10 +75,10 @@
                             <h5 class="mb-0" id="deleteMessage"></h5>
                             <div class="row gx-2 pt-4">
                                 <div class="col d-grid">
-                                    <button type="button" class="btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                                    <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
                                 </div>
                                 <div class="col d-grid">
-                                    <button type="submit" class="btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4" id="confirmDeleteBtn">Yes</button>
+                                    <button type="submit" class="btn btn-lg btn-primary  fs-6 mb-0 rounded-4" id="confirmDeleteBtn">Yes</button>
                                 </div>
                             </div>
                         </div>
@@ -105,16 +132,16 @@
                     <!-- Progress bar -->
                     <div class="mb-1 mt-1 w-100" id="uploadProgressDiv">
                         <div class="progress" style="border-top: 1px solid var(--bs-border-color-translucent); border-bottom: 1px solid var(--bs-border-color-translucent); border-left: 1px solid var(--bs-border-color-translucent); border-right: 1px solid var(--bs-border-color-translucent);">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-gradient" role="progressbar" style="width: 0%; transition: none;" id="uploadProgressBar"></div>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated " role="progressbar" style="width: 0%; transition: none;" id="uploadProgressBar"></div>
                         </div>
                     </div>
                     <div class="d-flex justify-content-between w-100">
                         <div>
-                            <button type="button" id="cancelButton" class="btn btn-danger bg-gradient" style="display: none;" disabled>
+                            <button type="button" id="cancelButton" class="btn btn-danger " style="display: none;" disabled>
                                 <i class="fa-solid fa-xmark"></i> Cancel
                             </button>
                         </div>
-                        <button type="submit" id="submitButton" class="btn btn-primary bg-gradient">
+                        <button type="submit" id="submitButton" class="btn btn-primary ">
                             <i class="fa-solid fa-floppy-disk"></i> Save
                         </button>
                     </div>
@@ -159,7 +186,7 @@
                     "<'row'<'col-md-12'tr>>" +
                     "<'d-lg-flex justify-content-lg-between align-items-lg-center'<'text-md-center text-lg-start'><'d-md-flex justify-content-md-center d-lg-block'p>>",
                 'initComplete': function(settings, json) {
-                    $("#tabel").wrap("<div class='card shadow-sm mb-3 overflow-auto position-relative datatables-height'></div>");
+                    $("#tabel").wrap("<div class='card  mb-3 overflow-auto position-relative datatables-height'></div>");
                     $('.dataTables_filter input[type="search"]').css({
                         'width': '220px'
                     });
@@ -182,14 +209,14 @@
                     });
                     $(".pagination").wrap("<div class='overflow-auto'></div>");
                     $(".pagination").addClass("pagination-sm");
-                    $(".page-item .page-link").addClass("bg-gradient");
+                    $(".page-item .page-link").addClass("");
 
                     // Re-initialize tooltips after redraw
                     $('[data-bs-toggle="tooltip"]').tooltip();
                 },
                 'buttons': [{
                     text: '<i class="fa-solid fa-plus"></i> Add',
-                    className: 'btn-primary btn-sm bg-gradient',
+                    className: 'btn-primary btn-sm ',
                     attr: {
                         id: 'addExampleBtn'
                     },
@@ -240,8 +267,8 @@
                         data: null,
                         render: function(data, type, row) {
                             return `<div class="btn-group" role="group">
-                                <button class="btn btn-outline-body text-nowrap bg-gradient edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                <button class="btn btn-outline-danger text-nowrap bg-gradient delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
+                                <button class="btn btn-outline-body text-nowrap  edit-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Edit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button class="btn btn-outline-danger text-nowrap  delete-btn" style="--bs-btn-padding-y: 0.15rem; --bs-btn-padding-x: 0.5rem; --bs-btn-font-size: 1em;" data-id="${row.id}" data-bs-toggle="tooltip" data-bs-title="Delete"><i class="fa-solid fa-trash"></i></button>
                             </div>`;
                         }
                     },

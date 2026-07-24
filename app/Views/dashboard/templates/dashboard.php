@@ -181,10 +181,8 @@
         }
 
         .sidebar {
-            box-shadow: inset 0px 0 0 rgba(0, 0, 0, 0);
-            border: 1px solid var(--bs-border-color);
+            border-right: 1px solid var(--bs-border-color);
             overflow: auto;
-            border-radius: var(--bs-border-radius-lg);
         }
 
         .main-content {
@@ -195,7 +193,7 @@
         }
 
         .main-content-inside {
-            margin-left: calc(0.5rem + 220px);
+            margin-left: 220px;
         }
 
         #sidebarMenu,
@@ -325,8 +323,6 @@
             .sidebar {
                 top: 3rem;
                 width: 100%;
-                margin: 3rem 0 0 0;
-                border-radius: 0;
             }
 
             #sidebarMenu2 {
@@ -366,13 +362,13 @@
 <body class="bg-body-tertiary">
     <div class="wrapper">
         <!-- HEADER -->
-        <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0 shadow-sm header" style="border-bottom: 1px solid var(--bs-border-color);">
+        <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0  header" style="border-bottom: 1px solid var(--bs-border-color);">
             <div id="sidebarHeader" class="d-flex justify-content-start align-items-center ms-0 me-2 px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                 <span class="navbar-brand mx-0 fs-6 text-start lh-1">
                     My Admin Panel
                 </span>
             </div>
-            <button type="button" class="btn btn-outline-secondary bg-gradient d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
+            <button type="button" class="btn btn-outline-secondary  d-md-none mx-3" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-bars"></i></button>
             <div class="d-flex w-100 align-items-center text-truncate" style="min-height: 3rem; max-height: 3rem;">
                 <div class="w-100 ps-3 pe-1 pe-lg-2 text-truncate" style="flex: 1; min-width: 0;">
                     <?= $this->renderSection('title'); ?>
@@ -395,7 +391,7 @@
                         </div>
                     </a>
 
-                    <div class="offcanvas offcanvas-end bg-body-tertiary shadow-sm transparent-blur" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
+                    <div class="offcanvas offcanvas-end bg-body-tertiary  transparent-blur" tabindex="-1" id="userOffcanvas" aria-labelledby="userOffcanvasLabel">
                         <div class="offcanvas-header pt-0 pb-0 d-flex justify-content-between">
                             <div class="d-flex align-items-center col-md-3 col-lg-2 me-0 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                                 <span class="navbar-brand mx-0 fs-6 lh-1">
@@ -404,10 +400,10 @@
                             </div>
                             <div class="d-flex flex-row">
                                 <div class="dropdown">
-                                    <button class="btn btn-outline-secondary bg-gradient dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
+                                    <button class="btn btn-outline-secondary  dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (auto)">
                                         <i class="fa-solid fa-palette"></i>
                                     </button>
-                                    <ul class="dropdown-menu shadow-sm dropdown-menu-end bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
+                                    <ul class="dropdown-menu  dropdown-menu-end bg-body-tertiary transparent-blur" aria-labelledby="bd-theme-text">
                                         <li>
                                             <button type="button" class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
                                                 Light
@@ -425,7 +421,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <button id="closeOffcanvasBtn" type="button" class="btn btn-secondary bg-gradient ms-2" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-angles-right"></i></button>
+                                <button id="closeOffcanvasBtn" type="button" class="btn btn-secondary  ms-2" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-angles-right"></i></button>
                             </div>
                         </div>
                         <div class="offcanvas-body p-1">
@@ -486,10 +482,10 @@
                         <h5 class="mb-0" id="logoutMessage">Do you want to logout?</h5>
                         <div class="row gx-2 pt-4">
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-lg btn-body bg-gradient fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
+                                <button type="button" class="btn btn-lg btn-body  fs-6 mb-0 rounded-4" data-bs-dismiss="modal">No</button>
                             </div>
                             <div class="col d-grid">
-                                <button type="button" class="btn btn-lg btn-primary bg-gradient fs-6 mb-0 rounded-4" id="confirmLogout" onclick="window.location.href='<?= base_url('/logout'); ?>';">Yes</a>
+                                <button type="button" class="btn btn-lg btn-danger  fs-6 mb-0 rounded-4" id="confirmLogout" onclick="window.location.href='<?= base_url('/logout'); ?>';">Yes</a>
                             </div>
                         </div>
                     </div>
@@ -499,17 +495,17 @@
 
         <!-- CONTENTS -->
         <div class="main-content-wrapper">
-            <nav id="sidebarMenu" class="d-md-block bg-body-secondary sidebar shadow-sm collapse transparent-blur">
+            <nav id="sidebarMenu" class="d-md-block bg-body-secondary sidebar collapse transparent-blur">
                 <div id="sidebarMenu2" class="position-sticky sidebar-sticky p-1">
                     <ul class="nav nav-pills flex-column">
                         <!-- Place Menu Here -->
                         <li class="nav-item">
                             <a style="font-size: 0.95em;" class="nav-link px-2 py-1 <?= (strpos(uri_string(), 'home') === 0) ? 'active' : '' ?>" href="<?= base_url('/home'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
-                                    <div <?= (strpos(uri_string(), 'home') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
+                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-house"></i>
                                     </div>
-                                    <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'home') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
+                                    <div class="flex-fill ms-2">
                                         Home
                                     </div>
                                 </div>
@@ -518,10 +514,10 @@
                         <li class="nav-item">
                             <a style="font-size: 0.95em;" class="nav-link px-2 py-1 <?= (strpos(uri_string(), 'examples') === 0) ? 'active' : '' ?>" href="<?= base_url('/examples'); ?>" onclick="showSpinner()">
                                 <div class="d-flex align-items-start">
-                                    <div <?= (strpos(uri_string(), 'examples') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
+                                    <div style="min-width: 24px; max-width: 24px; text-align: center;">
                                         <i class="fa-solid fa-database"></i>
                                     </div>
-                                    <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'examples') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
+                                    <div class="flex-fill ms-2">
                                         Example CRUD
                                     </div>
                                 </div>
@@ -531,10 +527,10 @@
                             <li class="nav-item">
                                 <a style="font-size: 0.95em;" class="nav-link px-2 py-1 <?= (strpos(uri_string(), 'users') === 0) ? 'active' : '' ?>" href="<?= base_url('/users'); ?>" onclick="showSpinner()">
                                     <div class="d-flex align-items-start">
-                                        <div <?= (strpos(uri_string(), 'users') === 0) ? 'class="text-white"' : '' ?> style="min-width: 24px; max-width: 24px; text-align: center;">
+                                        <div style="min-width: 24px; max-width: 24px; text-align: center;">
                                             <i class="fa-solid fa-users"></i>
                                         </div>
-                                        <div class="flex-fill ms-2 <?= (strpos(uri_string(), 'users') === 0) ? 'text-white' : 'link-body-emphasis' ?>">
+                                        <div class="flex-fill ms-2">
                                             Users
                                         </div>
                                     </div>
