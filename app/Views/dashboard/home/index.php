@@ -22,17 +22,6 @@
                 For more information about Bootstrap 5.3 components, <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" target="_blank">click here</a>.
             </p>
             <hr />
-            <p>
-                The <code>&lt;body&gt;</code> tag uses <code>bg-body-hwpweb</code> class, which means:
-            </p>
-            <ol>
-                <li>
-                    If the light theme is applied, the background color is <code>--bs-tertiary-bg</code>.
-                </li>
-                <li>
-                    If the dark theme is applied, the background color is <code>--bs-body-bg</code>.
-                </li>
-            </ol>
             <h2>Gradient Enabled by Default</h2>
             <p>
                 Bootstrap 5.3 elements has been modified to use gradients on some elements but not all. The gradient is applied by default to the following elements:
@@ -89,19 +78,25 @@
                         </ul>
                     </nav>
                 </li>
-                <li class="mb-2">
-                    Pill nav tabs
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Active</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                    </ul>
+                <li class="mb2">
+                    Dropdown items (add <code>bg-body-tertiary transparent-blur</code> class to enable blur effect)
+                    <div class="d-flex">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-body">Dropdown Button</button>
+                            <button type="button" class="btn btn-body dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu bg-body-tertiary transparent-blur">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </li>
             </ol>
             <h2>New and Changed Components</h2>
@@ -140,6 +135,20 @@
                             <label class="form-check-label" for="switchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
                         </div>
                     </div>
+                </li>
+                <li class="mb-2">
+                    Pill nav tabs using neutralized background color
+                    <ul class="nav nav-pills">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Active</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
                 </li>
             </ol>
             <h2>New Modal Design</h2>
