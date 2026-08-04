@@ -363,7 +363,7 @@
     <div class="wrapper">
         <!-- HEADER -->
         <header class="navbar bg-body-secondary sticky-top flex-md-nowrap p-0  header" style="border-bottom: 1px solid var(--bs-border-color);">
-            <div id="sidebarHeader" class="d-flex justify-content-start align-items-center ms-0 me-2 px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
+            <div id="sidebarHeader" class="d-flex justify-content-start align-items-center m-0 px-3 py-md-1" style="min-height: 3rem; max-height: 3rem;">
                 <span class="navbar-brand mx-0 fs-6 text-start lh-1">
                     My Admin Panel
                 </span>
